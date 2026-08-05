@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}CHSS Schedule of Rates{% endblock %}</title>
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    {% if session.get('user_id') %}
+    <div class="layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>CHSS</h2>
+                <p>Schedule of Rates</p>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="{{ url_for('search') }}" class="nav-link {% if request.endpoint == 'search' %}active{% endif %}">
+                    Search SOR
+                </a>
+                {% if session.get('role') == 'admin' %}
+                <a href="{{ url_for('manage') }}" class="nav-link {% if request.endpoint == 'manage' %}active{% endif %}">
+                    Manage SOR
+                </a>
+                {% endif %}
+            </nav>
+            <div class="sidebar-footer">
+                <span class="user-info">{{ session.get('username') }} ({{ session.get('role')|title }})</span>
+                <form method="POST" action="{{ url_for('logout') }}">
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}">
+                    <button type="submit" class="btn btn-outline btn-sm btn-block">Logout</button>
+                </form>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <header class="topbar">
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">&#9776;</button>
+                <h1 class="page-title">{% block page_title %}{% endblock %}</h1>
+            </header>
+
+            <main class="content">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% endwith %}
+
+                {% block content %}{% endblock %}
+            </main>
+
+            <footer class="footer">
+                <p>Department of Space &mdash; CHSS Schedule of Rates</p>
+            </footer>
+        </div>
+    </div>
+    {% else %}
+    {% block auth_content %}{% endblock %}
+    {% endif %}
+
+    <script src="{{ url_for('static', filename='js/common.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

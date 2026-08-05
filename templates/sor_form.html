@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}{{ 'Edit' if item else 'Add' }} SOR Item - CHSS Schedule of Rates{% endblock %}
+{% block page_title %}{{ 'Edit SOR Item' if item else 'Add SOR Item' }}{% endblock %}
+
+{% block content %}
+<div class="card upload-card">
+    <form method="POST" action="{{ url_for('sor_edit', sor_id=item.id) if item else url_for('sor_new') }}">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}">
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="sor_code">SOR Code <span class="required">*</span></label>
+                <input type="text" id="sor_code" name="sor_code" required
+                       value="{{ form.get('sor_code', '') }}"
+                       placeholder="e.g. 2155">
+            </div>
+            <div class="form-group">
+                <label for="category">Category <span class="required">*</span></label>
+                <select id="category" name="category" required>
+                    <option value="">Select a category&hellip;</option>
+                    {% for c in categories %}
+                    <option value="{{ c }}" {% if form.get('category') == c %}selected{% endif %}>{{ c }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Service / Procedure <span class="required">*</span></label>
+            <textarea id="name" name="name" rows="3" required
+                      placeholder="Service name / name of treatment/procedure/investigation">{{ form.get('name', '') }}</textarea>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="price">Rate (&#8377;) <span class="required">*</span></label>
+                <input type="text" id="price" name="price" required
+                       value="{{ form.get('price', '') }}"
+                       placeholder="e.g. 1000">
+                <span class="form-hint">Numeric amount only.</span>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+                {{ 'Save Changes' if item else 'Add Item' }}
+            </button>
+            <a href="{{ url_for('manage') }}" class="btn btn-outline">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,2155 @@
+﻿Sl. No.,Service Name / Name of Treatment/Procedure/Investigation,CHSS SOR New Rate (₹)
+1,Arterial cannulation,1000
+2,Epidural Analgesia.,3000
+3,Monitored Anaesthesia Care/ Conscious Sedation,2000
+4,Peripheral nerve block,1500
+5,Short General Anaesthesia charges for OPD procedures/ investigations,3500
+6,Stellate Ganglion Block,3000
+7,3D Trans-Esophageal Echocardiography (TEE),6000
+8,99M-TC-MIBI Myocardial stress study test,6600
+9,AICD Implantation / Cardio Resynchronization Therapy (CRT) | Double chamber (Cath lab charges included),50000
+10,AICD Lead Repositioning,7000
+11,Ambulatory BP monitoring,1500
+12,Aortic Aneurysm Stent Grafting (AA Stent Grafting) | (Stent charges at actuals),70000
+13,"ASD Device Closure | Package includes up to 4 days stay (Room/ICCU), Professional | Charges, Nursing Charges, Pre & Post procedure investigations, | CATH lab charges, Cross Matching & Screening of blood, drugs used | for the procedure & consumables. | (Cost of closure device at actuals)",100000
+14,"Balloon valvuloplasty Aortic/Pulmonary/Tricuspid/ mitral Valves | (Adult) | Package includes up to 4 days stay (Room/ICCU), Professional | Charges, Nursing Charges, CATH lab charges, C-arm charges, Cross | Matching & Screening of blood | (delivery system/sheath and balloon charges at actuals )",75000
+15,Bundle of His recording (Short EP Study),18000
+16,"Cardiac Catheterization and Coronary Angiography (PACKAGE) | Package includes up to 2 days stay (Room/ICCU charges), | Professional Charges (Cardiologist), Nursing Charges, Pre procedural | investigations, Normal contrast-dye, Consumables.",15000
+17,Cardioversion,1000
+18,"Carotid/Cerebral/Renal/Peripheral Angiogram | CATH LAB PROCEDURES (PACKAGE) | Package includes up to 2 days stay (Room/ICCU charges), | Professional Charges (Cardiologist), Nursing Charges, Pre & post | procedural investigations, drugs used for the procedure, Normal | contrast-dye, Consumables.",12000
+19,"Coronary Rotablation Procedure | In addition, charges for Rotablator , as per ceiling rates fixed by | MoH&FW vide OM dated 06.08.2018, are allowed. | 1. Rotablator with Advancer - Rs. 49,920/- + GST | 2. Rotablator Burr - Rs. 23,920/- + GST",30000
+20,Detailed EP Study with RF Ablation,70000
+21,ECHO - Dobutamine Stress test (all inclusive),4000
+22,Echo Cardiography (including doppler study),1500
+23,EPS +RFA+ 3D Mapping,75000
+24,Fractional Flow Reserve (FFR),20000
+25,Head-up Tilt Test,2000
+26,"Holter Electrocardiographic monitoring for 24 hrs. | [If the procedure is required for longer duration, prior approval should | be taken from the Centre]",1800
+27,Intraaortic Balloon Pump (IABP) insertion | (cost of balloon at actuals),15000
+28,Loop Recorder implantation/Explantation,3000
+29,Optical Coherence Tomography (OCT),25000
+30,Pacemaker/ICD testing,700
+31,Pericardial Tapping/Pericardiocentesis,10000
+32,"Peripheral/Renal/Carotid Angioplasty | [Package includes up to 4 days stay (Room/ICCU), Professional | Charges, Nursing Charges, Pre & Post procedure investigations, | CATH lab charges, Cross Matching & Screening of blood, drugs used | for the procedure & consumables. | (Cost of stent at actual)]",60000
+33,Permanent Pacemaker Explantation,5000
+34,"Permanent Pacemaker Implantation, | Single Chamber, Atrial/Ventricular",25000
+35,"Permanent Pacemaker Implantation, Double Chamber | Ceiling rate for pacemakers (as per MoH&FW OM dated | 06.08.2018): | 1. Single Chamber Cardiac Pacemaker without Rate Response - Rs. | 34,840/- + GST | 2. Single Chamber Cardiac Pacemaker with Rate Response - Rs. | 44,928/- + GST | 3. Dual Chamber Cardiac Pacemaker - Rs.83,200/- + GST | 4. Bi-Ventricular Cardiac Pacemaker - Rs.1 ,95,000/- + GST | 5. lmplantable Cardioverter Defibrillator (lCD/AICD-Single | Chamber) - Rs. 1,75,786/- + GST | 6. lmplantable Cardioverter Deflbrillator (lCD/AICD-Dual Chamber) - | Rs. 3,75,000/-+ GST | 7. Combo Device (CRT-D) - Rs. 4,90,000/- + GST",50000
+36,"PTCA [Coronary Balloon Angioplasty] | Package includes up to 4 days stay (Room/ICCU), Professional & | treatment charges, charges for cross matching and screening of blood, | ventilator and cost of consumables, pre and post procedural | investigations. | Special contrast, if used, will be paid extra. | Balloon charges, if used, will be paid at actuals. | Cost of stents would be as per the rates fixed by NPPA, GoI",110000
+37,Pulse Generator Change Double chamber pacemaker,10000
+38,Pulse Generator Change Single chamber Pacemaker,5000
+39,Screening Echo,900
+40,"Temporary Pacemaker, insertion",5000
+41,Treadmill,1000
+42,Aneurysm - Aortic - Abdominal,80000
+43,"Aneurysm - Aortic - Arch with CPB, Graft Extra",100000
+44,Aneurysm - Aortic - Ascending with CPB,100000
+45,"Aneurysm - Aortic - Descending Thoracic | with CPB, Graft Extra",100000
+46,"Aneurysm - Aortic - Thoraco-abdominal | with CPB, Graft Extra",120000
+47,Aortic Valve Repair,75000
+48,"ASD/VSD Surgery | Package includes room rent upto 7 days, ICU, surgical team fees, | nursing charges, consumables (including prosthesis charges), blood | filters, cost of membrane oxygenator/ Ventilator charges for 24 hours, | pre & post procedural investigations. Blood donors evaluation charges, | bio-pump or blood cell saver charges.",200000
+49,Bilobectomy,50000
+50,"CABG (Coronary Artery Bypass Surgery) | Package includes Doctors fees, Surgical team fees, nursing charges, | Investigation charges, consumables, blood filters, cost of membrane | oxygenator, Implanted Sutures, Oxygenator/ Ventilator, | Hospitalisation up to 10 days",200000
+51,"CABG (Coronary Artery Bypass Surgery)+Valve | replacement (valve charges at actuals) | Package includes Doctors fees, Surgical team fees, nursing charges, | investigation charges, consumables, blood filters, cost of membrane | oxygenator, Implanted Sutures, Oxygenator/ Ventilator, | Hospitalisation up to 10 days",250000
+52,Carinal Pneumonectomy,50000
+53,Carotid Endarterectomy - CVTS,75000
+54,Cervical Lymphnode Biopsy under GA,10000
+55,Cervical Lymphnode Biopsy/LA,5000
+56,Cervical Mass Excision/Wide dissection Neck,60000
+57,Cervical Rib Excision,40000
+58,"Decortication, pulmonary",27000
+59,"DVR, Double Valve Replacement/ Complex heart surgery (like TOF | etc.) (valve charges at actuals) | Package includes room rent up to 10 days, ICU, surgical team fees, | nursing charges, consumables, blood filters, cost of membrane | oxygenator/ Ventilator charges for 24 hours, pre & post procedural | investigations. Blood donors evaluation charges, bio-pump or blood | cell saver charges.",220000
+60,Embolectomy-Arterial under Anesthesia,25000
+61,Endo Vascular Aneurysm Repair (EVAR) procedure | Ceiling Rates for | a. Endovascular Stent Graft Prosthesis - Rs.300000 | b. Balloon - Rs. 10000 | c. Pre-Cath Lab Profile - As per CHSS rates,100000
+62,Exploratory Thoracotomy (Therapeutic),50000
+63,Ligation/Embolization of AV Fistula,25000
+64,Lung Biopsy- Open,8000
+65,"Major Vascular Bypass surgery Including Carotid, Aorta, Subclavian, | Renal, Femoral, Popliteal etc. (cost of Prosthesis at actuals)",75000
+66,Mediastinal tumour resection,45000
+67,Mediastinoscopy -CVTS,10000
+68,"Minimally Invasive Coronary Artery Bypass Surgery (Mini CABG) | Package includes Doctors fees, Surgical team fees, nursing charges, | investigation charges, consumables, blood filters, cost of membrane | oxygenator, Implanted Sutures, Oxygenator/ Ventilator, | Hospitalisation up to 5 days",250000
+69,"PDA closure | Package includes room rent upto 7 days, ICU, surgical team fees, | nursing charges, consumables, Ventilator charges, pre & post | procedural investigations, Blood donors evaluation charges, blood cell | saver charges.",100000
+70,Peripheral aneurysm Surgery,32000
+71,Pleural Biopsy,2000
+72,Pulmonary Thrombo Endarterectomy,65000
+73,Redo of cardiac surgeries (Payable in addition to regular SoR charges | for the specific cardiac surgery),30000
+74,Repair of aneurysm in medium sized arteries,40000
+75,Rib Tumor/Rib Excision/Chest wall tumour,20000
+76,"Single Valve surgery (valve charges at actuals) | Package includes room rent upto 7 days, ICU, surgical team fees, | nursing charges, consumables, blood filters, cost of membrane | oxygenator/ Ventilator charges for 24 hours, pre & post procedural | investigations. Blood donors evaluation charges, bio-pump or blood | cell saver charges.",200000
+77,TAVI (Transcatheter Cardiac Valve Implantation) | (cost of valve at actuals),250000
+78,Thoracic Outlet Decompression,35000
+79,"Thoracoscopy-lungs and pleuralspace, | with biopsy (Stapler cost extra)",14000
+80,Thymectomy,35000
+81,VATS Bilobectomy,80000
+82,VATS Bullectomy/Cysts,45000
+83,VATS Decortication+Stapler cost extra,35000
+84,VATS Diagnostic thoracoscopic,14000
+85,VATS Diaphragmatic Plication,25000
+86,VATS Haematoma Evacuation/Loculation breakdown,20000
+87,VATS Lobectomy,60000
+88,VATS Mediastinal Tumour Excision,60000
+89,VATS Oesophagectomy,60000
+90,VATS Partial Pericardiectomy,45000
+91,VATS Pericardial Effusion Drainage,25000
+92,VATS Pleural Effusion Drainage,20000
+93,VATS Pleurodesis,45000
+94,VATS Pneumonectomy,42000
+95,VATS Sympathectomy,45000
+96,VATS Thymectomy,65000
+97,VATS Wedge Biopsy,33000
+98,Venous Byepass graft surgery using auto vein/ prosthesis (prosthesis | cost at actuals),32000
+99,Video-Assisted Thoracic Surgery (VATS) Biopsy | (Lung/Pleura/Lymphnode/Mediastinal),20000
+100,Diaphramatic Hernia Repair (Laparoscopic),40000
+101,Alveolectomy Per Quadrant,1200
+102,Apicotomy – Single Tooth,1500
+103,Biopsy under LA,650
+104,Dental Crown per tooth,2000
+105,Denture (removable)- Full,10000
+106,Denture (removable)- One Jaw,5000
+107,Extraction – Simple,300
+108,Dental Procedure – under GA (In addition to the procedure charge),3500
+109,Extraction- Complicated tooth/Impacted molars,2500
+110,Fillings – Amalgam,300
+111,Fillings – composite with Light cure,800
+112,Fillings – Glass lonomer,350
+113,Fillings – Temporary,200
+114,Gingivectomy per quadrant,1500
+115,I & D under LA,600
+116,I.O. X-ray – Occlusal,300
+117,I.O. X-ray – Periapical,200
+118,Intermaxillary Wiring – under GA,5000
+119,Intermaxillary Wiring – under LA,3000
+120,Intra Oral Space Maintainer,1250
+121,Obturator for cleft palate,5000
+122,Denture partial (removable)- additional tooth,300
+123,Denture partial (removable)- Single tooth with cast,1500
+124,Root Can. Treat – Anterior per tooth (includes charges for filling),2500
+125,Root Can. Treat – Posterior per tooth (includes charges for filling),3500
+126,Scaling - Full Mouth,600
+127,Frenectomy,750
+128,Vestibuloplasty,1500
+129,X-ray OPG (Dental),500
+130,Allergic Prick Test – 1-10 Allergens,500
+131,Allergic Prick Test – 11-20 Allergens,750
+132,Allergic Prick Test – Above 20 Allergens,1500
+133,Blister Grafting for Vitiligo,3000
+134,Chemical Cautery (per sitting),300
+135,Cryo therapy large (>10),1500
+136,Cryo therapy medium (4 -10),1000
+137,Cryo therapy small (1-3),500
+138,Currettage of Molluscum Contagiosum (<5),400
+139,Currettage of Molluscum Contagiosum (>10),1000
+140,Currettage of Molluscum Contagiosum (5-10),600
+141,Electrocautery medium (5-10 lesions),1000
+142,Electrocautery small (<5 lesions),600
+143,Electrocautry large (>10 lesions),1500
+144,Fungal scrapings/ear lobe smears for AFB/tzanck smear/urethral | smears /ulcer smears/lepra bacillus,200
+145,Laser treatment for Keloid/Haemangioma,5000
+146,Nail Matrix biopsy under local anaesthesia,1000
+147,Patch test for skin allergy (total),3000
+148,Phototherapy - PUVA/UVB (per sitting),500
+149,Podophyllin application (for genital warts) | (cost of medicines extra),300
+150,Punch Grafting for Vitiligo,3000
+151,Radiofrequency ablation for warts/corns etc.,900
+152,Skin biopsy /excisions,1500
+153,Skin Intralesional injection large,500
+154,Skin Intralesional injection small,300
+155,"Hearing Aids: | Ceiling rates and eligibility | 1. One side hearing aid (body worn/pocket/BTE or in the canal type | (conventional) | 2. Bilateral hearing aid | 3. Digital hearing aid (each ear, once in a lifetime) | 4. Ear mould for each ear",10000 | 20000 | 30000 | 100
+156,Assessment of Hearing for Hearing Aid,200
+157,Atticotomy and reconstruction,10000
+158,Audiometry / Pure tone audiogram,500
+159,Aural Polypectomy,6000
+160,Bilateral Myringotomy and Grommet Insertion,10000
+161,"Cochlear Implant surgery | (1) Stay charges 9 days in Hospital (2) All routine lab investigations | (3) All operation charges (4) All routine drugs (5) CT & MRI Scan | (6) AudiologicalInvestigation | Guidelines for Cochlear implant surgery: | Selection criteria for cochlear implant: | (i) Pre-lingually deaf children. | (a) Age group between 1 to 16 years. (b) No appreciable benefit | from hearing aids after 6 months of trial. No speech formation seen. | (c) No mental retardation. (d) No active middle ear disease. | Perforation of TM should be closed three months prior to | implantation. (e) No Cochlear aplasia or agenesis of cochlear | nerve.(f) No retro cochlear lesion or central deafness. | (ii) Post-lingually deaf candidates (B/L profound S.N.H. loss) | (a) There should be no appreciable benefit from hearing aids | (both ears) (b) No active middle ear cleft disease. (c) Perforation of | the TM should be repaired three months prior to the implantation. (d) | Deafness should be due to cochlear lesions. | Type of implants : Only multi-channel cochlear implant (12 | channels/ | 24 electrodes with behind the ear speech processor) | (iii) Only unilateral implantation will be allowed. | (iv) Prior permission of the Department has to be taken before the | surgery is undertaken. | (v) Opinion of 2 recognised ENT surgeons, who will give their | independent opinion as per the guidelines mentioned, is | necessary | Ceiling rate for implants - As per CGHS rates",150000
+162,Cold Calorie Test for vestibular function,300
+163,E.N.G (Electro Nystagmography),600
+164,Ear Lobe Piercing (both),750
+165,Ear Lobe Repair - Bilateral,3000
+166,Ear Lobe Repair - Unilateral,2000
+167,Endolymphatic Sac Decompression,30000
+168,Epley's Manoeuvre,400
+169,Facial Nerve Decompression,30000
+170,Foreign Body Removal - Ear,700
+171,Grommet Removal Bilateral under Anesthesia,2000
+172,I & D Mastoid Abscess,12000
+173,I & D of Furuncle/Haematoma Auris,1000
+174,Impedence Audiometry,700
+175,Labyrinthectomy,25000
+176,Mastoidectomy Cortical,18000
+177,Mastoidectomy Cortical with tympanoplasty,22000
+178,Mastoidectomy Modified - Radical,50000
+179,Mastoidectomy Modified - Radical with tympanoplasty,55000
+180,Meatoplasty (ENT),12000
+181,Mid-Cranial Fossa Approach to Internal Auditory Meatus,35000
+182,Myringoplasty,20000
+183,Myringotomy + Grommet Insertion - Unilateral under Anesthesia | (Grommet Charge Extra),5000
+184,Ossiculoplasty,20000
+185,SISI Tone Decay,200
+186,Stapedectomy or Stapedotomy,20000
+187,Temporal Bone Resection – Partial,25000
+188,Temporal Bone Resection – Total,30000
+189,Tympanometry,500
+190,Vestibular Function Tests,600
+191,Wax removal,250
+192,Auditory brainstem response (ABR),2000
+193,Debridement (Major),4000
+194,Debridement (Minor),1500
+195,Examination Under Microscopy,300
+196,Excision Biopsy mass GA,6000
+197,Excision Biopsy mass LA,3500
+198,Neuro Otological Test / Oto Acoustic Emission test (OAE),700
+199,Speech/language/voice/fluency/articulation assessment (once in a | month),400
+200,Speech/language/voice/fluency/articulation intervention (Speech | therapy) per sitting,300
+201,Suction Clearance Ear/Nose,200
+202,Antral Wash - One side,500
+203,Antrochoanal Polypectomy,9000
+204,Antroscopy,4000
+205,Antroscopy with Polypectomy,9000
+206,Arterial Ligation in Epistaxis,12000
+207,Caldwell-Luc (one side),7500
+208,Cauterization of Nasal Bleeding - Anterior (Under GA),3000
+209,Cauterization of Nasal Bleeding - Anterior (Under LA),2000
+210,Choanal Atresia,25000
+211,Closure of Oroantral fistula,9000
+212,Diagnostic Nasal Endoscopy GA,5000
+213,Diagnostic Nasal Endoscopy LA,2000
+214,Endoscopic Debridement,6000
+215,Endoscopic Medial Maxillectomy under GA,45000
+216,Endoscopic Nasopharyngeal Angiofibroma Excision,50000
+217,Endoscopic Surgery Nose under GA,13000
+218,Foreign Body Removal - Nose,700
+219,Fracture nasal bone reduction,15000
+220,Functional Endoscopic Sinus Surgery (FESS),25000
+221,Intranasal antrostomy - one side,4000
+222,Nasal Biopsy (Under Anesthesia),3500
+223,Nasal packing,300
+224,Obliterative surgery of frontal sinus,20000
+225,Oroantral Fistula Closure with Caldwell Luc,20000
+226,Reconstruction of fronto nasal duct,7000
+227,Rhinoplasty Septo,25000
+228,Rhinosporidium Excision - Anterior,6000
+229,S.M.R.,15000
+230,Septal Abscess or haematoma drainage,10000
+231,Septoplasty (Under Anesthesia),20000
+232,Sinus Endoscopy Diagnostic,3000
+233,Submucous diathermy,8000
+234,Surgery for Choanal Atresia-Transpalatal – Unilateral,20000
+235,Transnasal Ethmoidectomy,15000
+236,Turbinoplasty/Turbinectomy,5000
+237,Vidian Neurectomy – Transantral,15000
+238,Adeno Tonsillectomy,25000
+239,Adenoidectomy,12000
+240,Cauterization of Bleeding Point - Palate,1000
+241,Cervical Tracheal Stenosis Exci. & End to End Anastomosis,40000
+242,Closure of Pharyngeal Fistula - With Flap,23000
+243,Closure of Pharyngeal Fistula -Primary Local,20000
+244,Cordectomy Via Laryngeal Fissure,16000
+245,Cricopharyngeal Myotomy,22000
+246,Diagnostic Stroboscopy,1200
+247,Dilatation of Larynx,8000
+248,Direct Laryngoscopy,5000
+249,Direct Laryngoscopy + Biopsy under GA,12000
+250,Endoscope Assisted Salivary Calculus Removal,17000
+251,Endoscopic Cord Lateralisation,16000
+252,Endoscopic laser cordectomy (Kashima with Laser),40000
+253,Excision of Laryngocoele,20000
+254,Flexible Fiber Optic Laryngoscopy,3000
+255,Foreign Body Removal - Pharynx (under Anesthesia),3000
+256,I & D of Peritonsillar Abscess with anaesthesia,15000
+257,I & D of Retropharyngeal - Intra Oral Approach,10000
+258,Laryngectomy with Modified Neck dissection,50000
+259,Laryngectomy with Radical Neck Dissection,60000
+260,Laryngo – Tracheal Injury Exploration & Repair,30000
+261,Laryngotracheoplasty under GA,20000
+262,"Laser Assisted Laryngeal Surgery, Major",20000
+263,"Laser Assisted Laryngeal Surgery, Minor",7500
+264,Lateral or Extended Fronto Lateral Laryngectomy,30000
+265,Micro Surgery of Larynx,20000
+266,Para Pharyngeal Benign Lesion Excision - Cervical,30000
+267,Reconstruction surgery of Larynx,30000
+268,Styloidectomy Unilateral,18000
+269,Sub -Total Laryngectomy,40000
+270,Supra Omohyoid Dissection,25000
+271,Supraglottic Laryngectomy,40000
+272,Supraglottic Laryngectomy with Radical Neck Dissection,50000
+273,Suspension Laryngoscopic Procedure,15000
+274,TE Puncture,12000
+275,TE Puncture with Myotomy,15000
+276,Teflon Inj. to Paralysed Cord,15000
+277,Thyroplasty Medialisation of Cord,15000
+278,Tonsillectomy,15000
+279,Total Laryngectomy,45000
+280,Total Laryngopharyngo Oesophagectomy with Gastric Pull,70000
+281,Tracheoscopy/Laryngoscopy (video),10000
+282,Uvulectomy,5000
+283,Uvulopalatopharyngoplasty (UPPP),30000
+284,Vertical Laryngectomy with Laryngoplasty,35000
+285,Woodman's Operation,20000
+286,24 Hrs. pH monitoring,3000
+287,Abdominal Paracentesis,700
+288,Argon Beam Plasma Coagulation (APC),6000
+289,Biopsy-Liver (Disposable Biopsy needle charges at actual),2000
+290,Capsule Endoscopy (inclusive of all consumables),40000
+291,Colonoscopy (therapeutic),8000
+292,Colonoscopy (diagnostic) including biopsy sampling,5000
+293,Double Balloon Enteroscopy,25000
+294,Duodenal-Stricture Dilatation,6500
+295,Endoscopic Clip Application,5000
+296,Endoscopic Jejunal Biopsy,3500
+297,Endoscopic Oesophago- Variceal Banding,6000
+298,Endoscopic Pancreatic cysto gastrostomy/jejunostomy,12000
+299,Endoscopic Polypectomy,4000
+300,Endoscopic Sclerotherapy per sitting (including the cost of drugs),5000
+301,Endoscopic Ultrasound (EUS) (Diagnostic),8000
+302,Endoscopic Ultrasound (EUS) (Therapeutic),10000
+303,ERCP (Diagnostic),7000
+304,ERCP + Nasobiliary/ Nasopancreatic drainage (NBD/NPD),12000
+305,ERCP + Pancreatic Stent Placement,12000
+306,ERCP + Sphincterotomy,8000
+307,ERCP + Sphincterotomy + Biliary dilation + Stenting,18000
+308,ERCP + Sphincterotomy + Stent placement,15000
+309,ERCP + Sphincterotomy + Stone removal + Stenting,20000
+310,ERCP + Stent change,10000
+311,Esophageal Dilatation,7000
+312,Fiberoptic Flexible Sigmoidoscopy,2000
+313,Oesophageal stenting (cost of stent at actuals),4000
+314,Oesophageal manometry,3500
+315,Percutaneous Biliary Drainage/Stenting (PTBD),25000
+316,Percutaneous Endoscopic Gastrostomy (PEG),8000
+317,Placement of Jejunal Feeding Tubes,3000
+318,Procedures done under GA,3500
+319,Rectal manometry,3000
+320,Removal of foreign bodies by Endoscopy,6000
+321,Removal of PEG tube,3000
+322,Replacement of PEG tube | (cost of PEG tube at actuals),3500
+323,Sengstaken Tube Introduction,1000
+324,Sigmoidoscopic Polypectomy,4000
+325,Sigmoidoscopy (diagnostic),2500
+326,SMA Stenting and Coil Embolisation of Splenic Artery procedure | Cost of consumables at actuals,60000
+327,Trans arterial Chemo embolisation (TACE) for liver disorders (Cost of | consumables and drugs at actuals),25000
+328,Trans arterial Radio embolisation (TARE) | Cost of consumables and drugs at actuals,25000
+329,Transjugular Intrahepatic Portosystemic Shunt (TIPS) procedure | Cost of consumables at actuals,70000
+330,Ultrasound Guided Liver Abscess drainage/ Biopsy,4800
+331,Ultrasound Guided Pancreatic Abscess drainage/ Biopsy,5000
+332,Endoscopy- Upper G.I (OGD) Diagnostic,2500
+333,Abdominal Paracentesis,700
+334,Arterial Line,800
+335,Bandage – Strapping (Chest),100
+336,BIPAP MACHINE (Needs Prior Approval),60000
+337,"BIPAP MACHINE (Rental charges/Usage charges per day) | Limited to not more than 1 month. If the patient requires for longer | duration, machine can be purchased with the approval of the | Competent Authority.",300
+338,Bladder Wash,300
+339,Bone Marrow Aspiration Procedure (Charges for needle at actuals),1000
+340,Bowel Wash,150
+341,Bronchial Challenge Test,1000
+342,Bronchoscopy Fiberoptic (therapeutic),7000
+343,Bronchoscopy Fiberoptic Diagnostic (including biopsy),5000
+344,Broncho – alveolar lavage (BAL),4000
+345,Dressing Burn (major),1000
+346,Dressing Burn (minor),500
+347,Catheterization (Urology),100
+348,Central line Cannulation/placement (Cost of canula extra),1500
+349,CGMS (Continuous Glucose Monitoring System),3500
+350,Chest tube insertion (ICD),3000
+351,Colostomy Care / Stoma care (in-patients only),100
+352,C-PAP MACHINE (Needs Prior Approval),45000
+353,"C-PAP per day during hospitalisation | Limited to not more than 1 month. If the patient requires for longer | duration, machine can be purchased with the approval of the | Competent Authority.",300
+354,Defibrillator use,400
+355,Diffusing capacity of the Lungs for Carbon Monoxide (D.L.C.O.),1500
+356,Douche,100
+357,Dressing - Diabetic /Non healing ulcer,600
+358,Dressing–Service Charges-Medium | (Disposables extra),150
+359,Dressing–Service Charges-Large (Disposables extra),300
+360,Dressing–Service Charges-Small (Disposables extra),100
+361,"Dressing Vacuum (procedure charges, cost of consumables at actuals)",1000
+362,DVT Pump (Flow Tron) per day,700
+363,ECG 12 lead,200
+364,Endotracheal Intubation,750
+365,Enema,100
+366,Fractional Exhaled Nitric Oxide (FeNO),750
+367,Glucometer for diabetic patients One per family (shall be prescribed by | the Specialist/Departmental Medical Officer. Accounts (CHSS) to | maintain register),1200
+368,Hyperbaric Oxygen Therapy,2300 | [per | sitting]
+369,I.V. Saline infusion/ IV Line service charge per day,100
+370,IM and SC injection charges (Syringe cost extra),30
+371,Infra Red Lamp Application,70
+372,Inj. Serv. Chgs. - Slow Infusion Pump (per day),400
+373,Inter costal tube drainage,3500
+374,Intrathecal Baclofen Pump (Needs Prior Approval),(as per | CGHS | guidelines | / rates)
+375,Intra dermal injection,40
+376,IV injection charges (Syringe cost extra),50
+377,Lumbar Puncture (Inclusive of the cost of needle),1500
+378,Minor Procedure eg. Suture removal etc.,300
+379,Mortuary charges per day | (Maximum of 3 days only),1000
+380,Nebulization charges,50
+381,Nebulizer (recommended by Specialist) | one per family is allowed. Accounts (CHSS) to maintain the register.,1500
+382,Oximeter / Pulse Oximeter / 24 hours (for Non ICU),200
+383,Oxygen Concentrator (Rental charges per day) | For home oxygen therapy on advice of pulmonologist/Cardiologist,100
+384,Oxygen Concentrator can be purchased on the advice of | pulmonologist/Cardiologist (Needs Prior Approval); only one per | family,40000
+385,Oxygen Inhalation (per hour),100
+386,Peripheral insertion of Central Catheter (PICC),4000
+387,Pleural Aspiration Procedure (Therapeutic/ diagnostic) (charges for | needle at actual),1000
+388,Pleurodesis,3200
+389,Ryles Tube Introduction,150
+390,Sitz Bath,100
+391,Sleep studies (including CPAP titration),5000
+392,Spirometry computerised / Pulmonary function test,1000
+393,Stomach Wash/ Gastric Lavage,500
+394,Suturing under LA major,800
+395,Suturing under LA minor,400
+396,Tracheostomy Care per day,100
+397,Transbronchial Needle Aspiration (TBNA),3500
+398,Venesection / Cut down,400
+399,Vibration Perception Threshold (VPT) test,500
+400,Water bed/ Alpha Bed purchase in case of chronic bed-ridden patients | (needs prior approval on the advice of Specialist),3500
+401,Water bed/alpha bed charges (per day),300
+402,Abdomino Perineal Resection,50000
+403,Abdomino Perineal Resection - LAP,60000
+404,Amputation Penis - Partial,15000
+405,Amputation Penis (total) including perineal urethrostomy,22000
+406,Anal Sphincter Repair,35000
+407,Anal Stretch (Under GA)/Lord's procedure,8000
+408,Anterior resection,45000
+409,Anterior resection - LAP,55000
+410,Appendicectomy (Open),28000
+411,Aspiration biopsy/Lymph Node biopsy (in OP),500
+412,Band Ligation of Haemorrhoids - Conventional,3000
+413,Biopsy Rectal,4000
+414,Breast Conservation Surgery,35000
+415,Breast Conservation Surgery including Axillary dissection/clearance,45000
+416,Breast Lumpectomy,22000
+417,Callocity excision,1500
+418,Carotid Artery repair for trauma,42000
+419,Cervical Oesophagostomy,10000
+420,Cervical sympathectomy,22000
+421,Cholecystectomy (Open),30000
+422,Cholecystectomy with C.B.D. Exploration,40000
+423,Cholecystojejunostomy,30000
+424,Cholecystostomy,20000
+425,Choledocho Duodenostomy /Transduodenal Sphincteroplasty,35000
+426,Choledocho Duodenostomy/Transduodenal,35000
+427,Circumcision GA,10000
+428,Circumcision LA,5000
+429,Closure of Duodenal/Gastric Perforation,25000
+430,Closure of Colostomy/Ileostomy,20000
+431,Closure of small bowel Perforation,25000
+432,Colectomy- Total,45000
+433,Combined Oral Cancer resection and neck dissection,70000
+434,Cryohaemorrhoidectomy (Piles Operation),10000
+435,Cyto Reductive Surgery,80000
+436,Debridement (Minor) – Under GA,10000
+437,Debridement Major – Under GA,15000
+438,Dilatation of Oesophageal Stricture,7000
+439,Drain removal,200
+440,Drainage of Liver Abscess (Laparsocopic),20000
+441,Embolectomy,25000
+442,Exci of Hypopharyngeal Diverticulum by Exter. Appr/ Pharyngeal,30000
+443,Exci. of Ca.Cheek with Neck Dissection & Hemimandibulectomy,60000
+444,Exci. of Ca.Cheek with Neck Recon.with Regl. Flap,50000
+445,Exci. of Ca.Cheek,30000
+446,Exci.of Ca.Cheek with Neck Dissection with Reconstruction,45000
+447,Excision of Branchial Cyst/ Fistula,25000
+448,Excision of primary lesion & Functional Neck Dissection,40000
+449,Excision of primary lesion & Modified Neck Dissection,40000
+450,Excision of primary lesion & Radical Neck Dissection,45000
+451,"Excision of Small Swellings, Sebaceous Cysts, Keloid etc.",4000
+452,Feeding jejunostomy,15000
+453,Femoral Hernia Repair (inclusive of Mesh cost),25000
+454,Fissurectomy,10000
+455,Fistulectomy / Fistulotomy,18000
+456,Gastrectomy - Partial,38000
+457,Gastrectomy - Radical,55000
+458,Gastrectomy - Total,50000
+459,Gastrostomy,18000
+460,Gland Biopsy GA,7000
+461,Glossectomy with Neck Dissection & Reconstn.- Total,50000
+462,Gynaecomastia – Excision (Bilateral),22000
+463,Gynaecomastia – Excision (Unilateral),15000
+464,Haemangioma - ligation,20000
+465,Haemorrhoidectomy (Piles Operation),20000
+466,Heamorrhoidectomy by Stappler (inclusive of Stappler charges),35000
+467,Hellers Oesophagomyotomy - VATS,52000
+468,Hellers Oesophagomyotomy/Fundoplication - Laparoscopic,42000
+469,Hemi/Sub-total Thyroidectomy,32000
+470,Hemicolectomy,35000
+471,Hemiglossectomy Trans-oral with Local Closure,35000
+472,Hemimandibulectomy,45000
+473,Hemithyroidectomy,30000
+474,Hepatectomy (Right/Left),55000
+475,Hepatico-Jejunostomy,45000
+476,Hernia Repair Inguinal (inclusive of Mesh cost),32000
+477,Hernia Repair Umbilical/Paraumbilical/Incisional/Ventral - Large | (defect more than 3 cm) (inclusive of Mesh cost),35000
+478,Hernia Repair Umbilical/Paraumbilical/Incisional/Ventral - Small | (defect less than 3 cm) (inclusive of Mesh cost),32000
+479,Herniotomy Inguinal (in adult),20000
+480,Highly Selective Vagotomy,21000
+481,Hydrocele Operation Bilateral,20000
+482,Hydrocele Operation Unilateral,15000
+483,I & D - Sub Mandibular Abscess/Neck abscess,10000
+484,I & D (GA),7000
+485,I & D (LA),2000
+486,ICD removal,200
+487,Ilio inguinal Block dissection,45000
+488,Intra Lesional Injections eg. Keloids,250
+489,IVOR - Lewis Procedure,55000
+490,Laparoscopic Appendicectomy,42000
+491,Laparoscopic Adhesiolysis,30000
+492,Laparoscopic Cholecystectomy,45000
+493,Laparoscopic Cystogastrostomy,45000
+494,Laparoscopic DU/Bowel perforation closure,40000
+495,Laparoscopic Hemicolectomy,45000
+496,Laparoscopic Hydatid Cyst Surgery,40000
+497,Laparoscopic Inguinal Hernia Repair (inclusive of Mesh cost),42000
+498,Laparoscopic Mesh Rectopexy (including cost of mesh),45000
+499,Laparoscopic- Oesophagomyotomy with Fundoplication,55000
+500,Laparoscopic- Omentectomy,15000
+501,Laparoscopic- Small Bowel Resection and Anastomosis,40000
+502,Laparoscopic- Splenectomy,52000
+503,Laparoscopic- Transhiatal Oesophagectomy,65000
+504,Laparoscopic- Truncal Vagotomy & Gastrojejunostomy,50000
+505,Laparoscopic Umbilical/Paraumbilical/Incisional/Ventral Hernia | Repair (inclusive of Mesh cost),42000
+506,Laparoscopic- Varicocoele Operation,32000
+507,Laparoscopy (Diagnostic),15000
+508,Laparoscopy- Staging,30000
+509,Laparotomy and Colostomy/Ileostomy,25000
+510,Laparotomy-Diagnostic,14000
+511,Ligation of Haemorrhoids - endoscopic,10000
+512,Limb conservation surgery,55000
+513,Liver biopsy (cost of needle and imaging charges extra),1000
+514,Lumbar Sympathectomy,22000
+515,Lymph Node Biopsy,7000
+516,Major amputation (Fore quarter/Hind quarter/ Hip disarticulation/ | shoulder disarticulation),40000
+517,Mastectomy- Modified Radical,40000
+518,Mastectomy- Simple,27000
+519,Maxillectomy with extended cheek excision & Reconstruction,40000
+520,Maxillectomy - Partial,30000
+521,Maxillectomy - Total,33000
+522,Maxillectomy with excenteration of eye ball,35000
+523,Meckel's Diverticulectomy,25000
+524,Muscle biopsy,1500
+525,Nail avulsion under local anaesthesia,3000
+526,Oesophago Gastrectomy,50000
+527,Packing for trauma liver,33000
+528,Pancreatectomy- Partial,40000
+529,Pancreatic Jejunostomy,40000
+530,Pancreatic Necrosectomy,33000
+531,Pancreato Duodenectomy - Whipple's,60000
+532,Parapharyngeal Abscess External Drainage,15000
+533,Parathyroidectomy,24000
+534,Parotidectomy- Total,40000
+535,Pelvic Exentration,35000
+536,Pelvic Lymph Node dissection,15000
+537,Percutaneous Aspiration of Liver Abscess (USG guided),10000
+538,Peritonectomy,40000
+539,Pilonidal Sinus Excision,15000
+540,Porta Caval Shunt,54000
+541,Proctocolectomy with Ileoanal pouch- Total,55000
+542,Proctoscopy and Biopsy,2000
+543,Profundo Plasty,22000
+544,Proximal Spleno Renal Shunt,52000
+545,Radical Cholecystectomy,50000
+546,Radical Maxillectomy,38000
+547,Radio Frequency Ablation (RFA) for tumors,40000
+548,Retro peritoneal lymph node resection,45000
+549,RVF repair,45000
+550,Salivary Calculi removal,15000
+551,Segmental Hepatic Resection,45000
+552,Sengstaken tube introduction,1500
+553,Seton placement,10000
+554,Seton removal,350
+555,Shunt Surgery for Portal Hypertension,50000
+556,Sialodochotomy with calculus removal under GA,6000
+557,Sigmoid Colectomy,42000
+558,Small Bowel Resection and Anastomosis,30000
+559,Small Bowel Stricturoplasty,25000
+560,Soft Tissue Tumour Excision – Lipoma / Polyp under GA,15000
+561,Splenectomy (extra gastric devascularisation),35000
+562,Splenectomy (open),35000
+563,Stoma care (during hospitalisation),100
+564,Submandibular Gland Excision,30000
+565,Submandicular Sialadectomy,25000
+566,Subtotal Colectomy,45000
+567,Superficial Parotidectomy,25000
+568,Supra Omohyoid Neck dissection General Surgery 20000 30000,
+569,Supra pubic catheter removal,200
+570,Supra pubic catheterisation,2000
+571,Suture/Stapple removal General Surgery 200,
+572,Thyoidectomy with Neck Dissection- Total,65000
+573,Thyroglossal Cyst (Sistrunk),20000
+574,Thyroidectomy- Total,42000
+575,Tongue Tie Release under GA,4000
+576,Tracheostomy (elective),12000
+577,Tracheostomy (Emergency),15000
+578,Transverse Colectomy,35000
+579,Truncal Vagotomy & Gastrojejunostomy,40000
+580,Vagotomy and Pyloroplasty,40000
+581,Varicocoele Operation General Surgery 15000 20000,
+582,Varicose Veins Laser Surgery / RF ablation,35000
+583,Varicose Veins Stripping/Perforator ligation,17000
+584,Vasectomy,10000
+585,Vasectomy - Reversal,35000
+586,Wedge Biopsy Neck Node,15000
+587,Abdominal Myomectomy,20000
+588,Abdominal Radical Hysterectomy,52000
+589,Abdominal Sacrocolpopexy (open),30000
+590,Biopsy cervix,3000
+591,Cauterization Cervix,3500
+592,Cold coagulator for minor procedures,2500
+593,Colporraphy with Mesh (inclusive of Mesh charges),30000
+594,Colporraphy without Mesh,25000
+595,Colposcopy,3000
+596,Conisation / Cone Biopsy Cervix under GA,7000
+597,Cryosurgery for Cervix,3500
+598,Culdocentesis,2000
+599,Dilatation & Curettage (D&C) + Polypectomy (under anaesthesia),8000
+600,Dilatation & Curettage (D&C) under anaesthesia,6000
+601,Drainage of Pyometra,7500
+602,Drainage of Vulvar abscess/Cyst,4500
+603,Endometrial ablation,15000
+604,Endometrial Aspiration (with anaesthesia),5000
+605,Endometrial Aspiration (without anaesthesia),750
+606,Examination under Anaesthesia (EUA),5000
+607,Excision/Biopsy of Vulval/Vaginal lesions,3000
+608,Fractional Curettage under anaesthesia,5500
+609,Hymenectomy,6000
+610,Hysterectomy Abdominal,40000
+611,Hysterectomy abdominal with Salpingo oopherectomy (TAH),42000
+612,Hysterectomy Vaginal,42000
+613,Hysterectomy Vaginal with Bilateral Salpingo-Oopherectomy,43000
+614,Hysterectomy Vaginal with Pelvic floor repair,45000
+615,Hysterosalpingography (Dye Charges at actuals),2500
+616,Hysteroscopic foreign body removal,15000
+617,Hysteroscopic Polyp removal,15000
+618,Hysteroscopic Resection of Endometrium,18000
+619,Hysteroscopic septum resection/ Adhesiolysis,18000
+620,Hysteroscopic submucus fibroid removal,18000
+621,Hysteroscopy Diagnostic,8000
+622,Intra uterine insemination (IUI) per sitting,2500
+623,IUCD insertion including Merina (cost of IUCD/Merina at actuals),1000
+624,IUCD Removal,500
+625,Laparoscopic Abdominal Sacrocolpopexy/Colposuspension,40000
+626,Laparoscopic Adhesiolysis,25000
+627,Laparoscopic assisted Chromotubation | (Dye Charges at actuals),15000
+628,Laparoscopic assisted vaginal hysterectomy (LAVH),50000
+629,Laparoscopic Ovarian drilling,15000
+630,Laparoscopic Ovarian transfixation,25000
+631,Laparoscopic Tuboplasty (Recanalisation),35000
+632,Laparotomy surgery for Ectopic Gestation,30000
+633,Laproscopic Ovarian/Para ovarian cystectomy/Tubo-0varian | mass/Adnexal mass,30000
+634,Laproscopic (Diagnostic),13000
+635,Laproscopic Abdominal Hysterectomy with Bilateral Salphingo | Oopherectomy (BSO),55000
+636,Laproscopic Myomectomy,40000
+637,Laproscopic Sterilisation,15000
+638,Large loop electrosurgical excision of transformation zone (LLETZ) of | cervix under GA,9000
+639,Large loop electrosurgical excision of transformation zone (LLETZ) of | cervix under LA,7000
+640,Local wide excision of Vulva,18000
+641,Manchester / Fothergills Operation,30000
+642,Marsupialisation of Bartholin's cyst,5000
+643,Pap Smear with report,1000
+644,Pelvic Exenteration + Colostomy + Urinary Diversion,90000
+645,Pelvic Floor Repair,35000
+646,Polypectomy Cervix,3000
+647,Radical Oopherectomy,70000
+648,Radical Vulvectomy with Groin Node Dissection,70000
+649,Salpingo-Oophorectomy/Removal of Adnexal mass,25000
+650,Staging Laparotomy + Removal of ovarian tumour + Peritoneal | Washing + Scrapping + Biopsy + RPLND + Omentectomy,75000
+651,Tension Free Vaginal Tape (TVT) (cost of tape at actuals),30000
+652,Total Laparoscopic Hysterectomy + Bilateral Salphingo | Oopherectomy + Omentectomy + RPLND/PLND,80000
+653,Total Vaginectomy + PLND/RPLND,70000
+654,Tubectomy / Sterilisation,8000
+655,Vaginal Radical Hysterectomy + Extra peritoneal/PLND + RPLND,80000
+656,Vulvectomy,20000
+657,Amniocentesis,8000
+658,Breech Delivery,25000
+659,Cervical Encirclage,5000
+660,Caesarean Hysterectomy,45000
+661,Caesarean Section,40000
+662,Chorionic Villous Sampling,9000
+663,Cordocentesis,10000
+664,Delivery after Intra Uterine Fetal death,20000
+665,Evacuation of Vesicular mole,10000
+666,Episiotomy resuturing,1500
+667,Foetal Monitoring - Contraction Stress test (CST)- per day,1000
+668,Foetal Monitoring - Non Stress test (NST) - per day,1000
+669,Forceps/Vaccum assisted Delivery,25000
+670,Laproscopic Salpingectomy for Ectopic Pregnancy,30000
+671,Manual Removal of Placenta,5000
+672,Medical Termination of pregnancy – Mid Trimester,14000
+673,Medical Termination of pregnancy - 1st Trimester (D&E),10000
+674,Normal Delivery with/without episiotomy,22000
+675,Perineal care (per day),50
+676,Perineal tear repair (under GA),8000
+677,Suturing of Cervix under GA,5000
+678,Twin Delivery (vaginal),30000
+679,Anoplasty,20000
+680,Colostomy (Formation),35000
+681,Congenital Diaphragmatic Hernia,50000
+682,Duodenal Atresia,35000
+683,Gastroschisis,40000
+684,Gastrostomy,20000
+685,Neo-natal Intestinal Obstruction,40000
+686,Oesophageal Atresia – Gastrostomy + Oesophageal repair,40000
+687,Oesophageal Atresia with TEF – Primary Repair,50000
+688,Omphalocele – Major,40000
+689,Omphalocele – Minor,24000
+690,Thoracic Tumour & Cysts – Excision,40000
+691,Tracheostomy,15000
+692,Endotracheal intubation in Neonates,1500
+693,Exchange Transfusion (Procedure Charges),3500
+694,Incubator / Open Warmer (per day),1000
+695,Photo therapy (per day),500
+696,Surfactant administration (Cost of surfactant at actuals),1500
+697,Autonomic function tests (including tilt table test),3000
+698,BERA Brain stem evoked response,2000
+699,EEG with Brain Mapping,2500
+700,Electrocochleography/Electroretinography/ Electroocculography(each),2000
+701,ENMG-EMG/NCV/Decremental Response-Each,2000
+702,Evoked potential VEP/BSEP/SSEP - Each,2000
+703,Long term Video assisted EEG above 4 hrs.,6000
+704,Muscle/Nerve Biopsy,4500
+705,Routine E.E.G.,1800
+706,Video assisted EEG for 1-2 hrs.,3000
+707,Video assisted EEG for 2-4 hrs.,4500
+708,Base of skull surgical procedure,75000
+709,Brachial Plexus Exploration and Microsuturing,50000
+710,Burrhole Craniotomy with Evacuation of haematoma,30000
+711,C.S.F. Rhinorrhoea Repair - Endoscopic,40000
+712,C.S.F. Rhinorrhoea Repair - Transcranial,50000
+713,Cisternal Puncture Single,4000
+714,Correction of Depressed Fracture of skull,30000
+715,Cranial Nerve Anastomosis,30000
+716,Cranioplasty,40000
+717,CV Junction surgery,50000
+718,"Deep Brain Stimulation for movement disorders (includes procedure | charges, investigations including MRI and CT, implant charges, | hospitalization and rechargeable battery) | Needs prior approval of the Department",1200000
+719,Endovascular Coil Embolization of Cerebral Aneursym | Cost of consumables at actuals (original invoice is to be submitted),60000
+720,Evacuation of brain Abscess,50000
+721,Excision of Lobe (endoscopic/navigation),70000
+722,Excision of Lobe (Frontal / Temporal / Cerebellum etc.),50000
+723,Extra dural / Subdural,50000
+724,Lumbar Pressure Monitoring,3000
+725,Median Nerve Decompression,20000
+726,Meningo Encephalocele,40000
+727,Meningomyelocele,40000
+728,Microvascular Decompression - Carpal Tunnel Syndrome,25000
+729,Microvascular Decompression - Facial,45000
+730,Microvascular Decompression - Peripheral Nerve Decompression,20000
+731,Microvascular Decompression - Trigeminal,70000
+732,Nerve Biopsy - Major,8000
+733,Nerve Biopsy - Minor,4000
+734,Peripheral Nerve Entrapment Release,15000
+735,Peripheral Nerve Neurolysis - Interior,30000
+736,Peripheral Nerve Neurolysis- Exterior,20000
+737,Peripheral Nerve Surgery,15000
+738,Placement of ICP Monitor,9000
+739,Replacement of Implantable Pulse Generator (IPG) battery of DBS | (On case to case basis with prior approval of the Department),
+740,RF Ablation for Trigeminal Neuralgia,15000
+741,Selective dorsal rhizotomy surgery for Spasticity,40000
+742,Skull Traction Application,3000
+743,Spinal Intramedulary Tumours excision,50000
+744,Spino Bifida Surgery,40000
+745,Stereo tactic procedure (Craniotomy),50000
+746,Subdural Tapping,15000
+747,Sub-tentorial tumor excision,75000
+748,Supra-tentorial tumor excision,70000
+749,Surgery for Arnold chiari malformation,85000
+750,Surgery of cord tumours,65000
+751,Sympathetectomy - cervical,20000
+752,Sympathetectomy – lumbar / Thoracic,25000
+753,Trans Oral Surgery,35000
+754,Trans Sphenoidal Surgery,55000
+755,Trigeminal Balloon Rhizotomy,20000
+756,Twist Drill Craniostomy,20000
+757,Vascular Malformations - clipping,50000
+758,Ventricular / Ventriculoperitonial Shunt,30000
+759,Ventricular Tapping (EVD/IVD),3500
+760,Brachy Therapy- Interstitial,110000
+761,Brachy Therapy- Intracavitory,25000
+762,Brachy Therapy- Intraluminal,15000
+763,"Allogenic – Bone Marrow Transplant –Includes cost of drugs, | investigations, blood products, Transplant Charges, Donor PBSC | Harvest | -with prior approval of the Department",1000000
+764,"Autologous – Bone Marrow Transplant –Includes cost of drugs, | investigations, blood products, Transplant Charges, Stem Cell Pheresis | Charges | -with prior approval of the Department",800000
+765,Blood Irradiation,800
+766,Chemo Port flush,500
+767,Chemo port insertion,8000
+768,Chemo port removal,900
+769,Chemotherapy administration charges,2000
+770,Hyperthermic Intraperitoneal Chemotherapy (HIPEC) machine charges,40000
+771,Microwave Ablation therapy,50000
+772,Cobalt 60 therapy (per fraction),2000
+773,Linear Accelerator- 2D Planning,9000
+774,3D Conformal Radiation Therapy (CRT) (Package),109000
+775,3D Planning,10000
+776,Electron Beam with linear accelerator (Package),100000
+777,IGRT (Image guided radio therapy) (Package),200000
+778,IMAT (Intensity Modulated Arc Therapy) (Package),150000
+779,IMRT (Intensity Modulated radiation therapy) (Package),150000
+780,Palliative Therapy (Package),50000
+781,Peptide Receptor Radionuclide Therapy (PRRT) (Package),250000
+782,Radical Therapy (Package),100000
+783,Stereo Tactic Radio therapy (package),150000
+784,Stereo Tactic Robotic Radio surgery / cyber knife therapy (Package),400000
+785,Volumetric Modulated Arc Therapy (VMAT) (Package),250000
+786,Robotic Surgery (only for cancer treatment),250000
+787,Micro selectron therapy,25000
+788,Tele Therapy (single sitting),1500
+789,Argon Laser Focal (per eye/per session),1200
+790,Argon Laser photo Coagulation PRP | (per eye/per session),1500
+791,Auto Plot Perimetry (Visual field) – Both Eyes,1200
+792,Diplopia charting (each eye),400
+793,Dressing Eye-Pad & bandage,200
+794,Dry Eye Panel (including Schirmers test),300
+795,Fluorescein/Indocyanine green (ICG) Angiography | (including photograph),2000
+796,Gonioscopy,300
+797,Indirect Ophthalmoscopy,300
+798,Intravitreal injections (cost of drugs as per ceiling rates specified by | the Dept. from time to time),2000
+799,OCT (Optical Coherence Tomography) - one eye,1400
+800,OCT (Optical Coherence Tomography) - both eye,2000
+801,OCT Angiogram,4000
+802,Orthoptic Exercises (per session),300
+803,Pachymetry,600
+804,Removal of cysts & tumours,5000
+805,Schirmers test,100
+806,Spectral OCT - both eye,3000
+807,Specular microscopy,1000
+808,Sub Conjunctival Injection,200
+809,Tonometry,350
+810,Ultra Sound A – Scan Biometry,800
+811,Ultra Sound B – Scan,800
+812,Ultra Sound Biomicroscopy UBM,1700
+813,Ultra sound combined A & B Scan,1500
+814,Visual Evoked Response/Visual Evoked Potential (VER/VEP) for | both eyes,1000
+815,Vision Therapy,500
+816,Yag laser for each sitting / Laser Treatment,1500
+817,Amniotic membrane transplantation,5000
+818,Collagen Cross linking for Keratoconus (all inclusive) for each eye,25000
+819,Corneal Suture removal,600
+820,Corneal Suturing (minor),5000
+821,Corneal Topography/PentaCam (both eyes),1000
+822,Corneo scleral Tear Repair- Major,15000
+823,Foreign body removal in OPD (Cornea),300
+824,Foreign body removal in OT (Cornea),2000
+825,Glue application for corneal perforation,600
+826,INTACS implantation for Keratoconus | Ceiling rate for cost of implant - Rs.40000,30000
+827,Keratoplasty/ Corneal graft,25000
+828,Pterygium Excision with Autograft/Glue (All inclusive),10000
+829,Topoguided Photo Refractive Keratectomy (TPRK),35000
+830,Blepharoplasty (each eye),15000
+831,Canthoplasty,6000
+832,Chalazion Removal,900
+833,Ectropion/Entropion correction,12000
+834,Epilation,300
+835,Hordeolum internum & externum,900
+836,Incision for Lacrymal Abscess,1000
+837,Lid tear repair,6000
+838,Ptosis correction,12000
+839,Punctoplasty,2500
+840,Reconstruction of each Eyelid,15000
+841,RFA of eye lashes,750
+842,Tarsorrhaphy (each eye),2000
+843,Tumour Excision of eyelid,15000
+844,Cyclocryopexy,3000
+845,Excision of prolapsed Iris,5000
+846,Glaucoma Valve implant,7000
+847,Goniotomy,10000
+848,Peripheral Iridectomy,4000
+849,Prophylactic Cryopexy,5000
+850,Scleral Buckling + Cryopexy + SRF drainage,28000
+851,Trabeculectomy,14000
+852,"Cataract Surgery (Package includes consultation, A scan, pre-operative | investigation charges and IOL)",25000
+853,IOL explantation,3500
+854,"Phakic IOL implantation for high myopia | (Package includes consultation, A scan, pre-operative investigation | charges and IOL)",25000
+855,Release of synechiae & SSG (Each),7000
+856,"Secondary IOL implant (for a patient who has undergone conventional | cataract surgery earlier) | Package includes consultation, A scan, pre-operative investigation | charges and IOL)",25000
+857,Dacryocystectomy,6000
+858,Dacryocystorhinostomy (DCR),12000
+859,Deepening contracted socket,14000
+860,Enucleation,9000
+861,Evisceration,9000
+862,Excentration of Orbit,25000
+863,Lacrimal intubation (Cost of tube at actual),5000
+864,Lacrimal Syringing & Probing (each eye) under GA,5000
+865,Orbital decompression,25000
+866,Recons. Of Contracted Socket,10000
+867,Removal of Intra Ocular Foreign Body,10000
+868,Squint Assessment,200
+869,Squint Correction,20000
+870,Sub Conjunctival Injection,200
+871,Electroretinogram (ERG),1000
+872,Fundus Examination after Dilatation (including photograph),500
+873,Optic nerve sheath decompression,14000
+874,"Retina Package includes: Vitrectomy, Endolaser, Membrane Peeling, | Fluid gas exchange, Silicon oil injection, C3F8 Gas injection/SF6 Gas | injection, membrane peeling, PVD induction, Relaxing retinotomy, Per | fluoro carbon liquid)",45000
+875,ROP Screening including RetCam,800
+876,Silicon oil - Injection/ removal,5000
+877,Acute Osteomyelitis Drainage,10000
+878,Amputations – Minor,7500
+879,Application for Special Plasters/MJHSBS/Spica/ FCB,3000
+880,Aspiration of Joint (in minor O.T.),3000
+881,Bone Block Surgery,13000
+882,Bone Graft – Major,20000
+883,C-Arm (one complete surgery/ procedure),4000
+884,Carpal Tunnel Injection Charges,1000
+885,Chronic Osteomyelitis Curettage & Saucerisation,20000
+886,Closed Reduction of Fracture/Dislocations - Major,10000
+887,Closed Reduction of Fracture/Dislocations - Minor,7000
+888,Cold abcess Drainage,7000
+889,Curettage of Bone Tumour- intermediate,10000
+890,Curettage of Bone Tumour- major,18000
+891,Curettage of Bone Tumour- Minor,5000
+892,Debridement – Major,10000
+893,Debridement – Minor,5000
+894,Illizarov External Fixation (procedure),20000
+895,Intra Articular/Intra lesional Injection (Procedure alone),1500
+896,K wire removal - big,8000
+897,K wire removal - intermediate,5000
+898,K wire removal - Small,1000
+899,K'wiring of Fractures / Dislocation - major joints,15000
+900,K'wiring of Fractures / Dislocation - minor joints,10000
+901,Large Tumour Excision,20000
+902,Nerve Repair - major,25000
+903,Nerve Repair - intermediate,10000
+904,Nerve Repair - minor,5000
+905,Osteotomy - major,15000
+906,Osteotomy - minor,7000
+907,PTB Plaster Application,4000
+908,Removal Implants – Major,15000
+909,Removal Implants – Minor,8000
+910,Rib resection,12000
+911,Skeletal Traction,4000
+912,Skin Traction,1500
+913,Strapping,500
+914,Tendon Repair-Major,18000
+915,Tendon Repair-Minor,7500
+916,Tendon transfer - Major,20000
+917,Tenotomies - major,17000
+918,Tenotomies - minor,9000
+919,Trigger Finger release,8000
+920,Trigger Point Injection in OT,3000
+921,Arthoscopic Joint lavage,20000
+922,Arthoscopic Meniscectomy / loose body removal / | Chondroplasty/Synovectomy,30000
+923,Arthoscopic reconstruction of Anterior cruciate ligament / Meniscal | Repair/repair of collateral ligament,40000
+924,Arthoscopic reconstruction of Posterior cruciate ligament,47000
+925,Arthroscopic repair of multiple ligaments in knee,60000
+926,Arthroscopic Rotator Cuff repair / SLAP repair consumables/implants | if used allowed at actuals,60000
+927,Arthroscopic Subacromial Decompression /repair of supraspinatus tear,30000
+928,Arthroscopy diagnostic,17000
+929,Acromioclavicular Fixation,25000
+930,Acromion Excision,10000
+931,Arthrodesis,17000
+932,Arthrotomy/Exploration,15000
+933,Clavicle fracture fixation/excision of lateral end,20000
+934,Close Reduction of Humerus Fractures & Cast Application,11000
+935,Compression Plating of Humerus,18000
+936,External Fixation for Open Fractures of Humerus,20000
+937,Forequarter Amputation,30000
+938,Hemi replacement of shoulder,45000
+939,Humerus plate osteo synthesis,40000
+940,Ilizarov Fix. For Humerus Fracture,30000
+941,Intramedullary Nailing Humerus,20000
+942,Open reduction of dislocation of shoulder,25000
+943,Pinning and cast application of distal humerus fractre,20000
+944,Plating of intercondylar fracture of distal Humerus,30000
+945,Proximal Humerus Fracture ORIF,20000
+946,Recurrent Dislocation of shoulder,28000
+947,Rotator cuff injury repair (Bankart repair),20000
+948,Arthrodesis,17000
+949,Excision Arthroplasty,18000
+950,Excision head of Radius,15000
+951,Exploration / Arthrotomy,12000
+952,External Fixation for Open Fractures,14000
+953,Fracture – Both Bones ORIF with Bone Grafting,25000
+954,Fracture - Single Bone ORIF with bone Grafting,15000
+955,French Osteotomy,15000
+956,Intramedullary Nailing (Both Bone),17000
+957,Intramedullary Nailing (single Bone),15000
+958,Lateral Condyle-Fixation,15000
+959,Monteggia Fracture ORIF,21000
+960,Reduction of elbow under G.A.,15000
+961,Synovectomy,12000
+962,Tennis elbow operation,12000
+963,Tension band wiring,16000
+964,Ulnar Nerve Transposition,12000
+965,Both Bones Fracture-ORIF,25000
+966,Fasciotomy,17000
+967,Single Bone Fracture-ORIF,15000
+968,Arthrodesis Finger (single),8000
+969,Arthrodesis Wrist,15000
+970,Arthrotomy / Exploration (Hand),8000
+971,Arthrotomy / Exploration Wrist,10000
+972,Barton's Fracture ORIF,13000
+973,Bennet's Fracture Fixation,13000
+974,Carpal Tunnel Decompression,11000
+975,"De Quervains, Disease Decompression",10000
+976,Excision of Lower End of Ulna,10000
+977,Galeazzi with ORIF,21000
+978,Ganglion/Popliteal cyst/Large Bursa excision,5000
+979,ORIF Scaphoid Fracture,15000
+980,Proximal Row Carpectomy,13000
+981,Synovectomy/Arthrotomy/Exploration,12000
+982,Arthrotomy Hip,20000
+983,Austine Moore Pinning,25000
+984,Closed Reduction of Fractures/dislocations (major),10000
+985,Congenital Dislocation Hip / Stabilization,30000
+986,Core decompression – hip bilateral,50000
+987,Core decompression – hip unilateral,25000
+988,Dynamic Hip Fixation,30000
+989,Excision Arthroplasty,30000
+990,Greater Trochanter reconstruction,30000
+991,Hemi Arthroplasty (unipolar),25000
+992,Hemi Arthroplasty (Bipolar),30000
+993,Hind Quarter Amputation,40000
+994,Internal Hemipelvectomy with reconstructive surgery (cost of implants | at actuals),100000
+995,Open Reduction and Int Fixation of Acetabulum,30000
+996,Open Reduction for Dislocation of Hip,22000
+997,Perthes Disease Hip fixation,30000
+998,Slipped Femoral Epiphysis Operation,30000
+999,Sout. & Youxt Opr. For polio,15000
+1000,SP Nailing & Plating intertrochanteric fracture of Femur | (consumables at actuals),20000
+1001,Above Knee Amputation,25000
+1002,Compression Plating of Femur (DCP/Muller),35000
+1003,Exostosis Excision,15000
+1004,Femur Limb lengthening surgery (cost of Illizarov external fixator at | actuals),60000
+1005,Intra Medullary/Inter Locking nailing Femur,35000
+1006,Osteotomy,25000
+1007,Arthrodesis Knee,20000
+1008,Arthrotomy Knee,20000
+1009,Below Knee Amputation,20000
+1010,Closed nailing for Tibia,20000
+1011,Compression Plating of Tibia (DCP/Muller),23000
+1012,Congenital Pseudarthrosis Tibia,20000
+1013,External Fixation for Tibial Fracture,20000
+1014,Femoral Condylar Fracture ORIF,30000
+1015,Fibular Grafting,11000
+1016,Fibulectomy,10000
+1017,High Tibial Osteotomy with Fixation,20000
+1018,Inter locking/Intra Medullary nailing,30000
+1019,ORIF Fibula fracture,15000
+1020,ORIF for Tibial Condylar Fracture,25000
+1021,Tension band wiring/retinacular repair of Patella/reattachment of | patellar tendon,22000
+1022,Arthrodesis Ankle,20000
+1023,Arthrodesis Toe Joint Single,10000
+1024,Arthrotomy / Exploration (Ankle),15000
+1025,Arthrotomy / Exploration (Foot Joints),15000
+1026,Bimalleolar Fracture ORIF,20000
+1027,Blair's Fusion,20000
+1028,Calcaneal Fracture ORIF,20000
+1029,Calcaneal Spur Excision,10000
+1030,Club foot manipulation,5000
+1031,Correction of Hammer Toes,12000
+1032,CTEV correction using JESS ext,30000
+1033,Hallux Valgus- Correction,12500
+1034,Ingrowing Toe Nail,3000
+1035,Lisfranks Amputation,15000
+1036,Non-Union Medial Malleolus Fracture,12500
+1037,ORIF Jones fracture,12000
+1038,ORIF Talus Fractures,15000
+1039,Posteromedial soft tissue release for CTEV,18000
+1040,Repair of Tendo Acheles Rupture,12000
+1041,Screw Fixation (single bone),11500
+1042,Stendler's release,6000
+1043,Subtalar Fusion,13000
+1044,Symes amputation,18000
+1045,Synovectomy,12000
+1046,Talectomy,14000
+1047,Tendo Achilles Lengthening/Tension Band Wiring,15000
+1048,Tendon transplant for foot drop,24000
+1049,Trimalleolar Fracture ORIF,20000
+1050,Triple Fusion,20000
+1051,Unimalleolar Fracture-Ankle,11500
+1052,Above Elbow,2000
+1053,Below Elbow,1500
+1054,Above Knee,3000
+1055,Below Knee,2500
+1056,Removal of Plaster (POP),350
+1057,Splint application (consumables at actuals),300
+1058,Anterior and posterior spinal surgery,50000
+1059,Anterior lumbar interbody fusion (ALIF),45000
+1060,Anterior Spinal Fusion with Decompression (implant Charges extra),50000
+1061,Anterolateral Decompression instrumentation and fusion,50000
+1062,Cervical Rib Excision,20000
+1063,Correction Spinal Osteotomy & Fusion,50000
+1064,Costo Transversectomy,35000
+1065,Instrumentation and Spinal fusion for scoliosis,70000
+1066,Laminectomy,32000
+1067,Laminectomy - mutliple,45000
+1068,Laminoplasty,25000
+1069,Listhesis surgery (Grade -III/IV),50000
+1070,Micro Discectomy/Fenestration,45000
+1071,Multi level decompression and instrumental fixation,44000
+1072,Pedicular fixation - simple,45000
+1073,Pedicular fixation with fusion,40000
+1074,Percutaneous Balloon Kyphoplasty (cost of implants at actuals),72000
+1075,Posterior lumbar interbody fusion (PLIF),40000
+1076,Posterior Spinal Fusion,40000
+1077,Posterolateral decompression instrumentation and fusion,60000
+1078,Spinal Fracture Reduction with Fixation,45000
+1079,Surgical correction of Kyphosis,40000
+1080,TLIF (Transforaminal Lumbar Interbody Fusion) Surgery (cost of | implants at actuals),47000
+1081,Vertebroplasty (cost of implants at actuals),40000
+1082,Total shoulder joint replacement,50000
+1083,Total elbow joint replacement,50000
+1084,Total Hip Joint Replacement,70000
+1085,Total Hip Joint Replacement - revision,90000
+1086,Total Knee replacement,80000
+1087,Revision TKR,100000
+1088,Total ankle joint replacement,50000
+1089,Orthotic/Prosthetic appliances - as per CGHS guidelines and ceiling | rates,
+1090,Fibre Optic Bronchoscopy (Diagnostic),9000
+1091,Fibre Optic Bronchoscopy (Therapeutic),11000
+1092,Intraosseous line,250
+1093,Nebulisation (per Sitting),50
+1094,Tracheostomy,15000
+1095,Umbilical Cannulation,600
+1096,Venesection/cut down,500
+1097,Encephalocele – Excision and Repair,30000
+1098,Inter Costal Drainage,2000
+1099,Laminectomy,45000
+1100,Meningomyelocoele and Meningocoele repair,40000
+1101,Sacrococcygeal Teratoma,40000
+1102,Subdural/Ventricular tap,1000
+1103,V.P.Shunt,30000
+1104,V.P.Shunt Revision,25000
+1105,Branchial Apparatus Excision (Cyst./Sinus),25000
+1106,Excision of Cystic Hygroma & Teratomas in the Neck,25000
+1107,Excision of Salivary Glands,25000
+1108,Excision of Superficial Lesions/Lymph Node Biopsy,8000
+1109,Sternomastoid Release,13000
+1110,Thyroidectomy,45000
+1111,Thyroidectomy,25000
+1112,Tongue tie release,5500
+1113,Tracheostomy tube change,1000
+1114,Bronchoscopic removal of foreign body,16000
+1115,Decortication- Thorax,35000
+1116,Endoscopic Removal of F.B. under GA,10000
+1117,Esophageal Substitution/Resection,40000
+1118,Esophagoscopy and Dilatation,10000
+1119,Eventration of Diaphragm Repair,30000
+1120,Hepatic/Hydatid Cyst Excision,35000
+1121,Lobectomy/Pneumonectomy,50000
+1122,Thoracotomy (Biopsy/Drainage),30000
+1123,VATS (Video Assisted Thoracoscopic Surgery),30000
+1124,Anorectal Malformation (P S A R P),45000
+1125,Appendicectomy,25000
+1126,Colostomy/Ileostomy Closure,20000
+1127,EUA (Examination under GA),5000
+1128,Heller's Cardiomyotomy/Fundoplication,25000
+1129,Hemicolectomy,28000
+1130,Intussusception Reduction (Pneumatic),9000
+1131,Ladd's Operation,30000
+1132,Laparoscopic Appendectomy,35000
+1133,Laparoscopic Cholecystectomy,38000
+1134,Laparoscopic Splenectomy,40000
+1135,Laparoscopy (Diagnostic),15000
+1136,Laparotomy (Cyst Excision/Biopsy),30000
+1137,Meckel's Diverticulectomy,25000
+1138,Operations for Hirschsprung's Disease,40000
+1139,Operations for Intestinal Obstructions | (Resection and Anastomosis),35000
+1140,Rectal Biopsy,8000
+1141,Rectal Prolapse (Sclerotherapy/Thiersch Wire),10000
+1142,Rectopexy,35000
+1143,Secondary suturing under GA,6000
+1144,Surgery for Congenital Hypertrophic Pyloric Stenosis/ Pyloromyotomy,25000
+1145,Transanal Endorectal pull through,35000
+1146,Distal Pancreatectomy,35000
+1147,Drainage of Pseudo Pancreatic Cyst,28000
+1148,Excision of Choledochal Cyst & Billiary - Enteric Anastamosis,45000
+1149,Hepatic Resections,40000
+1150,Kasai's Portoenterostomy,45000
+1151,Operations for Portal hypertension,40000
+1152,Pancreatico – Enteric Anastamosis,45000
+1153,Splenectomy,28000
+1154,Sub-Total Pancreatectomy,35000
+1155,Inguinal Herniotomies / Congenital Hydrocoele,22000
+1156,Umbilical/Paraumbilical Hernia repair,22000
+1157,Bilateral reimplant of Ureter,45000
+1158,Bladder Augmentation,50000
+1159,Bladder Exstrophy Closure,30000
+1160,Bladder Neck Repair,25000
+1161,CAPD Catheter insertion,25000
+1162,CAPD Catheter removal,6000
+1163,Central Venous Access Device (CVAD) insertion,9000
+1164,Central Venous Access Device (CVAD) insertion - tunneled,11000
+1165,Circumcision,10000
+1166,Cystolithotomy,15000
+1167,Cystoscopy including Urethral Calibration (under GA),10000
+1168,Epispadias Repair,30000
+1169,Feminizing Genitoplasty,35000
+1170,Hypospadias Stage I | (Chordee correction and skin grafting),20000
+1171,Hypospadias Stage II (Urethroplasty),22000
+1172,Laproscopic Orchidopexy,30000
+1173,MAGPI,30000
+1174,Nephrectomy,25000
+1175,Nephrolithotomy / Pyelolithotomy,23000
+1176,Nephroureterectomy,28000
+1177,Orchidectomy,10000
+1178,Orchidopexy – Bilateral,28000
+1179,Orchidopexy – Unilateral,22000
+1180,Posterior Urethral Stricture repair,25000
+1181,Pyeloplasty,35000
+1182,Radical Nephroureterctomy,40000
+1183,Transurethral Fulgration,15000
+1184,Ureterolithotomy,20000
+1185,Urethral Dilatation and Closure of Fistula,18000
+1186,Urinary Diversion Permanent,35000
+1187,Urinary Diversion Temporary,15000
+1188,Urinary Undiversion,30000
+1189,Caudal Block/Caudal Epidural Steroid injection,3000
+1190,Cervical Medial Branch Block,4000
+1191,Ganglion Impar Block,3500
+1192,Intercostal Nerve Block,1000
+1193,Intrathecal Drug Delivery Pump Implantation,18000
+1194,Intrathecal injection,1500
+1195,Lumbar medial branch/facet joint injection,4000
+1196,Peripheral Joint Injection,1000
+1197,Peripheral Nerve Injection,1000
+1198,Plantar fasciitis injection,1000
+1199,Regional Nerve Block/Plexus Block,7000
+1200,Sympathetic Ganglion Block,4000
+1201,Tendinitis injection,1000
+1202,Thermal Radiofrequency,8000
+1203,Transforaminal Epidural,4000
+1204,Trigger Point injection,1000
+1205,Assessment (limited to one per month),300
+1206,Home Physiotherapy (per day),400
+1207,Physiotherapy (per day),300
+1208,Abdominoplasty - Major,38000
+1209,Abdominoplasty - Minor,25000
+1210,Dressing - Service Charges (Large) in OT,2500
+1211,Dressing - Service Charges (Medium) in OT,2000
+1212,Dressing - Service Charges (Small) in OT,1200
+1213,Escharectomy - Complex,22000
+1214,Escharectomy - Major,18000
+1215,Escharectomy - Minor,8000
+1216,Escharectomy - Moderate,12000
+1217,Excision Scar/Naevus/Debulking of Keloid - Major,35000
+1218,Excision Scar/Naevus/Debulking of Keloid - Minor,15000
+1219,Extensive Suturing,22000
+1220,Fasciotomy,17000
+1221,Resurfacing/Collagen application - Major,25000
+1222,Resurfacing/Collagen application - Minor,15000
+1223,SSG - Extensive,35000
+1224,SSG - Major,25000
+1225,SSG - Minor,15000
+1226,Suture removal in OT under anaesthesia,4000
+1227,Suturing - Major,12000
+1228,Suturing - Minor,6000
+1229,Microlymphatic Surgery,60000
+1230,Microvascular Flap transfer - Complex,60000
+1231,Microvascular Flap transfer - Major,48000
+1232,Microvascular Flap transfer - Minor,25000
+1233,Nerve reconstruction - Complex,52000
+1234,Nerve reconstruction - Major,25000
+1235,Nerve reconstruction - Minor,15000
+1236,Reimplant - Complex,80000
+1237,Reimplant - Major,50000
+1238,Reimplant - Minor,30000
+1239,Revascularisation - Complex,80000
+1240,Revascularisation - Major,45000
+1241,Revascularisation - Minor,10000
+1242,Breast implant removal (only in cases of post carcinoma breast | surgery),25000
+1243,Breast reconstruction (only in carcinoma breast patients),55000
+1244,Breast reconstruction with implant (only in carcinoma breast patients) - | Cost of implant at actuals,30000
+1245,Reconstruction of Nipple (bilateral),45000
+1246,Reconstruction of Nipple (unilateral),25000
+1247,Alveolar Bone graft - Major,35000
+1248,Alveolar Bone graft - Minor,18000
+1249,Alveolar Bone graft - Moderate,25000
+1250,Bilateral Cleft lip - Complex,45000
+1251,Bilateral Cleft lip - Minor,17000
+1252,Bilateral Cleft lip - Moderate,28000
+1253,Cleft Lip and palate repair in one stage,45000
+1254,Cleft palate and flap repair - Major,55000
+1255,Cleft palate and flap repair - Minor,35000
+1256,Cleft palate repair - Complex,45000
+1257,Cleft palate repair - Major,25000
+1258,Cleft palate repair - Minor,15000
+1259,Closure of Palatal Fistula with Tongue/Cheek Flap,25000
+1260,Facial cleft repair - Complex,55000
+1261,Facial cleft repair - Major,35000
+1262,Facial cleft repair - Minor,20000
+1263,Secondary lip correction - Complex,45000
+1264,Secondary lip correction - Major,35000
+1265,Secondary lip correction - Minor,16000
+1266,Sphincter Pharyngoplasty,20000
+1267,Unilateral Cleft Lip - Complex,45000
+1268,Unilateral Cleft Lip - Minor,15000
+1269,Unilateral Cleft Lip - Moderate,25000
+1270,Unilateral Cleft Lip and Nose,55000
+1271,Arch Bar removal,3000
+1272,Bilateral Jaw surgery (total),70000
+1273,Blepharoplasty - bilateral,38000
+1274,Blepharoplasty - Unilateral,25000
+1275,Blow Out Fracture Orbit,25000
+1276,Bone graft - major,40000
+1277,Bone graft - minor,15000
+1278,Cranioplasty - Major,40000
+1279,Cranioplasty - Minor,15000
+1280,Facial Assymetry Correction - Major,85000
+1281,Facial Assymetry Correction - Minor,50000
+1282,Fracture Mandible Multiple Plate,20000
+1283,Fracture Mandible Single Plate,14000
+1284,Frontal Advancement,40000
+1285,Interosseous Wiring/Arch Bar Fixation complete,8000
+1286,Interosseous Wiring/Arch Bar Fixation segmental,5000
+1287,Le Fort fracture - I advancement/Maxillary fracture,20000
+1288,"Le Fort fracture - II, III advancement/Facio maxillary fracture",45000
+1289,Miniplate removal - major,15000
+1290,Miniplate removal - minor,7000
+1291,Open Reduction of Fracture Zygoma,10000
+1292,Orbital reconstruction - Major,40000
+1293,Orbital reconstruction - Minor,15000
+1294,Pan facial Fracture Fixation - Major,70000
+1295,Pan facial Fracture Fixation - Minor,30000
+1296,Reduction of Fracture of Nasal Bones,15000
+1297,Reduction of Fracture of Zygoma (Gillies),8000
+1298,Strip Craniectomy,20000
+1299,Ear lobe repair (bilateral),4000
+1300,Ear lobe repair (unilateral),2000
+1301,Ear reconstruction - Complex,55000
+1302,Ear reconstruction - Major,30000
+1303,Ear reconstruction - Minor,10000
+1304,Ear reconstruction - Moderate,20000
+1305,Ear reconstruction Single stage - Major,75000
+1306,Ear reconstruction Single stage - Minor,40000
+1307,Micro vascular Reconstruction of Penis,60000
+1308,Minor Reconstruction Genitalia,20000
+1309,Reconstruction of Penis (Each Stage),30000
+1310,Vaginoplasty,35000
+1311,Campodactyly Correction,20000
+1312,Carpal Bone Stabilisation,22000
+1313,Correction Mallet Finger – Surgical,13000
+1314,Dupuytren's Contracture – Major,20000
+1315,Dupuytren's Contracture – Minor,10000
+1316,Extensive Contracture Release & Skin Grafting,38000
+1317,Extensive Contracture release + Flap cover,40000
+1318,Major Contracture Release & Skin Grafting,20000
+1319,Major Contracture release + Flap cover,30000
+1320,Minor Contracture Release & Skin Grafting,10000
+1321,Minor Contracture release + Flap cover,16000
+1322,Revision Amputation - Each Finger with VY flap,10000
+1323,Tendon Grafting (Each),13000
+1324,Segmental Excision of Mandible,25000
+1325,TM Joint Reconstruction – Bilateral,42000
+1326,TM Joint Reconstruction – Unilateral,22000
+1327,Alar correction major,40000
+1328,Alar correction minor,25000
+1329,Augmentation Rhinoplasty with Bone/Cartilage Graft – Complex,65000
+1330,Augmentation Rhinoplasty with Bone/Cartilage Graft – Major,50000
+1331,Augmentation Rhinoplasty with Bone/Cartilage Graft – Minor,35000
+1332,Partial Nasal Reconstruction– Major,50000
+1333,Partial Nasal Reconstruction– Minor,20000
+1334,Partial Nasal Reconstruction– Moderate,30000
+1335,Reduction Rhinoplasty- Major,50000
+1336,Reduction Rhinoplasty- Minor,25000
+1337,Reduction Rhinoplasty- Moderate,35000
+1338,Secondary Correction of Nose - Major,35000
+1339,Secondary Correction of Nose - Minor,15000
+1340,Secondary Correction of Nose - Moderate,25000
+1341,Septo Rhinoplasty - Major,35000
+1342,Septo Rhinoplasty - Minor,12000
+1343,Septo Rhinoplasty - Moderate,22000
+1344,Single Stage Total Nasal Reconstruction,75000
+1345,Autism Evaluation (not more than one per month),1500
+1346,Behaviour Therapy (per sitting),500
+1347,Cognitive Behavioural Counselling (per session),3500
+1348,Dyslexia Screening Test | (allowed only once in a month),500
+1349,E.C.T. including anaesthesia,500
+1350,Family Counselling (per session),600
+1351,Group Therapy (per session),1000
+1352,IQ Assessment (allowed only once in a month),500
+1353,Narcotherapy (per session),500
+1354,Psychological Assessment (not more than one per month),500
+1355,Psychotherapy (per session),1000
+1356,Rehabilitation Counselling (one session),1000
+1357,Acute Bicarbonate Haemodialysis,2000
+1358,"CAPD - Catheter insertion | Note: | a) CAPD solution, bag and accessories are admissible at actual rate. | b) The beneficiary has to purchase the CAPD Fluids and related | items like Y-set, transfer set, Mini cap etc., for one month at a time and | claim reimbursement. | c) A utilization certificate that CAPD fluids etc., have been fully | utilized, duly certified by the attending specialist has to be verified by | Centre/Unit. | d) Reimbursement may be allowed, if the utilization certificate given | by the Hospital is fulfilling all the requirements. | e) Periodical review of the case by the Specialist and his assessment | certificate has to be sent to the Centre/Unit.",10000
+1359,CAPD Training,1500
+1360,Catheter Removal (CAPD),400
+1361,Continuous Renal Replacement Therapy (CRRT) (per day) | -consumables at actuals,8000
+1362,Emergency Haemodialysis,2200
+1363,Femoral Access,1500
+1364,Haemodialysis,1800
+1365,Renal Biopsy (all inclusive),3500
+1366,Sustained Low-Efficiency Dialysis (SLED) (per day) | -consumables at actuals,5000
+1367,A V Graft Surgery (Vascular Access for Haemodialysis) | -Cost of conduit at actuals,20000
+1368,Adrenalectomy,45000
+1369,Augmentation Cystoplasty,45000
+1370,Auto Transplantation of Kidney,70000
+1371,AV fistula Redo,15000
+1372,Bladder Diverticulectomy,35000
+1373,Bladder Neck Plasty,35000
+1374,Boari Ureteric Implantation,40000
+1375,Cavernosometry /Cavernosography,1500
+1376,"CMG, UPP, EMG & P.F. Study (Package)",1500
+1377,Creation of A V fistula,12000
+1378,Cross matching of tissue,6000
+1379,Cysto Lithotomy - Open/Percutaneous,20000
+1380,Cystometrography with PF study,2500
+1381,Cystoscopic DJ Stent Removal,6000
+1382,Cystoscopy,6000
+1383,Cystoscopy + Biopsy,10000
+1384,Cystoscopy + Clot evacuation,10000
+1385,Cystoscopy + Fulgration,10000
+1386,Cystoscopy + RGP,10000
+1387,Cystoscopy + Stenting (bilateral),15000
+1388,Cystoscopy + Stenting (unilateral),10000
+1389,Diagnostic Uretero Reno Scopy (including Cystoscopy charges),15000
+1390,Dorsal Slit,5000
+1391,Epispadias Repair,30000
+1392,Excision of Epididymal Cyst,15000
+1393,Fract. Of Penis Repair,25000
+1394,Inguinal Block Dissection,45000
+1395,Internal Jugular Access,1500
+1396,Laparoscopic- Adrenalectomy,60000
+1397,Laparoscopic- Nephrectomy,43000
+1398,Laparoscopic- Partial Nephrectomy,47000
+1399,Laparoscopic Pyeloplasty,35000
+1400,Laparoscopic Radical Cystectomy with ileal conduit,70000
+1401,Laparoscopic- Radical Nephroureterectomy,65000
+1402,Laparoscopic- Radical Prostatectomy,60000
+1403,Laparoscopic- Renal Biopsy (all inclusive),10000
+1404,Laparoscopic- Ureteric Reimplantation,45000
+1405,Laparoscopic- Uretero Lithotomy,35000
+1406,Laparoscopic- Uretero Ureterostomy,45000
+1407,Laparoscopic Varicocele ligation,35000
+1408,"Laser Vaporisation of Prostate / Green Light Laser (Laser prostate | surgery package includes (a) cost of laser fiber (b) procedure charges, | theatre charges, surgeon’s fee, assistant’s fee, Anesthesia charges & | Anesthetist’s fee)",70000
+1409,Lithotripsy additional sitting,6000
+1410,Lithotripsy- Stone size 1-2 cms – Scan report to be attached (Cost of | Stent at actuals),25000
+1411,Lithotripsy- Stone size upto 1 cm – Scan report to be attached (Cost of | Stent at actuals),20000
+1412,Lithotripsy-Stone size 2 cms to 4 cms -Scan report to be attached | (Cost of Stent at actuals),28000
+1413,Meatoplasty,12000
+1414,Meatotomy,8000
+1415,Nephrectomy (Open),33000
+1416,Nephrostomy,17000
+1417,Nephroureterectomy,35000
+1418,Orchidectomy - Bilateral,15000
+1419,Orchidectomy - Unilateral,10000
+1420,Partial Nephrectomy - Open,45000
+1421,Percutaneous Nephrolithotomy (PCNL),40000
+1422,Perinephric Abscess Drainage,25000
+1423,Prostatectomy (Open),40000
+1424,Pyelolithotomy,25000
+1425,Pyeloplasty,30000
+1426,Radical Cystectomy + Ileal Conduit,65000
+1427,Radical Cystectomy + Neo bladder,65000
+1428,Radical Nephrectomy and IVC Thrombectomy (including of Vascular | Surgeon charges),75000
+1429,Radical Nephroureterectomy,55000
+1430,Radical Prostatectomy (Open),47000
+1431,Renal Transplant- Tissue typing and cross matching,25000
+1432,"Renal Transplantation Donor Nephrectomy (Package) | Package includes: | (a) 07 days of hospitalisation from day ’0’of transplant | (b) Surgery, anaesthesia, OT charges. | (c) Nephrologist, Anaesthesist & Surgeons’s fee. | (d) Consumables and materials used during surgery. | (e) Routine investigations in the post operative period. | (f) Perfusion charges. | Does not include donor work up, diet, renal angiography, tissue typing | and cross matching drugs.",150000
+1433,"Renal Transplantation Recipient (Package) | Package includes: | (a) 10 days hospitalisation from the day of transplant as ‘0’ day. | (b) Surgery, anaesthesia, OT charges | (c) Nephrologist, Anaesthesist & Surgeons’s fee. | (d) Consumables and materials used during surgery | (e) Routine investigations during post operative period | (f) Surgery of primary complications- if any- during the first 15 days | (g) Perfusion fluids and drugs used during surgery. | Does not include special investigations done outside, diet, drugs & IV | fluids, tissue and cross matching",300000
+1434,Renal Transplantation Cadaveric Donor,50000
+1435,Repair of Bladder Tear,15000
+1436,Repair of Bladder Tear (LAP),25000
+1437,"Retrograde Intra Renal Surgery (RIRS) with laser (Unilateral) | Package includes Surgeon’s fee, Assistant’s fee, Anesthetist’s fee, | Anesthesia charges, Theatre charges, disposables and medicines.",60000
+1438,Retrograde Intra Renal Surgery (RIRS) without laser (Unilateral),40000
+1439,Rovsing's Operation (Deroofing of polycystic kidney),15000
+1440,Rovsing's Operation LAP,18000
+1441,Shunt for Priapism,18000
+1442,Staghorn Pyelonephrolithotomy,45000
+1443,Stress Continence Surgery,45000
+1444,Subclavian Access,1500
+1445,Substitution Buccal Mucosal Urethroplasty,55000
+1446,Suprapubic Cystostomy,8000
+1447,Testicular Biopsy,8000
+1448,Trans rectal ultrasound guided prostate biopsy,3000
+1449,TURBT – (Trans urethral Resection of Bladder Tumour),35000
+1450,TURP (Trans urethral Resection of Prostate) / Bipolar TURP,35000
+1451,Ureteric Reimplantation,40000
+1452,Ureteric Replacement,40000
+1453,Uretero Reno Scopy with biopsy (including Cystoscopy charges),20000
+1454,Uretero Sigmoidostomy - 1st Stage,18000
+1455,Uretero Ureterostomy,35000
+1456,Urethral Dilatation,1500
+1457,Urethral Dilatation,5000
+1458,Urethral Dilatation,1000
+1459,Urethro Caruncle Excision,5000
+1460,Urethroplasty (Single Stage),40000
+1461,Urethroplasty (Two Stage- First Stage),25000
+1462,Urethroplasty (Two Stage- Second Stage),18000
+1463,Urethrotomy Optical,20000
+1464,Uro Dynamic Evaluation,5000
+1465,Uroflowmetry,500
+1466,URS Laser lithotripsy (including laser charges and Cystoscopy | charges) (Cost of Stent at actuals),60000
+1467,URS Removal of F.B./Stone Bilateral with D J stenting (Cost of Stent | at actuals) (including Cystoscopy charges),45000
+1468,URS Removal of F.B./Stone Unilateral with D J stenting (Cost of | Stent at actuals) (including Cystoscopy charges),25000
+1469,URS with Dormia Basketing (including Cystoscopy charges),20000
+1470,Varicocele ligation Bilateral,32000
+1471,Varicocele ligation Unilateral,22000
+1472,VVF Repair,45000
+1473,VVF Repair - LAP,55000
+1474,Cryofreezing,8000
+1475,Microepididymal Sperm Aspiration (MESA) and processing,10000
+1476,Vasoepididymal Anastomosis [microscopic] (VEA),35000
+1477,Vasography,2000
+1478,BCG,At actuals
+1479,OPV / IPV,At actuals
+1480,DPT,At actuals
+1481,Measles,At actuals
+1482,MMR,At actuals
+1483,Typhoid Conjugate Vaccine,At actuals
+1484,Chicken-Pox (Varicella),At actuals
+1485,Hepatitis-A Vaccine,At actuals
+1486,Hepatitis-B for all age groups,At actuals
+1487,HiB (Haem. Infl. B),At actuals
+1488,Combined (Conjugate) Vaccines for primary immunization as a single | shot,At actuals
+1489,Anti rabies vaccine,At actuals
+1490,Anti Tetanus vaccine,At actuals
+1491,Influenza vaccine,At actuals
+1492,Pneumococcal Conjugate Vaccine,At actuals
+1493,Rota Virus Vaccine,At actuals
+1494,Human Papilloma virus vaccine,
+1495,Meningococcal Vaccine,
+1496,17 OH Progesterone,900
+1497,25 - OH-Vitamin-D3 level,800
+1498,ABG Blood Gas Analysis,500
+1499,Acetone,200
+1500,Acetyl Choline Antibody test,2000
+1501,Acid Phosphatase,300
+1502,Activated Partial Thromboplastin (APTT),300
+1503,Alcohol Serum (Ethanol),500
+1504,Aldosterone,1000
+1505,Alfa Feto Protein (AFP),500
+1506,Alkaline Denaturation – Quantitative,150
+1507,Alkaline Phosphatase,300
+1508,Alkaline Phosphatase Isoenzyme,2500
+1509,ALT (SGPT),200
+1510,Ammonia,200
+1511,Amylase -Serum / urine / Body Fluids,300
+1512,Analysis of Renal Calculus,500
+1513,Androsteindione,900
+1514,Anti musk antibody,3500
+1515,Anti thyroglobulin antibody (TGAB),800
+1516,Thyro Peroxidase Antibodies (TPO),800
+1517,TSH receptor antibody,900
+1518,Arsenic,800
+1519,AST (SGOT),200
+1520,B 12,600
+1521,Bicarbonate,200
+1522,Bilirubin Total & Direct,150
+1523,C - Reactive Protein (HS-CRP),1000
+1524,C – Reactive Protein (Qualitative),200
+1525,C - Reactive Protein (Quantitative),800
+1526,Calcitonin,3000
+1527,Calcium – Blood (Total),200
+1528,Calcium - Blood (Ionised),300
+1529,Calcium (ca) – Urine,100
+1530,"Calcium, Phosphorus / Alkaline Phosphatase",400
+1531,Carbamezepine,600
+1532,Ceruloplasmin,600
+1533,CGMS (Continuous Glucose Monitoring System) - Only for Type I diabetic | In-Patients,3000 per | 24 hrs.
+1534,Cholesterol,100
+1535,Amino acids - serum,650
+1536,Amino acids - Urine,650
+1537,Copper,400
+1538,Cortisol,500
+1539,CPK M.B.,500
+1540,CPK Total,400
+1541,Creatinine,100
+1542,Creatinine clearance,200
+1543,Cyclosporin level,1200
+1544,Digoxin,500
+1545,Dihydro testosterone,1000
+1546,Electrolytes Total Serum,300
+1547,Electrophoresis/Protein Electrophoresis,800
+1548,Erythropoietin,1000
+1549,FBS/PPBS/RBS/Glucometer blood sugar (each),60
+1550,FERRITIN,700
+1551,Fibrinogen Estimation Quantitative,300
+1552,Folic Acid,800
+1553,Beta HCG- Free,700
+1554,PSA- Free,800
+1555,G6PD Assay,500
+1556,Gamma GT (GGT),200
+1557,Gastrin,800
+1558,Gentamicin,300
+1559,Glucose Tolerance Test (GTT),300
+1560,Glycosylated Haemoglobnin (Hb Alc),350
+1561,Growth Hormone,800
+1562,"Growth Hormone 0, 60, 90 minutes clonidine stimulated",2000
+1563,Ham’s Test (Acidified Serum Test),100
+1564,Homocystine,1000
+1565,Insulin,500
+1566,Insulin Antibody,600
+1567,Iron,300
+1568,Lactate,300
+1569,Lactic Dehydrogenase (LDH),300
+1570,Lead - Blood,800
+1571,Leucocyte alkaline phosphatase (LAP),225
+1572,Lipase Test,350
+1573,"Lipid Profile (Cholesterol, Triglycerides, HDL, LDL, VLDL.)",400
+1574,Lipo Protein A,800
+1575,Lithium,450
+1576,Liver Function Tests,600
+1577,Magnesium,200
+1578,Metanephrine,1500
+1579,Myoglobin,500
+1580,Nitroblue tetrazolium (NBT),200
+1581,Ornithine quantitative estimation,4000
+1582,Osmolality,400
+1583,Phenobarbital,600
+1584,Phenytoin Level,600
+1585,Phosphorus – Blood,100
+1586,Ammonia - Blood,400
+1587,"Pleural fluid panel (glucose, protein, albumin)",350
+1588,Potassium (K) Blood,100
+1589,Procalcitonin,2000
+1590,Progesterone,500
+1591,Prolactin,700
+1592,Protein / Creatinine Ratio,200
+1593,Protein / Creatinine Ratio – Body Fluids,200
+1594,Protein Total Albumin & A/G Ratio,100
+1595,Prothrombin Time with INR,300
+1596,PSA Total,500
+1597,PTT,200
+1598,Myoglobinuria (Qualitative),200
+1599,R.A. Test (Qualitative)/Rheumatoid Factor Antibodies,200
+1600,R.A.Test (Quantitative),300
+1601,Renal Profile (urea+creatinine+uric acid+electrolytes),600
+1602,Sodium,100
+1603,Stool Fat Estimation,200
+1604,Sweat chloride,300
+1605,T S H,300
+1606,T3 (FREE) FT3,200
+1607,"T3, T4 & TSH",650
+1608,T4 FREE (FT4),200
+1609,Tacrolimus,3000
+1610,Testosterone Free,400
+1611,Testosterone Total,400
+1612,Theophylline,400
+1613,Thiamine,1000
+1614,Thrombin Time,500
+1615,Thyroglobulin,900
+1616,Tissue Transglutaminase (TTG),700
+1617,Total Iron Binding Capacity,600
+1618,Total Protein & Albumin,300
+1619,Transferrin,800
+1620,Transferrin saturation,1500
+1621,Triglycerides,200
+1622,Troponin T/ Troponin I,800
+1623,Urea / BUN,100
+1624,Uric Acid - Serum,110
+1625,Valproic Acid,500
+1626,Vancomycin,600
+1627,"Blood & Blood Components (includes rapid screening for HIV, HCV, | HBsAg, VDRL, Malarial parasite)",1000
+1628,Blood transfusion charges per bottle,100
+1629,Collection of blood per bottle (bleeding charges),100
+1630,Coombs Test – Direct (DCT),200
+1631,Coombs Test – Indirect (ICT),300
+1632,Crossmatch Charges – Coombs,200
+1633,Crossmatch Charges - Exchange,200
+1634,Crossmatch Charges – Routine,100
+1635,"Donor Screening (Hb, Group & Typing)",150
+1636,Fresh Blood Donor Screening Charges,700
+1637,Fresh Frozen Plasma,1500
+1638,Packed Cells,1500
+1639,Platelet Concentrate,1500
+1640,Plasmapheresis,12000
+1641,Platelet Pheresis divided unit,7000
+1642,Platelet Pheresis single donor,12500
+1643,Rh – Antibody Titration (5 dils),500
+1644,Whole Blood,800
+1645,ABO Antibody Titre,200
+1646,ABO Blood Grouping & Rh Typing,200
+1647,Absolute Eosinophil Count (AEC),100
+1648,Bleeding & Clotting Time (BT & CT),100
+1649,"Blood routine examination (Hb, TC, DC, ESR)",150
+1650,Clot retraction time (Mac Farland’s method),100
+1651,"Complete Blood Count (CBC) Hb, TC, DC, RBC & Platelet Count",200
+1652,Complete Haemogram (CBC+ PCV + MCV + MCH + MCHC + Reticulocyte | count + Blood picture + ESR),300
+1653,Differential Count (DC) - Body fluids,100
+1654,Erythrocyte Sedimentation Rate (ESR),100
+1655,Gravindex (Pregnancy Test),100
+1656,Haemoglobin % (Hb),50
+1657,Kaolin Clotting Test,300
+1658,L E cells,200
+1659,Leukocyte – Differential (DC),60
+1660,Leukocyte Count – Total (TC),60
+1661,Osmotic Fragility Test,200
+1662,Packed Cell Volume (PCV),100
+1663,Peripheral Blood Smear,100
+1664,Platelet Count,100
+1665,Red Cell Count (RBC),100
+1666,Reticulocyte Count (Retic),125
+1667,Sickling Test/ preparation,200
+1668,Sputum for Eosinophilia,100
+1669,TC & DC - Body fluids,100
+1670,Total Cell Count (TC) - Body fluids,100
+1671,Washed Red Cells / Leucocyte Poor Red Cells,500
+1672,C.S.F Electrophoresis,800
+1673,CSF – Cell count & Cell type,150
+1674,CSF – Chloride,100
+1675,CSF – Protein,100
+1676,CSF – Sugar,100
+1677,CSF Oligoclonal Band Examination,1500
+1678,"CSF panel (glucose, protein, chloride)",250
+1679,Biopsy (HPE)– Frozen Section including Paraffin | (a) Small specimen | (b) Medium specimen | (c) Large specimen,1000 | 1500 | 2000
+1680,Bone Marrow Smear with Report,1500
+1681,"Cell Block & Cytology, Fluid test/Aspirated fluid cytology",1000
+1682,F.N.A.C with report,2000
+1683,HPE of dead foetus,2000
+1684,PAP Smear Test,800
+1685,Trucut Biopsy with report,2800
+1686,Anti HBe,500
+1687,HBe Ag,500
+1688,Aerobic culture & Sensitivity of Blood/Pus/Body fluids,500
+1689,AFB Culture & Susceptibility: I line drugs (Standard),3000
+1690,AFB Culture & Susceptibility: II line drugs (Custom),3500
+1691,AFB Smear,125
+1692,Alberts Stain (KIB),100
+1693,Amoebiasis IgG/IgM (each),800
+1694,Anaerobic Culture,700
+1695,Anti HCV Test,500
+1696,Antibodies to Hepatitis B Surface Antigen (Anti HBs ag),500
+1697,Anticysticercal Antibody,400
+1698,Antimycobacterial Antibody,500
+1699,ASO,300
+1700,Aspergillus IgE/IgG/IgM (each),700
+1701,"Automated Aerobic/Anaerobic/Fungal Culture sensitivity (Blood, body fluids | etc.)",800
+1702,Brucella Antibody by Agglutination,350
+1703,Brucellosis IgG/IgM (each),400
+1704,Chikungunya IgM / IgG (each),600
+1705,Clostridium defficile toxins A & B and GDH antigen,2500
+1706,Cryptococci Antigen,400
+1707,Cryptosporidium Detection,100
+1708,Cytomegalovirus (IgM) CMV,500
+1709,Cytomegalovirus IgG,500
+1710,Dengue IgM/IgG (each),250
+1711,Dengue NS1,300
+1712,Fungal Culture,350
+1713,Gene Expert for T. B.,2000
+1714,Grams Stain/Sputum Microscopy,100
+1715,H. Pylori,500
+1716,H1N1,2500
+1717,Hanging drop,80
+1718,HBs Ag,300
+1719,HBV/HCV Genotyping,3500
+1720,Hepatitis ‘E’ Virus IgM/IgG (each) by ELISA,500
+1721,Hepatitis B core Antigen (HB c Ag),500
+1722,Hepatitis B Markers profile,2000
+1723,"Hepatitis Panel (A, B, C, D & E)",2000
+1724,Hepatitis-A (HAV) Ig.M.,800
+1725,Hepatitis-B Core Ig.M./Ig.G (each),500
+1726,Hepatitis-B DNA – PCR (Qualitative),2500
+1727,Hepatitis-B DNA – PCR (Quantitative),3200
+1728,Hepatitis-C - PCR (Qualitative),2500
+1729,Hepatitis-C - PCR (Quantitative),4000
+1730,Hepatitis-E PCR (Qualitative),2500
+1731,Hepatitis-E PCR (Quantitative),4000
+1732,Hepatitis-E IgM/IgG,500
+1733,Herpes IgG / Leptospira IgG Antibody (each),600
+1734,Herpes Simplex Virus (HSV),400
+1735,HIV test 1 &2,500
+1736,Human Papilloma Virus Qualitative,1500
+1737,Human Papilloma Virus Quantitative DNA PCR,4000
+1738,Hydatid Cyst wet mount,70
+1739,India Ink Stain,100
+1740,Infectious diseases panel,6000
+1741,Malaria Serology,250
+1742,Malarial Parasite Smear (MP) Thick and Thin,100
+1743,Mantoux test - Tuberculosis,100
+1744,Meningo/Pneumo coccal antigen detection in CSF,300
+1745,Microfilaria,200
+1746,MP by QBC (Malaria),250
+1747,Paired Blood culture automated (BACTEC),1000
+1748,Paul – Bunnel Test,200
+1749,PCR qualitative,2000
+1750,PCR quantative,4000
+1751,Quantiferon TB Gold,2000
+1752,Rubella Antibodies (IgM) / IgG Each,500
+1753,Scraping for Fungus,100
+1754,Staining for Pneumocystis,200
+1755,T.P.H.A Test for Syphilis,250
+1756,TB - PCR test,2000
+1757,TB IgG - tuberculosis,500
+1758,Toxoplasma IgG / IgM,500
+1759,"Toxoplasma, Rubella, Cytomegalovirus, Herpes IgG (TORCH)",1800
+1760,Tropical fever profile,4000
+1761,Typhi dot test (Elisa),400
+1762,Typhus (Scrub),500
+1763,Urine Culture Sensitivity,300
+1764,Vaginal Swab for T.V & Monilia,100
+1765,VDRL (STS),100
+1766,Viral Load,4000
+1767,Weil Felix Test,200
+1768,Western Blot - HIV 1 & 2,2000
+1769,Widal Slide Test,100
+1770,Widal Tube dilution,300
+1771,Semen Analysis,800
+1772,Calprotectin test (stool),2500
+1773,Faeces for Occult Blood,100
+1774,Faeces Routine & Micro,60
+1775,AFB Urine,100
+1776,Albumin,50
+1777,Amylase 24 hrs. Urine,300
+1778,Amylase random Urine,200
+1779,Bence Jones Protein (Urine),150
+1780,Bile Salt & Bile Pigment (Urine),70
+1781,Calcium 24 Hrs. Urine,250
+1782,Calcium random Urine,125
+1783,Chloride Random Urine,70
+1784,Cortisol 24 hrs. Urine,500
+1785,Creatinine 24 Hrs. Urine,200
+1786,Creatinine Clearance Urine,200
+1787,Creatinine Random Urine,130
+1788,Cytology,1000
+1789,Demonstration of Hemosiderin in Urine,100
+1790,"Electrolytes (Na, K, Cl) – Urine",200
+1791,for Galactose,100
+1792,Haemoglobin,70
+1793,Ketone Bodies (Acetone)in urine,50
+1794,Leucocyte Esterase,70
+1795,Magnesium 24 Hrs Urine,250
+1796,Magnesium Random Urine,125
+1797,Metanephrine 24 hrs urine,1000
+1798,Micro Albumin,325
+1799,Microscopy,50
+1800,Microscopy for fat globules,70
+1801,Nitrite,70
+1802,Osmolality,300
+1803,PH (Reaction),50
+1804,Phosphorus 24 Hrs. Urine,200
+1805,Phosphorus Random Urine,125
+1806,Porphobilinogen,150
+1807,Porphobilinogin 24 Hrs. Urine,1500
+1808,Porphobilinogin Urine,250
+1809,Potassium (K) 24 hrs. Urine,125
+1810,Potassium (K) random Urine,70
+1811,Protein random Urine (quantitative),175
+1812,Protein Total (24hrs. Urine),225
+1813,Protein/creatinine ratio - Urine,300
+1814,Routine Analysis including microscopy,100
+1815,Sodium (Na) 24 hrs. Urine,175
+1816,Sodium (Na) random Urine,100
+1817,Specific Gravity (SG) Urine,50
+1818,Sugar (Glucose) Urine,20
+1819,Urea / BUN Random Urine,70
+1820,Uric Acid 24 hrs. Urine,200
+1821,Uric Acid Random Urine,125
+1822,Urinary 17 Ketosteroids,400
+1823,Urinary 5 Hydroxy Indole Acetic Acid (5 HIAA),500
+1824,Urinary Catecholamines,500
+1825,Urinary Electrophoresis,400
+1826,Urinary VMA Estimation (24 hours),1000
+1827,Urobilinogen,50
+1828,Xylose in Urine,150
+1829,Complement (C3),400
+1830,Complement C4,400
+1831,FTA - ABS,800
+1832,ACE Test (Acetyl Choline Esterase),600
+1833,ACTH,1000
+1834,Adenosine Diaminase (ADA),600
+1835,Allergy Testing (Food / Inhalant / Contact / Drug) on advice of Immunologist,4200
+1836,Alpha 1 Antitrypsin,900
+1837,Amniotic fluid karyotyping,6000
+1838,ANA Profile,3500
+1839,ANA Single Test,500
+1840,Anaemia panel,2000
+1841,ANCA,800
+1842,ANCA (C-ANCA & P-ANCA),1700
+1843,Anti Cardiolipin Anti body (IgG/IgM/IgA) each,700
+1844,ANTI CCP (Anti-Cyclic Citrullamine Peptide by ELISA),1000
+1845,ANTI DNASE B,600
+1846,Anti ds - DNA Antibody,800
+1847,Anti Gliadin antibody,800
+1848,Anti Mitochondrial Antibody,1000
+1849,Anti NMO antibody,2200
+1850,Anti Smooth Muscle Antibody,1000
+1851,Anti tTG antibody,500
+1852,Anti Voltage Gated K+ Channel Antibodies,7000
+1853,Antimullerian Hormone,1300
+1854,Antiphospho Lipid Antibody (ELISA),1800
+1855,Antithrombin III,1500
+1856,Apo lipo Protein A,500
+1857,Apo lipo Protein B,500
+1858,"Ascitic fluid panel (glucose, protein, albumin, amylase, LDH)",500
+1859,Auto Hemolysis Test,
+1860,"Autoimmune Encephalitis Panel (includes NMDA receptor antibody, LG II, | Casper II, AMPAR, GABA B R etc.)",18000
+1861,B 2 Microglobulin,800
+1862,B’ Cells / CD Marker,5000
+1863,BCR-ABL (RT-PCR),6000
+1864,Beta-2 Glycoprotein Antibodies (IgA/IgG/IgM),600
+1865,Beta-HCG Serum,800
+1866,Beta-HCG Urine,700
+1867,BNP (Brain Natriuretic Peptide) | Heart failure marker,2000
+1868,BRCA1 & BRCA2,20000
+1869,C 1 esterase level,1500
+1870,CA 125,1100
+1871,CA 15.3,1000
+1872,CA 19.9,1000
+1873,CA 242,1000
+1874,CA 724,1000
+1875,CD4 & CD8,2000
+1876,CD4 / CD8 (any one),1000
+1877,Cholinesterase-Pseudocholinesterase,400
+1878,Chromosomal Microarray Analysis test,15000
+1879,Chromosomal test - Pregnancy,3000
+1880,Collagen Vascular work-up (Masscults),2000
+1881,Complete Coagulation work-up,2000
+1882,Complete Haemolytic Anaemia work-up,1500
+1883,C-peptide level test,800
+1884,Cryoglobulin – Qualitative,100
+1885,Cryoglobulin – Quantitative,200
+1886,Cryoprecipitate,500
+1887,Cytogenetics Test /Genetic study/Karyotyping (including Counselling charges),5000
+1888,Cytokeratin,400
+1889,D-dimer test,800
+1890,Demonstration of Heinz Bodies,100
+1891,Desmin,400
+1892,DHEA - S Test,800
+1893,"DIC Panel (PT, APTT, Fibrinogen, Platelet count, D-dimer, FDP)",2000
+1894,DNA ploidy test HER 2/neu test,1000
+1895,Double Marker Test,1500
+1896,Epidermal Growth Factor Receptor (EGFR) Gene fusion,5000
+1897,Estradiol (E3),500
+1898,Estrogen (E2),500
+1899,Estrogen/ Progesterone Receptor (ER/PR),1500
+1900,Extended Flow Panel for primary immuno deficiency,3500
+1901,Factor IX Assay,1000
+1902,Factor V leiden,4000
+1903,Factor VIII C Assay,1200
+1904,Factor X Assay,2500
+1905,Factor XIII Assay,500
+1906,FDP (Fibrinogen Degradation Products),500
+1907,FISH for AML M4/M2,4500
+1908,FISH for BCR-ABL translocation of Philadelphia chromosome,4500
+1909,FISH for multiple myeloma,4500
+1910,FISH for prognostic marker for CA breast,10000
+1911,FISH for promyelocytic leukaemia,4500
+1912,FISH for Trysomy – 21 (Prenatal Sample),4500
+1913,Flow Cytometry for HLA cross match,4000
+1914,Flow Cytometry for Leukemia / Lymphoma,9000
+1915,Flow Cytometry for platelet function disorders,4000
+1916,Flow Cytometry for PNH,4000
+1917,Fluoroscent In-situ Hybridisation (FISH) for AML,10800
+1918,FSH,400
+1919,FTL Gene test,30000
+1920,GAD Elisa,600
+1921,Gene Mutation test,25000
+1922,Glomerulo Filtration Rate (eGFR),200
+1923,Haemoglobin Electrophoresis with strip,500
+1924,Haptoglobin,1000
+1925,Heavy metal screening profile,5000
+1926,HF Test - for cancer (Immunohistochemistry),7000
+1927,HLA B27,2000
+1928,Identification of Dorothy Landsteiner Antibodies,100
+1929,"Immuno Electrophoresis (IFE) (Serum, Urine, CSF)",4000
+1930,Immuno Histo Chemistry (IHC) panel for Ca Breast (ER/PR/HER 2/NEU/KI | 67),4500
+1931,Immunofixation Electrophoresis,4000
+1932,Immunofluroscence Studies/ Immunofluroscence study of renal biopsy,1500
+1933,Immunoglobulin IgA/IgE/IgG/IgM (each),500
+1934,"Immunoglobulins IgA, IgM & IgG / Meningitis Profile IgG",1000
+1935,Immunohistochemistry panel,4000
+1936,Immunohistochemistry per marker,1000
+1937,JAK 2 Mutation Study DNA Test (Qualitative),5000
+1938,Kappa Light Chain,1500
+1939,Lambda Light Chain,1500
+1940,Leucocyte Alkaline Phosphatase (LAP) Score (cytochemistry),300
+1941,LH,400
+1942,"LH, FSH & Prolactin",1000
+1943,"LKM-1 antibodies to liver, kidney micrones",900
+1944,Lupus Anticoagulant,1000
+1945,Metabolic Bone Profile,2500
+1946,Met-Haemoglobin,200
+1947,MPO (Myelo peroxidase stain cytochemistry),300
+1948,Myasthenia Gravis panel,4000
+1949,Next Generation Sequencing (NGS) based Comprehensive Neurology Panel | test,25000
+1950,NMDA Receptor Antibody,6000
+1951,Non Invasive Prenatal Test (NIPT),20000
+1952,NT-Pro BNP,2000
+1953,Para Thyroid Hormone (PTH),800
+1954,Paraneoplastic antibody panel test,5000
+1955,PCOD Profile test,2080
+1956,Periodic Acid Schiff Reaction (PAS),100
+1957,Plasma renin activity,4000
+1958,Pompe's enzyme test,3500
+1959,Pregnancy associated plama protein serum (PAPP),1000
+1960,Protein - C,2000
+1961,Protein - S,2000
+1962,Quadruple Marker,2500
+1963,S-CEA (Carcino Embryonic Antigen),600
+1964,"Screening of Urine for Inborn Errors of PKU, MPS, Cystinuria, | Homocystinuria, Maple Syrup Disease, Tyrosine, Galactosemia (per sample)",300
+1965,Sudan Black Stain,100
+1966,Syndrome Evaluation System (SES) for infections,25000
+1967,Triple Marker Test,2000
+1968,Vimentin,1000
+1969,Von Willebrand Factor antigen assay,1000
+1970,Xylose in Blood,400
+1971,BMD Femur,1600
+1972,BMD forearm,1600
+1973,BMD hip joints,1500
+1974,BMD Single Site,1500
+1975,BMD spine,1600
+1976,BMD whole body,4000
+1977,C.T. – Enteroclysis,7000
+1978,C.T. – Brain Cisternography,3000
+1979,C.T. – Cardiac/Coronary Angiogram,6000
+1980,C.T. – Coronary Calcium Scoring screening,3500
+1981,C.T. – Guided procedures,3000
+1982,C.T. – Angio Abdomen/Renal/Peripheral/ Pulmonary,4000
+1983,C.T. – Angio Cranial,3500
+1984,C.T. – Angiogram bilateral lower limb,4000
+1985,C.T. – Facial Bones,3000
+1986,C.T. – Abdomen (including pelvis),4000
+1987,C.T. – Brain,2000
+1988,C.T. – Cervical / Thoracic Spine,3500
+1989,C.T. – Extremities,3500
+1990,C.T. – for CSF Rhinorrhoea,2000
+1991,C.T. – Hip/ Knee / Ankle / foot,3000
+1992,C.T. – Internal Ear Canal,3000
+1993,C.T. – KUB,2000
+1994,C.T. – L.S. Spine,3500
+1995,C.T. – Limited study,1500
+1996,C.T. – Mastoid,2000
+1997,C.T. – Neck,3500
+1998,C.T. – Orbits,2000
+1999,C.T. – Paranasal Sinuses/Osteomeatal Complex,2500
+2000,C.T. – Pelvis,2500
+2001,C.T. – Shoulder / elbow / wrist / Hand,2500
+2002,C.T. – Skull base,2000
+2003,C.T. – T.M. Joints,3000
+2004,C.T. – Whole spine,5000
+2005,C.T. – Cone Beam (CBCT/Dental),2000
+2006,C.T. – Chest/ Thorax,4000
+2007,Arterial & Venous Doppler – upper limb-One Side,1800
+2008,Arterial & Venous Doppler –lower limb –Both sides,3000
+2009,Arterial & Venous Doppler –lower limb –one side,1800
+2010,Arterial & Venous Doppler-upper limb – Both sides,3000
+2011,Arterial Doppler Lower limb- Both sides,2000
+2012,Arterial Doppler Lower limb- One side,1500
+2013,Arterial Doppler Upper limb- Both sides,2000
+2014,Arterial Doppler Upper limb- One side,1500
+2015,AV fistula Patency Doppler,500
+2016,Carotid and Vertebral Doppler studies,2000
+2017,"Doppler of Aorta, IVC, Pelvic vessels",2000
+2018,Doppler of Specific Abdominal organs,1500
+2019,Obstetric Doppler,1500
+2020,Renal Doppler,2000
+2021,Screening Doppler,1500
+2022,Trans cranial Doppler,2000
+2023,Angioembolisation (Cost of consumables at actuals),10000
+2024,IVC Filter Placement (Cost of consumables at actuals),10000
+2025,IVC Filter Retrieval (Cost of consumables at actuals),7000
+2026,Peripheral vessel thrombolysis,15000
+2027,MRI chest,6500
+2028,MRI internal auditory canal/Temporal bone,6000
+2029,MRI Joint / Region,5000
+2030,MRI Mammography/Breast,6000
+2031,MRI Orbit,5000
+2032,MRI PNS,6000
+2033,MRI Scan Abdomen,6500
+2034,MRI Scan Brain,5000
+2035,MRI Scan Cervical / Lumbar Spine,5000
+2036,MRI Scan Dorsal Spine,5000
+2037,MRI Scan Knee,5000
+2038,MRI Scan Neck,5000
+2039,MRI Scan Pelvis,6000
+2040,MRI Screening / Limited Study,3500
+2041,MRI Shoulder,5500
+2042,MRI Skull base,6000
+2043,MRI TM joint,5500
+2044,MRI Whole spine,10000
+2045,MRI wrist,5000
+2046,MRA (Peripheral/Renal),4500
+2047,MRI Angiogram brain and neck / Intracranial & Neck,7000
+2048,MRI Angiogram only Neck Vessels,4500
+2049,MRI MRCP,4500
+2050,MRI Spectroscopy,2500
+2051,MRI Urography,4000
+2052,Bone Scan,4000
+2053,DEXA scan dorsal spine,1500
+2054,DEXA scan whole body,3500
+2055,Hepatobiliary Gamma Imaging Scan,3000
+2056,Lung Perfusion Scan,4000
+2057,MIBG Scan,14000
+2058,Nuclear Parathyroid SPECT Scan,3500
+2059,Nuclear whole body Bone SPECT Scan,4500
+2060,Renal Scan,3500
+2061,Samarium therapy / Pain palliative therapy,20000
+2062,Thyroid Scan,3000
+2063,Whole body iodine scan,3000
+2064,Sentinel Node imaging,4000
+2065,I-131 Between 10-20 mci,14000
+2066,I-131 Between 20-29 mci,18000
+2067,I-131 High dose ablation therapy,Rs.500 per | mci for | doses | exceeding | 29 mci
+2068,I-131 Upto 10 mci,8000
+2069,P E T Bone Scan,7500
+2070,P E T Brain,15000
+2071,P E T Cardiac Viability,15000
+2072,P E T Whole Body CT Scan,15000
+2073,P E T Whole Body MRI Scan,25000
+2074,PET CT chest,10000
+2075,PET CT Single Region,15000
+2076,PET Ga-68 PSMA,25000
+2077,X'ray charges - Portable (extra),100
+2078,Abdomen (K.U.B.),350
+2079,Acromioclavicular Joint / Shoulder-One side,300
+2080,Ankle Joint (AP & Lat),300
+2081,C. Spine AP & Lat,300
+2082,Chest X'ray - (PA View / AP View/ oblique view,300
+2083,Clavicle,300
+2084,Elbow joint (AP & Lat),300
+2085,Femur (AP & Lat),400
+2086,Fluroscopy,200
+2087,Foot AP & Oblique,300
+2088,Forearm (AP & Lat),350
+2089,Full spine/ full limb view/scoliogram,800
+2090,Hand (AP & Lat),300
+2091,Humerus (AP & Lat),350
+2092,Infantogram,200
+2093,Knee (AP & Lat),300
+2094,Knee skyline exposure,150
+2095,L.S. Spine (AP & Lat),400
+2096,Leg (AP & Lat),300
+2097,Mandible,300
+2098,Optic Foramen,300
+2099,Pelvis / Hip Joint (AP & Lat),400
+2100,Scapula,300
+2101,"Skull (AP/Lat), Orbit, PNS, Mastoids, (PA)",400
+2102,Thoraco Lumbar Spine (AP/Lat),400
+2103,Toes (2 views),300
+2104,Wrist (AP & Lat),300
+2105,AV Fistulogram,3000
+2106,Barium enema (4 films),1200
+2107,Barium Meal - Upper G.I. Tract (3 films),800
+2108,Barium Meal Follow through (6 films),1200
+2109,Barium Swallow (2 films),600
+2110,Bronchogram,600
+2111,Cavernosography,300
+2112,Cerebral Angiogram,10000
+2113,Cystourethrogram,1000
+2114,Dacryocystogram,500
+2115,Distal Colonogram/Loopogram,700
+2116,IVU / IVP,2000
+2117,Mammography (Bilateral) 2 views,1500
+2118,Mammography (for each additional exposure),250
+2119,Mammography (Unilateral) 2 views,750
+2120,Myelogram (4 films),1500
+2121,P.T.C. (6 films) Percutaneous Transhepatic Cholangiography,2200
+2122,R.G.P. (2 films) Retro grade pyelography,1000
+2123,RGU (Micturating Cysto Urethrogram / Retro Grade Urethrogram),1500
+2124,Selective Embolisation (any vessel),6000
+2125,Sialogram (2 films),1000
+2126,Sinogram & Fistulogram,1200
+2127,Small Bowel Enema - Contrast Study,1500
+2128,Sonomammography (Bilateral) 2 views,2000
+2129,Sonomammography (Unilateral) 2 views,1000
+2130,Spleno Venogram,2000
+2131,Spleno Venogram using C-Arm,2000
+2132,Abdominal Ultrasound including Pelvis,1000
+2133,Breast ultrasound,800
+2134,Extra charges for portable ultrasound,100
+2135,Obstetric Scan Twin Gestation,1200
+2136,Obstetric Scan/Ultrasound Pelvis,800
+2137,Thyroid Ultra Sound scan / Ultra Sound of Neck,800
+2138,Trans Vaginal Ultrasound (TVS),1000
+2139,Ultra Sound guided procedures,1500
+2140,Ultra sound Abdomen + TVS,1500
+2141,Ultra Sound of Brain,800
+2142,Ultra sound scan for follicular studies (ovulation studies) per day,800
+2143,Ultra sound scan of KUB,800
+2144,Ultra sound scan of soft tissue / joint/Extremities/chest,800
+2145,Ante-Natal -Anomaly Scan for Twin Pregnancy Uterine artery doppler,2500
+2146,Ante-Natal Anomaly Scan with Uterine artery doppler,1600
+2147,Endoscopic Bronchial Ultrasound (EBUS),15000
+2148,Endoscopic Ultrasound (Gastroenterology/ Urology),10000
+2149,Fetal Echo with Doppler scan,3000
+2150,Intra operative Ultra sound,1000
+2151,Intra Vascular Ultrasound (IVUS),25000
+2152,Scrotal USG + Doppler studies,800
+2153,Trans Rectal Ultra Sound (TRUS),2000
+2154,Ultrasound Fibroscan/ Elastography for Liver disorders,2000

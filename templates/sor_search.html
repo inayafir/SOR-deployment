@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}Search SOR - CHSS Schedule of Rates{% endblock %}
+{% block page_title %}Search Schedule of Rates{% endblock %}
+
+{% block content %}
+<div class="card">
+    <form method="GET" action="{{ url_for('search') }}" class="search-form-row" id="search-form">
+        <div class="form-group">
+            <label for="field-select">Search by</label>
+            <select id="field-select" name="field" class="search-select">
+                <option value="both" {% if field != 'name' and field != 'code' %}selected{% endif %}>Name and SOR Code</option>
+                <option value="name" {% if field == 'name' %}selected{% endif %}>Name</option>
+                <option value="code" {% if field == 'code' %}selected{% endif %}>SOR Code</option>
+            </select>
+        </div>
+        <div class="form-group sor-autocomplete">
+            <label for="sor-query">Search</label>
+            <input type="text" id="sor-query" name="q" value="{{ q }}"
+                   class="search-input" autocomplete="off" autofocus
+                   placeholder="Service name or SOR code&hellip;">
+            <div class="autocomplete-box" id="autocomplete-box" aria-hidden="true"></div>
+        </div>
+        <div class="form-group">
+            <label for="category-select">Category</label>
+            <select id="category-select" name="category" class="search-select">
+                <option value="">All categories</option>
+                {% for c in categories %}
+                <option value="{{ c }}" {% if category == c %}selected{% endif %}>{{ c }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Search</button>
+        </div>
+    </form>
+</div>
+
+<div class="toolbar">
+    <div class="text-muted" id="results-count">
+        {% if total %}
+        {{ total }} item{{ 's' if total != 1 }} found
+        {% else %}
+        No results
+        {% endif %}
+    </div>
+</div>
+
+<div class="card">
+    <div class="table-responsive">
+        <table class="data-table" id="dataTable">
+            <thead>
+                <tr>
+                    <th>SOR Code</th>
+                    <th>Service / Procedure</th>
+                    <th>Category</th>
+                    <th class="text-right">Rate (&#8377;)</th>
+                </tr>
+            </thead>
+            <tbody id="dataTable-body">
+                {% for item in items %}
+                <tr>
+                    <td class="sor-code">{{ item.sor_code }}</td>
+                    <td title="{{ item.name }}">{{ item.name }}</td>
+                    <td><span class="badge badge-gray">{{ item.category }}</span></td>
+                    <td class="text-right rate">{{ format_price(item.price) }}</td>
+                </tr>
+                {% else %}
+                <tr class="no-data-row">
+                    <td colspan="4">
+                        {% if q or category %}
+                        No items match your search. Try a different term or category.
+                        {% else %}
+                        No SOR items available.
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% set endpoint = 'search' %}
+    <div id="pagination-container">
+        {% include "_pagination.html" %}
+    </div>
+</div>
+{% endblock %}
