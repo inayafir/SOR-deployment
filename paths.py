@@ -73,6 +73,12 @@ def get_backup_dir():
     return runtime_path("backup")
 
 
+def get_rollback_path():
+    """Single-file snapshot of the database state immediately before the last
+    bulk import. Restoring it rolls the database back one step."""
+    return runtime_path(os.path.join("database", "sor_rollback.db"))
+
+
 def ensure_runtime_dirs():
     """Create every runtime directory if it does not exist. Never fails."""
     for name in RUNTIME_DIRS:

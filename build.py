@@ -15,6 +15,7 @@ PyInstaller). The built package itself needs none of these.
 
 import http.cookiejar
 import os
+import re
 import shutil
 import socket
 import subprocess
@@ -23,6 +24,7 @@ import tempfile
 import time
 import urllib.request
 from importlib.util import find_spec
+from uuid import uuid4
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SPEC = os.path.join(ROOT, "sor_app.spec")
@@ -41,8 +43,9 @@ def run(cmd):
 
 
 def ensure_runtime_deps():
-    """Install runtime requirements (Flask, Werkzeug, Waitress) if missing."""
-    if not (find_spec("flask") and find_spec("waitress")):
+    """Install runtime requirements (Flask, Werkzeug, Waitress, openpyxl) if
+    any are missing."""
+    if not (find_spec("flask") and find_spec("waitress") and find_spec("openpyxl")):
         run([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])
 
 
@@ -78,8 +81,66 @@ def http_get(url, opener, data=None):
         return resp.status, resp.read().decode("utf-8", "replace"), resp.geturl()
 
 
+def multipart_post(opener, url, fields, filename, file_bytes, file_type=None):
+    """POST a multipart/form-data body with optional file part."""
+    boundary = "----sorboundary" + uuid4().hex
+    parts = []
+    for name, value in fields.items():
+        parts.append(
+            f"--{boundary}\r\n"
+            f'Content-Disposition: form-data; name="{name}"\r\n\r\n'
+            f"{value}\r\n"
+        )
+    if filename:
+        file_type = file_type or "application/octet-stream"
+        parts.append(
+            f"--{boundary}\r\n"
+            f'Content-Disposition: form-data; name="excel"; filename="{filename}"\r\n'
+            f"Content-Type: {file_type}\r\n\r\n"
+        )
+        body = (
+            "".join(parts).encode("utf-8")
+            + file_bytes
+            + f"\r\n--{boundary}--\r\n".encode("utf-8")
+        )
+    else:
+        body = (
+            "".join(parts).encode("utf-8")
+            + f"--{boundary}--\r\n".encode("utf-8")
+        )
+    req = urllib.request.Request(url, data=body)
+    req.add_header("Content-Type", f"multipart/form-data; boundary={boundary}")
+    req.add_header("Content-Length", str(len(body)))
+    with opener.open(req, timeout=10) as resp:
+        return resp.status, resp.read().decode("utf-8", "replace"), resp.geturl()
+
+
+def db_count(db_path):
+    import sqlite3
+    conn = sqlite3.connect(db_path)
+    try:
+        return conn.execute("SELECT COUNT(*) FROM sor_items").fetchone()[0]
+    finally:
+        conn.close()
+
+
+def make_workbook_bytes(rows):
+    """Build a tiny in-memory .xlsx for the import smoke test."""
+    import io
+    import openpyxl
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.append(["SOR Number", "Title", "Category", "Price"])
+    for row in rows:
+        ws.append(row)
+    buffer = io.BytesIO()
+    wb.save(buffer)
+    return buffer.getvalue()
+
+
 def verify_app(tmp):
-    """Exercise the running frozen exe: login, search page, data API, DB file."""
+    """Exercise the running frozen exe: login, search page, data API, DB file,
+    and the admin Excel import / export / rollback flows."""
     jar = http.cookiejar.CookieJar()
     opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar))
     base = f"http://127.0.0.1:{SMOKE_PORT}"
@@ -103,6 +164,37 @@ def verify_app(tmp):
 
     db_path = os.path.join(tmp, "database", "sor.db")
     assert os.path.exists(db_path), f"runtime DB not created at {db_path}"
+    assert db_count(db_path) == 2154, f"expected 2154 seeded items, got {db_count(db_path)}"
+
+    # --- admin Excel tools ------------------------------------------------
+    status, manage_html, _ = http_get(f"{base}/manage", opener)
+    assert status == 200, f"/manage returned {status}"
+    match = re.search(r'name="csrf-token" content="([0-9a-f]+)"', manage_html)
+    assert match, "csrf token not found on /manage"
+    csrf = match.group(1)
+
+    status, export_bytes, _ = http_get(f"{base}/manage/export", opener)
+    assert status == 200, f"/manage/export returned {status}"
+    assert export_bytes.startswith("PK"), "exported file is not a valid xlsx"
+
+    workbook = make_workbook_bytes([
+        ["9701", "Smoke Test Item A", "Dental", 100],
+        ["9702", "Smoke Test Item B", "Urology", 200],
+    ])
+    status, _, url = multipart_post(
+        opener, f"{base}/manage/import",
+        {"_csrf_token": csrf}, "sor.xlsx", workbook,
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    )
+    assert url.endswith("/manage"), f"import did not redirect to /manage (got {url})"
+    assert db_count(db_path) == 2, f"import did not replace dataset (got {db_count(db_path)})"
+
+    status, _, url = http_get(
+        f"{base}/manage/rollback", opener, data=f"_csrf_token={csrf}".encode("ascii"),
+    )
+    assert url.endswith("/manage"), f"rollback did not redirect to /manage (got {url})"
+    assert db_count(db_path) == 2154, f"rollback did not restore dataset (got {db_count(db_path)})"
+
     return db_path
 
 
@@ -165,8 +257,8 @@ def smoke_test():
             print(f"FAIL: smoke test verification error — {exc}")
             sys.exit(1)
         print(
-            f"Smoke test OK: exe served login/search/API on "
-            f"127.0.0.1:{SMOKE_PORT} and seeded {db_path}",
+            f"Smoke test OK: exe served login/search/API + Excel import/"
+            f"rollback/export on 127.0.0.1:{SMOKE_PORT} and seeded {db_path}",
         )
     finally:
         kill_tree(proc.pid)

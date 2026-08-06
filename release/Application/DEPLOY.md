@@ -281,6 +281,7 @@ Default passwords are risky on a real intranet. To change them:
 | Item                  | Location (next to Application.exe) |
 |-----------------------|------------------------------------|
 | Database              | `database\sor.db`                  |
+| Rollback snapshot     | `database\sor_rollback.db` (auto-created by the first Excel upload) |
 | Settings              | `config\config.ini`                |
 | Logs (rotating)       | `logs\app.log` (old: app.log.1, ...) |
 | Uploads / Exports / Backups | `uploads\`, `exports\`, `backup\` (reserved) |
@@ -294,6 +295,28 @@ deleted automatically.
 
 To restore: stop the application, copy the wanted backup file over
 `database\sor.db`, then start the application again.
+
+### Excel database tools (admin)
+
+On the **Manage** page there is a *Database Tools* card for admins:
+
+- **Upload & Replace Database** — upload an Excel file (`.xlsx` or `.xls`)
+  with columns **sor number, title, category, price** (header names are
+  matched flexibly, e.g. "SOR Code", "Service Name", "Rate" also work).
+  - Every row is checked **before** anything changes; if any row is invalid
+    (missing title, non-alphanumeric or duplicate SOR number, negative
+    price) nothing is replaced and the errors are shown.
+  - The database that was live before the upload is automatically saved to
+    `database\sor_rollback.db`.
+- **Rollback to Previous Database** — restores the database to the state
+  before the last Excel upload. Only **one** previous version is kept — the
+  next upload overwrites it. Rollback is not possible before the first
+  upload.
+- **Download Database as Excel** — saves the current database to an `.xlsx`
+  file with the same four columns (a good template for a future upload).
+
+All three actions are logged in `logs\app.log` and are available only to the
+admin account.
 
 ---
 

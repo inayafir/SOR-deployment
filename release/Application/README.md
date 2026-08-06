@@ -11,7 +11,14 @@ intranet application** (single server PC, any number of browser clients).
   per page) and live Google-style autocomplete.
 - **Roles**:
   - **User** — login and search/filter the SOR (read-only).
-  - **Admin** — everything a User can do, plus add / edit / delete SOR items.
+  - **Admin** — everything a User can do, plus add / edit / delete SOR items
+    and bulk database tools (Excel import/export, one-step rollback).
+- **Database Tools** (admin): upload an Excel file (columns *sor number,
+  title, category, price*) to replace the entire database in one go, download
+  the current database as Excel, and roll back to the database that was live
+  before the last upload (one snapshot kept).
+- **Optional SOR code**: new/edited items may omit the SOR code; when present
+  it must be alphanumeric.
 - **Shared single database**: all users read and write the one SQLite file
   on the server; changes appear for every user immediately.
 - **Security**: salted password hashes (Werkzeug), session-based auth, RBAC,
@@ -39,6 +46,7 @@ intranet application** (single server PC, any number of browser clients).
 URSC-accts-sor/
 ├── app.py               # Flask application (routes, auth, CSRF, RBAC)
 ├── db.py                # Database helpers, CSV seeding, search (WAL)
+├── excel.py             # Excel import/export for bulk database updates
 ├── categories.py        # Keyword-based category classifier
 ├── paths.py             # Runtime base-dir resolution (source vs frozen)
 ├── config.py            # config/config.ini + environment overrides
@@ -59,6 +67,7 @@ URSC-accts-sor/
     ├── logs/            # app.log (rotating)
     └── uploads/, exports/, backup/
         # backup/ holds automatic startup snapshots (newest 14 kept)
+        # database/sor_rollback.db holds the pre-import snapshot for rollback
 ```
 
 ## Development (run from source)
@@ -108,9 +117,21 @@ instructions.
 - **Search** (`/search`, any role): type a term, choose Name / SOR Code /
   Both, optionally filter by category; results and autocomplete update live.
 - **Manage** (`/manage`, admin only): same search UI plus **Edit** /
-  **Delete** actions per row and an **Add SOR Item** button.
-- SOR codes must be unique; the service name is a required free-text field;
-  price is a numeric amount (thousands separators allowed).
+  **Delete** actions per row, an **Add SOR Item** button, and a
+  **Database Tools** card:
+  - **Upload & Replace Database** — pick an `.xlsx`/`.xls` file with columns
+    *sor number, title, category, price* and replace the whole dataset. Every
+    row is validated first; nothing is replaced if any row is invalid
+    (missing title, non-alphanumeric or duplicate SOR number, negative
+    price). The database that was live before the upload is kept for rollback.
+  - **Rollback to Previous Database** — restores the database to the state
+    before the last Excel upload (one snapshot; overwritten by the next
+    upload).
+  - **Download Database as Excel** — exports the current database to an
+    `.xlsx` file.
+- SOR codes may be left blank; when present they must be alphanumeric and
+  unique. The service name is a required free-text field; price is a numeric
+  amount (thousands separators allowed).
 
 ## Notes
 

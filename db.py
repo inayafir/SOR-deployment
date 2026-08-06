@@ -18,12 +18,13 @@ from datetime import datetime
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from categories import classify_category, sort_categories
-from paths import get_backup_dir, get_db_path, resource_path
+from paths import get_backup_dir, get_db_path, get_rollback_path, resource_path
 
 logger = logging.getLogger("sor.db")
 
 DB_PATH = get_db_path()
 SOR_CSV_PATH = resource_path("chss_sor_2023.csv")
+ROLLBACK_PATH = get_rollback_path()
 
 DEFAULT_ADMIN_USERNAME = "admin"
 DEFAULT_ADMIN_PASSWORD = "admin123"
@@ -125,7 +126,7 @@ def init_db():
             );
             CREATE TABLE IF NOT EXISTS sor_items (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                sor_code TEXT UNIQUE NOT NULL,
+                sor_code TEXT UNIQUE,
                 name TEXT NOT NULL,
                 category TEXT NOT NULL,
                 price REAL,
@@ -141,6 +142,50 @@ def init_db():
         _seed_users(conn)
         if fresh:
             _seed_sor_items(conn)
+        _migrate_sor_code_nullable(conn)
+
+
+def _migrate_sor_code_nullable(conn):
+    """Make the ``sor_code`` column nullable on databases created before the
+    code became optional. Idempotent; a no-op on current schemas.
+
+    PRAGMA table_info rows are ``(cid, name, type, notnull, dflt_value, pk)``;
+    tuple indices are used so the check works with any connection factory.
+    """
+    code_not_null = False
+    for col in conn.execute("PRAGMA table_info(sor_items)").fetchall():
+        if col[1] == "sor_code":
+            code_not_null = bool(col[3])
+            break
+    if not code_not_null:
+        return
+    conn.execute("DROP TABLE IF EXISTS sor_items_old")
+    conn.execute("ALTER TABLE sor_items RENAME TO sor_items_old")
+    conn.execute(
+        """CREATE TABLE sor_items (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            sor_code TEXT UNIQUE,
+            name TEXT NOT NULL,
+            category TEXT NOT NULL,
+            price REAL,
+            created_at TEXT NOT NULL,
+            updated_at TEXT NOT NULL
+        )"""
+    )
+    conn.execute(
+        """INSERT INTO sor_items
+           (id, sor_code, name, category, price, created_at, updated_at)
+           SELECT id, sor_code, name, category, price, created_at, updated_at
+           FROM sor_items_old"""
+    )
+    conn.execute("DROP TABLE sor_items_old")
+    conn.execute(
+        "CREATE INDEX IF NOT EXISTS idx_sor_items_category ON sor_items(category)"
+    )
+    conn.execute(
+        "CREATE INDEX IF NOT EXISTS idx_sor_items_name ON sor_items(name)"
+    )
+    logger.info("Migrated sor_items.sor_code to nullable")
 
 
 def _seed_users(conn):
@@ -260,7 +305,7 @@ def search_sor_items(q=None, category=None, field=None, page=1, per_page=PER_PAG
         offset = (page - 1) * per_page
         rows = conn.execute(
             f"""SELECT * FROM sor_items {clause}
-                ORDER BY CAST(sor_code AS INTEGER), sor_code
+                ORDER BY (sor_code IS NULL), CAST(sor_code AS INTEGER), sor_code
                 LIMIT ? OFFSET ?""",
             params + [per_page, offset],
         ).fetchall()
@@ -275,17 +320,34 @@ def get_sor_item(sor_id):
         return dict(row) if row else None
 
 
+def _clean_code(sor_code):
+    """Normalise an optional SOR code: blank becomes None, otherwise strip."""
+    if sor_code is None:
+        return None
+    code = str(sor_code).strip()
+    return code or None
+
+
+def _clean_price(price):
+    if price is None:
+        return None
+    return float(price)
+
+
 def get_sor_item_by_code(sor_code, exclude_id=None):
+    code = _clean_code(sor_code)
+    if not code:
+        return None
     with get_db() as conn:
         if exclude_id is None:
             row = conn.execute(
                 "SELECT * FROM sor_items WHERE sor_code = ?",
-                (str(sor_code).strip(),),
+                (code,),
             ).fetchone()
         else:
             row = conn.execute(
                 "SELECT * FROM sor_items WHERE sor_code = ? AND id != ?",
-                (str(sor_code).strip(), exclude_id),
+                (code, exclude_id),
             ).fetchone()
         return dict(row) if row else None
 
@@ -297,8 +359,8 @@ def create_sor_item(sor_code, name, category, price):
             """INSERT INTO sor_items
                (sor_code, name, category, price, created_at, updated_at)
                VALUES (?, ?, ?, ?, ?, ?)""",
-            (str(sor_code).strip(), name.strip(), category.strip(),
-             float(price), now, now),
+            (_clean_code(sor_code), name.strip(), category.strip(),
+             _clean_price(price), now, now),
         )
         return cursor.lastrowid
 
@@ -310,9 +372,88 @@ def update_sor_item(sor_id, sor_code, name, category, price):
                SET sor_code = ?, name = ?, category = ?, price = ?,
                    updated_at = ?
                WHERE id = ?""",
-            (str(sor_code).strip(), name.strip(), category.strip(),
-             float(price), _now(), sor_id),
+            (_clean_code(sor_code), name.strip(), category.strip(),
+             _clean_price(price), _now(), sor_id),
         )
+
+
+def replace_sor_items(items):
+    """Replace the entire SOR dataset with ``items`` in a single transaction.
+
+    ``items`` is a list of dicts with keys ``sor_code``, ``name``,
+    ``category``, ``price``. If any insert fails the whole transaction is
+    rolled back so the live database is never left half-replaced.
+    """
+    now = _now()
+    rows = [
+        (_clean_code(it["sor_code"]), it["name"].strip(),
+         it["category"].strip(), _clean_price(it["price"]), now, now)
+        for it in items
+    ]
+    with get_db() as conn:
+        conn.execute("DELETE FROM sor_items")
+        conn.executemany(
+            """INSERT INTO sor_items
+               (sor_code, name, category, price, created_at, updated_at)
+               VALUES (?, ?, ?, ?, ?, ?)""",
+            rows,
+        )
+    logger.info("Replaced SOR dataset with %d items", len(items))
+
+
+def list_all_sor_items():
+    """Return every SOR item ordered by code for export."""
+    with get_db() as conn:
+        rows = conn.execute(
+            """SELECT sor_code, name, category, price FROM sor_items
+               ORDER BY (sor_code IS NULL), CAST(sor_code AS INTEGER), sor_code"""
+        ).fetchall()
+        return [dict(r) for r in rows]
+
+
+def create_rollback():
+    """Snapshot the live database into the single rollback file.
+
+    Uses SQLite's online backup API so the snapshot is consistent even while
+    other requests are reading or writing. Only one rollback snapshot is kept;
+    the next import overwrites it.
+    """
+    if not os.path.exists(DB_PATH):
+        return False
+    src = sqlite3.connect(DB_PATH)
+    dst = sqlite3.connect(ROLLBACK_PATH)
+    try:
+        with dst:
+            src.backup(dst)
+    finally:
+        src.close()
+        dst.close()
+    logger.info("Rollback snapshot created: %s", ROLLBACK_PATH)
+    return True
+
+
+def has_rollback():
+    return os.path.exists(ROLLBACK_PATH)
+
+
+def restore_rollback():
+    """Restore the live database from the rollback snapshot.
+
+    Returns True when a snapshot existed and was restored. Uses the online
+    backup API so restoration is atomic and safe under WAL mode.
+    """
+    if not os.path.exists(ROLLBACK_PATH):
+        return False
+    src = sqlite3.connect(ROLLBACK_PATH)
+    dst = sqlite3.connect(DB_PATH)
+    try:
+        with dst:
+            src.backup(dst)
+    finally:
+        src.close()
+        dst.close()
+    logger.info("Database restored from rollback snapshot")
+    return True
 
 
 def delete_sor_item(sor_id):
@@ -367,7 +508,7 @@ def suggest_sor_items(q, field=None, limit=10):
             f"""SELECT id, sor_code, name, category, price
                 FROM sor_items
                 WHERE {match}
-                ORDER BY {order}, CAST(sor_code AS INTEGER)
+                ORDER BY {order}, (sor_code IS NULL), CAST(sor_code AS INTEGER)
                 LIMIT ?""",
             params + [limit],
         ).fetchall()

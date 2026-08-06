@@ -13,9 +13,11 @@ Production deployment notes
   they never terminate the server.
 """
 
+import io
 import logging
 import math
 import os
+import re
 import secrets
 import sys
 import time
@@ -24,12 +26,13 @@ from logging.handlers import RotatingFileHandler
 
 from flask import (
     Flask, abort, flash, jsonify, redirect, render_template, request,
-    session, url_for,
+    send_file, session, url_for,
 )
 from werkzeug.exceptions import HTTPException
 
 import config as app_config
 import db
+import excel
 import paths
 
 # ---------------------------------------------------------------------------
@@ -364,7 +367,67 @@ def manage():
         field=kwargs["field"],
         categories=db.list_categories(),
         per_page=per_page,
+        rollback_available=db.has_rollback(),
     )
+
+
+# ---------------------------------------------------------------------------
+# Bulk database import / export / rollback (Admin only)
+# ---------------------------------------------------------------------------
+@app.route("/manage/export")
+@login_required(role="admin")
+def manage_export():
+    data = excel.export_to_bytes()
+    _audit("export")
+    return send_file(
+        io.BytesIO(data),
+        as_attachment=True,
+        download_name=excel.default_filename(),
+        mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    )
+
+
+@app.route("/manage/import", methods=["POST"])
+@login_required(role="admin")
+@csrf_protect
+def manage_import():
+    file = request.files.get("excel")
+    if file is None or not file.filename:
+        flash("Please choose an Excel file to upload.", "danger")
+        return redirect(url_for("manage"))
+    if not file.filename.lower().endswith((".xlsx", ".xls")):
+        flash("Please upload an .xlsx or .xls file.", "danger")
+        return redirect(url_for("manage"))
+
+    data = file.stream.read()
+    try:
+        items = excel.parse_import_rows(data)
+    except ValueError as exc:
+        flash(str(exc), "danger")
+        return redirect(url_for("manage"))
+
+    db.create_rollback()
+    db.replace_sor_items(items)
+    _audit("import", f"rows={len(items)}")
+    flash(
+        f"Database replaced with {len(items)} items. The previous database "
+        "is kept for rollback.",
+        "success",
+    )
+    return redirect(url_for("manage"))
+
+
+@app.route("/manage/rollback", methods=["POST"])
+@login_required(role="admin")
+@csrf_protect
+def manage_rollback():
+    if not db.has_rollback():
+        flash("No previous database is available to roll back to.", "warning")
+        return redirect(url_for("manage"))
+    db.restore_rollback()
+    _audit("rollback")
+    flash("Database restored to the previous version.", "success")
+    return redirect(url_for("manage"))
 
 
 def _validate_sor_form(exclude_id=None):
@@ -375,9 +438,9 @@ def _validate_sor_form(exclude_id=None):
     price_str = request.form.get("price", "").strip()
 
     errors = []
-    if not sor_code:
-        errors.append("SOR code is required.")
-    elif db.get_sor_item_by_code(sor_code, exclude_id=exclude_id):
+    if sor_code and not re.fullmatch(r"[A-Za-z0-9]+", sor_code):
+        errors.append("SOR code must be alphanumeric (letters and digits only).")
+    if sor_code and db.get_sor_item_by_code(sor_code, exclude_id=exclude_id):
         errors.append(f"SOR code '{sor_code}' already exists.")
     if not name:
         errors.append("Service name is required.")
@@ -391,7 +454,7 @@ def _validate_sor_form(exclude_id=None):
     except (TypeError, ValueError):
         errors.append("Price must be a valid number.")
     return errors, {
-        "sor_code": sor_code,
+        "sor_code": sor_code or None,
         "name": name,
         "category": category,
         "price": price,

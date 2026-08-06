@@ -98,4 +98,48 @@
         {% include "_pagination.html" %}
     </div>
 </div>
+
+<div class="card">
+    <h3 class="card-title">Database Tools</h3>
+
+    <form method="POST" action="{{ url_for('manage_import') }}"
+          enctype="multipart/form-data" class="db-tool"
+          data-confirm="This will REPLACE the entire current database with the data from the Excel file. Are you sure?">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="sor-excel">Import Excel (.xlsx / .xls)</label>
+                <input type="file" id="sor-excel" name="excel" accept=".xlsx,.xls"
+                       class="file-input" required>
+                <span class="form-hint">
+                    Columns: sor number, title, category, price.
+                    Category may be left blank (auto-assigned).
+                </span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-danger">Upload &amp; Replace Database</button>
+            </div>
+        </div>
+    </form>
+
+    <div class="db-tool">
+        <form method="POST" action="{{ url_for('manage_rollback') }}"
+              data-confirm="Restore the database to the version from before the last Excel upload? This cannot be undone."
+              class="inline-form">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}">
+            <button type="submit" class="btn btn-outline"
+                    {% if not rollback_available %}disabled title="No previous database available yet"{% endif %}>
+                Rollback to Previous Database
+            </button>
+        </form>
+        <a href="{{ url_for('manage_export') }}" class="btn btn-outline">Download Database as Excel</a>
+    </div>
+    <p class="text-muted">
+        {% if rollback_available %}
+        A previous database is available to roll back to (kept from the last Excel upload).
+        {% else %}
+        No rollback snapshot yet — it is created the first time an Excel file is uploaded.
+        {% endif %}
+    </p>
+</div>
 {% endblock %}

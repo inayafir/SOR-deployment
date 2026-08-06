@@ -25,6 +25,7 @@ os.chdir(PROJECT_ROOT)
 
 import config as app_config  # noqa: E402
 import db  # noqa: E402
+import excel  # noqa: E402
 import paths  # noqa: E402
 import app as app_module  # noqa: E402
 
@@ -294,6 +295,169 @@ def test_logging():
         check("log has startup entry", "Starting CHSS SOR" in content or len(content) > 0)
 
 
+def _make_workbook(rows, headers=None):
+    import io
+    import openpyxl
+    headers = headers or ["SOR Number", "Title", "Category", "Price"]
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.append(headers)
+    for row in rows:
+        ws.append(row)
+    buffer = io.BytesIO()
+    wb.save(buffer)
+    buffer.seek(0)
+    return buffer.getvalue()
+
+
+def test_sor_code_optional_and_alphanumeric():
+    admin = app.test_client()
+    login(admin, "admin", "admin123")
+
+    r = csrf_post(admin, "/sor/new", {
+        "sor_code": "", "name": "No Code Item", "category": "Dental", "price": "100",
+    })
+    check("blank sor code accepted", r.status_code == 302, str(r.status_code))
+    with db.get_db() as conn:
+        row = conn.execute(
+            "SELECT sor_code FROM sor_items WHERE name = 'No Code Item'"
+        ).fetchone()
+    check("blank code stored as NULL", row is not None and row["sor_code"] is None)
+    with db.get_db() as conn:
+        conn.execute("DELETE FROM sor_items WHERE name = 'No Code Item'")
+
+    r = csrf_post(admin, "/sor/new", {
+        "sor_code": "90.1", "name": "Bad Code Item", "category": "Dental", "price": "100",
+    })
+    check("non-alphanumeric code rejected", r.status_code == 400, str(r.status_code))
+
+    r = csrf_post(admin, "/sor/new", {
+        "sor_code": "Ab12", "name": "Alpha Numeric Code", "category": "Dental", "price": "100",
+    })
+    check("alphanumeric code accepted", r.status_code == 302, str(r.status_code))
+    check("alphanumeric code stored", db.get_sor_item_by_code("Ab12") is not None)
+    with db.get_db() as conn:
+        conn.execute("DELETE FROM sor_items WHERE sor_code = 'Ab12'")
+
+
+def test_schema_nullable():
+    with db.get_db() as conn:
+        columns = conn.execute("PRAGMA table_info(sor_items)").fetchall()
+    sor_code_col = [c for c in columns if c["name"] == "sor_code"][0]
+    check("fresh schema sor_code nullable", sor_code_col["notnull"] == 0)
+
+
+def test_legacy_schema_migration():
+    import sqlite3
+    fd, path = tempfile.mkstemp(suffix=".db")
+    os.close(fd)
+    conn = sqlite3.connect(path)
+    conn.execute(
+        """CREATE TABLE sor_items (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            sor_code TEXT UNIQUE NOT NULL,
+            name TEXT NOT NULL, category TEXT NOT NULL, price REAL,
+            created_at TEXT NOT NULL, updated_at TEXT NOT NULL)"""
+    )
+    conn.execute("CREATE INDEX idx_sor_items_category ON sor_items(category)")
+    conn.execute(
+        "INSERT INTO sor_items (sor_code, name, category, price, created_at, updated_at)"
+        " VALUES ('7', 'Legacy Item', 'Dental', 100, 'x', 'y')"
+    )
+    conn.commit()
+    db._migrate_sor_code_nullable(conn)
+    columns = {r[1]: r[3] for r in conn.execute("PRAGMA table_info(sor_items)").fetchall()}
+    conn.commit()
+    check("legacy migration makes code nullable", columns.get("sor_code") == 0, str(columns.get("sor_code")))
+    row = conn.execute("SELECT sor_code, name FROM sor_items").fetchone()
+    check("legacy migration preserves data", row[0] == "7" and row[1] == "Legacy Item")
+    conn.close()
+    os.remove(path)
+
+
+def test_excel_parse():
+    data = _make_workbook([
+        ["9001", "Alpha Service", "Dental", 1000],
+        ["", "Beta Service", "", None],
+        ["9003", "Gamma Service", "Urology", "2500"],
+    ])
+    items = excel.parse_import_rows(data)
+    check("excel parse row count", len(items) == 3, str(len(items)))
+    check("excel parses code+price", items[0]["sor_code"] == "9001" and items[0]["price"] == 1000)
+    check("excel optional code -> None", items[1]["sor_code"] is None)
+    check("excel blank category auto-assigned", bool(items[1]["category"]))
+
+
+def test_excel_validation():
+    # non-alphanumeric code
+    data = _make_workbook([["90.1", "Bad Code", "Dental", 10]])
+    try:
+        excel.parse_import_rows(data)
+        check("non-alphanumeric code rejected", False)
+    except ValueError:
+        check("non-alphanumeric code rejected", True)
+
+    # duplicate codes
+    data = _make_workbook([["90", "A", "Dental", 1], ["90", "B", "Dental", 2]])
+    try:
+        excel.parse_import_rows(data)
+        check("duplicate codes rejected", False)
+    except ValueError:
+        check("duplicate codes rejected", True)
+
+    # missing title column
+    data = _make_workbook(
+        [["90", "X", "Y"]],
+        headers=["SOR Number", "Something Else", "Category"],
+    )
+    try:
+        excel.parse_import_rows(data)
+        check("missing title column rejected", False)
+    except ValueError:
+        check("missing title column rejected", True)
+
+    # not an Excel file at all
+    try:
+        excel.parse_import_rows(b"this is not an xlsx file")
+        check("non-Excel file rejected", False)
+    except ValueError:
+        check("non-Excel file rejected", True)
+
+
+def test_import_rollback_export_routes():
+    import io
+    import openpyxl
+    admin = app.test_client()
+    login(admin, "admin", "admin123")
+
+    with db.get_db() as conn:
+        before = conn.execute("SELECT COUNT(*) FROM sor_items").fetchone()[0]
+
+    data = _make_workbook([["9101", "Imported Alpha", "Dental", 500]])
+    r = csrf_post(admin, "/manage/import", {"excel": (io.BytesIO(data), "sor.xlsx")})
+    check("import route -> redirect", r.status_code == 302, str(r.status_code))
+    with db.get_db() as conn:
+        after = conn.execute("SELECT COUNT(*) FROM sor_items").fetchone()[0]
+    check("import replaced dataset", after == 1, f"{before} -> {after}")
+    check("import audit logged", db.has_rollback())
+
+    r = csrf_post(admin, "/manage/rollback", {})
+    check("rollback route -> redirect", r.status_code == 302, str(r.status_code))
+    with db.get_db() as conn:
+        restored = conn.execute("SELECT COUNT(*) FROM sor_items").fetchone()[0]
+    check("rollback restores previous dataset", restored == before, f"{restored} vs {before}")
+
+    r = admin.get("/manage/export")
+    check("export route 200", r.status_code == 200, str(r.status_code))
+    check("export xlsx content type", "spreadsheetml" in r.headers.get("Content-Type", ""))
+    check("export attachment filename", "sor_database" in r.headers.get("Content-Disposition", ""))
+    workbook = openpyxl.load_workbook(io.BytesIO(r.data))
+    sheet = workbook.active
+    header = [c.value for c in next(sheet.iter_rows(min_row=1, max_row=1))]
+    check("export headers", header == ["SOR Number", "Title", "Category", "Price"])
+    check("export row count matches DB", sheet.max_row - 1 == before)
+
+
 def main():
     test_runtime_environment()
     test_database()
@@ -305,6 +469,12 @@ def main():
     test_backup()
     test_security_hardening()
     test_logging()
+    test_sor_code_optional_and_alphanumeric()
+    test_schema_nullable()
+    test_legacy_schema_migration()
+    test_excel_parse()
+    test_excel_validation()
+    test_import_rollback_export_routes()
 
     print()
     if FAILURES:

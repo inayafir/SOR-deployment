@@ -185,6 +185,24 @@ a:hover {
     margin-bottom: 0.75rem;
 }
 
+/* Database tools (import / export / rollback) */
+.db-tool {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: flex-end;
+    margin-bottom: 0.75rem;
+}
+
+.db-tool .form-group {
+    margin-bottom: 0;
+}
+
+.file-input {
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
 /* Tables */
 .table-responsive {
     overflow-x: auto;
