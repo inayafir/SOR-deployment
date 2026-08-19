@@ -9,33 +9,30 @@
 </div>
 
 <div class="card">
-    <form method="GET" action="{{ url_for('manage') }}" class="search-form-row" id="search-form">
-        <div class="form-group">
-            <label for="field-select">Search by</label>
-            <select id="field-select" name="field" class="search-select">
-                <option value="both" {% if field != 'name' and field != 'code' %}selected{% endif %}>Name and SOR Code</option>
-                <option value="name" {% if field == 'name' %}selected{% endif %}>Name</option>
-                <option value="code" {% if field == 'code' %}selected{% endif %}>SOR Code</option>
-            </select>
+    <form method="GET" action="{{ url_for('manage') }}" id="search-form">
+        <div class="search-bar-row">
+            <div class="sor-autocomplete search-bar-autocomplete">
+                <input type="text" id="sor-query" name="q" value="{{ q }}"
+                       class="search-bar-input" autocomplete="off"
+                       placeholder="Search services by name or SOR code&hellip;">
+                <div class="autocomplete-box" id="autocomplete-box" aria-hidden="true"></div>
+            </div>
+            <button type="submit" class="btn btn-primary search-bar-btn">Search</button>
         </div>
-        <div class="form-group sor-autocomplete">
-            <label for="sor-query">Search</label>
-            <input type="text" id="sor-query" name="q" value="{{ q }}"
-                   class="search-input" autocomplete="off"
-                   placeholder="Service name or SOR code&hellip;">
-            <div class="autocomplete-box" id="autocomplete-box" aria-hidden="true"></div>
+        <div class="category-search-row">
+            <div class="sor-autocomplete category-search-autocomplete">
+                <input type="text" id="category-search-input" class="category-search-input"
+                       value="{{ category }}" autocomplete="off"
+                       placeholder="Filter by category&hellip;">
+                <div class="autocomplete-box category-autocomplete-box" id="category-autocomplete-box" aria-hidden="true"></div>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="category-select">Category</label>
-            <select id="category-select" name="category" class="search-select">
-                <option value="">All categories</option>
-                {% for c in categories %}
-                <option value="{{ c }}" {% if category == c %}selected{% endif %}>{{ c }}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block">Search</button>
+        <input type="hidden" id="category-select" name="category" value="{{ category }}">
+        <div id="active-category-bar" class="active-category-bar" {% if not category %}style="display:none"{% endif %}>
+            <span class="category-chip">
+                <span class="category-chip-label" id="active-category-label">{{ category }}</span>
+                <button type="button" class="category-chip-remove" id="clear-category" title="Clear category filter">&times;</button>
+            </span>
         </div>
     </form>
 </div>
@@ -142,4 +139,6 @@
         {% endif %}
     </p>
 </div>
+
+<script id="categories-data" type="application/json">{{ categories | tojson }}</script>
 {% endblock %}

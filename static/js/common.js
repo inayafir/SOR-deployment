@@ -6,7 +6,6 @@
     "use strict";
 
     document.addEventListener("DOMContentLoaded", function () {
-        // Mobile sidebar toggle
         var menuToggle = document.getElementById("menuToggle");
         var sidebar = document.getElementById("sidebar");
 
@@ -15,7 +14,6 @@
                 sidebar.classList.toggle("open");
             });
 
-            // Close sidebar when clicking outside on mobile
             document.addEventListener("click", function (e) {
                 if (window.innerWidth <= 768 &&
                     !sidebar.contains(e.target) &&
@@ -26,8 +24,8 @@
         }
 
         initDynamicSearch();
+        initCategorySearch();
 
-        // Confirmation dialogs for destructive forms (data-confirm="message")
         document.querySelectorAll("form[data-confirm]").forEach(function (form) {
             form.addEventListener("submit", function (e) {
                 if (!window.confirm(form.getAttribute("data-confirm"))) {
@@ -38,122 +36,68 @@
     });
 
     // ----------------------------------------------------------------------
-    // Dynamic search + autocomplete (Search & Manage pages)
+    // Shared helpers
     // ----------------------------------------------------------------------
-    function initDynamicSearch() {
-        var queryInput = document.getElementById("sor-query");
-        if (!queryInput) {
-            return;
-        }
+    function getCsrfToken() {
+        var meta = document.querySelector('meta[name="csrf-token"]');
+        return meta ? meta.getAttribute("content") : "";
+    }
 
-        var body = document.getElementById("dataTable-body");
+    function escapeHtml(value) {
+        return String(value).replace(/[&<>"']/g, function (ch) {
+            return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch];
+        });
+    }
+
+    function formatPrice(value) {
+        if (value === null || value === undefined || value === "") return "";
+        var num = Number(value);
+        if (isNaN(num)) return "";
+        return num.toLocaleString("en-US", { maximumFractionDigits: 2 });
+    }
+
+    function handleApiResponse(resp) {
+        if (resp.status === 401) {
+            window.location.href = "/login";
+            return true;
+        }
+        return false;
+    }
+
+    function fetchJson(url) {
+        return fetch(url, { headers: { "Accept": "application/json" } })
+            .then(function (resp) {
+                if (handleApiResponse(resp)) return Promise.reject("unauthorized");
+                return resp.json();
+            });
+    }
+
+    // Shared search state
+    var searchState = {
+        q: "",
+        category: "",
+        field: "both",
+        page: 1
+    };
+
+    // Shared render function — updates the results table, count, and pagination
+    function renderResults(data) {
         var countEl = document.getElementById("results-count");
+        var body = document.getElementById("dataTable-body");
         var paginationEl = document.getElementById("pagination-container");
-        var categorySelect = document.getElementById("category-select");
-        var fieldSelect = document.getElementById("field-select");
-        var autocompleteBox = document.getElementById("autocomplete-box");
-        var searchForm = document.getElementById("search-form");
         var isManage = !!document.querySelector(".actions");
 
-        var csrfToken = getCsrfToken();
-        var debounceMs = 250;
-        var debounceTimer = null;
-        var activeIndex = -1;
-        var suggestions = [];
-        var state = {
-            q: queryInput.value.trim(),
-            category: categorySelect ? categorySelect.value : "",
-            field: fieldSelect ? fieldSelect.value : "both",
-            page: 1
-        };
-
-        function getCsrfToken() {
-            var meta = document.querySelector('meta[name="csrf-token"]');
-            return meta ? meta.getAttribute("content") : "";
-        }
-
-        function escapeHtml(value) {
-            return String(value).replace(/[&<>"']/g, function (ch) {
-                return {
-                    "&": "&amp;",
-                    "<": "&lt;",
-                    ">": "&gt;",
-                    '"': "&quot;",
-                    "'": "&#39;"
-                }[ch];
-            });
-        }
-
-        function formatPrice(value) {
-            if (value === null || value === undefined || value === "") {
-                return "";
-            }
-            var num = Number(value);
-            if (isNaN(num)) {
-                return "";
-            }
-            return num.toLocaleString("en-US", { maximumFractionDigits: 2 });
-        }
-
-        function handleApiResponse(resp) {
-            if (resp.status === 401) {
-                window.location.href = "/login";
-                return true;
-            }
-            return false;
-        }
-
-        function fetchJson(url) {
-            return fetch(url, { headers: { "Accept": "application/json" } })
-                .then(function (resp) {
-                    if (handleApiResponse(resp)) {
-                        return Promise.reject("unauthorized");
-                    }
-                    return resp.json();
-                });
-        }
-
-        // ------------------------------------------------------------------
-        // Results
-        // ------------------------------------------------------------------
-        function buildSearchUrl(page) {
-            var params = new URLSearchParams();
-            if (state.q) {
-                params.set("q", state.q);
-            }
-            if (state.category) {
-                params.set("category", state.category);
-            }
-            if (state.field) {
-                params.set("field", state.field);
-            }
-            params.set("page", page);
-            return "/api/search?" + params.toString();
-        }
-
-        function runSearch(page) {
-            state.page = page || 1;
-            fetchJson(buildSearchUrl(state.page)).then(renderResults).catch(function () {});
-        }
-
-        function renderResults(data) {
-            renderCount(data);
-            renderRows(data);
-            renderPagination(data);
-        }
-
-        function renderCount(data) {
+        if (countEl) {
             countEl.textContent = data.total
                 ? data.total + " item" + (data.total === 1 ? "" : "s") + " found"
                 : "No results";
         }
 
-        function renderRows(data) {
+        if (body) {
             var html = "";
             if (!data.items.length) {
-                html = '<tr class="no-data-row"><td colspan="' +
-                    (isManage ? 5 : 4) + '">' +
-                    (state.q || state.category
+                html = '<tr class="no-data-row"><td colspan="' + (isManage ? 5 : 4) + '">' +
+                    (searchState.q || searchState.category
                         ? "No items match your search. Try a different term or category."
                         : "No SOR items available.") +
                     "</td></tr>";
@@ -168,7 +112,7 @@
                         html += '<td class="text-right actions">' +
                             '<a href="/sor/' + item.id + '/edit" class="btn btn-outline btn-sm">Edit</a> ' +
                             '<form method="POST" action="/sor/' + item.id + '/delete" class="inline-form">' +
-                            '<input type="hidden" name="_csrf_token" value="' + escapeHtml(csrfToken) + '">' +
+                            '<input type="hidden" name="_csrf_token" value="' + escapeHtml(getCsrfToken()) + '">' +
                             '<button type="submit" class="btn btn-danger btn-sm">Delete</button>' +
                             "</form></td>";
                     }
@@ -178,43 +122,230 @@
             body.innerHTML = html;
         }
 
-        function paginationButton(page, label) {
-            return '<a href="#" class="btn btn-outline btn-sm" data-page="' + page + '">' + label + "</a>";
-        }
-
-        function renderPagination(data) {
-            if (data.total_pages <= 1) {
-                paginationEl.innerHTML = "";
-                return;
-            }
+        if (paginationEl && data.total_pages > 1) {
             var page = data.page;
             var start = Math.max(1, page - 2);
             var end = Math.min(data.total_pages, page + 2);
-            var html = '<nav class="pagination" aria-label="Pagination">' +
+            var phtml = '<nav class="pagination" aria-label="Pagination">' +
                 '<div class="pagination-info">Showing ' + data.items.length + " of " + data.total + " items</div>" +
                 '<div class="pagination-buttons">';
-
-            html += page > 1
-                ? paginationButton(page - 1, "&laquo; Prev")
+            phtml += page > 1
+                ? '<a href="#" class="btn btn-outline btn-sm" data-page="' + (page - 1) + '">&laquo; Prev</a>'
                 : '<span class="btn btn-outline btn-sm disabled">&laquo; Prev</span>';
-
             for (var p = start; p <= end; p++) {
-                html += p === page
+                phtml += p === page
                     ? '<span class="btn btn-primary btn-sm">' + p + "</span>"
-                    : paginationButton(p, String(p));
+                    : '<a href="#" class="btn btn-outline btn-sm" data-page="' + p + '">' + p + "</a>";
             }
-
-            html += page < data.total_pages
-                ? paginationButton(page + 1, "Next &raquo;")
+            phtml += page < data.total_pages
+                ? '<a href="#" class="btn btn-outline btn-sm" data-page="' + (page + 1) + '">Next &raquo;</a>'
                 : '<span class="btn btn-outline btn-sm disabled">Next &raquo;</span>';
+            phtml += "</div></nav>";
+            paginationEl.innerHTML = phtml;
+        } else if (paginationEl) {
+            paginationEl.innerHTML = "";
+        }
+    }
 
-            html += "</div></nav>";
-            paginationEl.innerHTML = html;
+    // Shared fetch-and-render: builds URL params from searchState and calls renderResults
+    function fetchAndRender() {
+        var params = new URLSearchParams();
+        if (searchState.q) params.set("q", searchState.q);
+        if (searchState.category) params.set("category", searchState.category);
+        if (searchState.field) params.set("field", searchState.field);
+        params.set("page", searchState.page);
+        fetchJson("/api/search?" + params.toString())
+            .then(renderResults)
+            .catch(function (err) {
+                console.error("Search fetch failed:", err);
+            });
+    }
+
+    // Shared function to trigger a fresh search from current searchState
+    function runSearch() {
+        var queryInput = document.getElementById("sor-query");
+        if (queryInput) searchState.q = queryInput.value.trim();
+        var fieldSelect = document.getElementById("field-select");
+        if (fieldSelect) searchState.field = fieldSelect.value;
+        searchState.page = 1;
+        fetchAndRender();
+    }
+
+    // ----------------------------------------------------------------------
+    // Category search (Google-style separate bar)
+    // ----------------------------------------------------------------------
+    function initCategorySearch() {
+        var catInput = document.getElementById("category-search-input");
+        var catBox = document.getElementById("category-autocomplete-box");
+        var hiddenCat = document.getElementById("category-select");
+        var categoryBar = document.getElementById("active-category-bar");
+        var categoryLabel = document.getElementById("active-category-label");
+        var clearCategoryBtn = document.getElementById("clear-category");
+        if (!catInput || !catBox) return;
+
+        var allCategories = [];
+        var catDataEl = document.getElementById("categories-data");
+        if (catDataEl) {
+            try { allCategories = JSON.parse(catDataEl.textContent); } catch (e) {}
         }
 
-        // ------------------------------------------------------------------
-        // Autocomplete
-        // ------------------------------------------------------------------
+        var debounceTimer = null;
+        var catActiveIndex = -1;
+        var catSuggestions = [];
+
+        // Restore state
+        searchState.category = hiddenCat ? hiddenCat.value : "";
+        if (searchState.category && categoryBar && categoryLabel) {
+            categoryLabel.textContent = searchState.category;
+            categoryBar.style.display = "";
+        }
+
+        function closeCatAutocomplete() {
+            catBox.innerHTML = "";
+            catBox.setAttribute("aria-hidden", "true");
+            catActiveIndex = -1;
+            catSuggestions = [];
+        }
+
+        function setCategoryFilter(cat) {
+            searchState.category = cat;
+            if (hiddenCat) hiddenCat.value = cat;
+            if (categoryBar && categoryLabel) {
+                if (cat) {
+                    categoryLabel.textContent = cat;
+                    categoryBar.style.display = "";
+                } else {
+                    categoryBar.style.display = "none";
+                }
+            }
+        }
+
+        function selectCatSuggestion(cat) {
+            catInput.value = cat;
+            setCategoryFilter(cat);
+            closeCatAutocomplete();
+            runSearch();
+        }
+
+        function matchCategories(q) {
+            if (!allCategories.length) return [];
+            if (!q) return allCategories;
+            var lower = q.toLowerCase();
+            return allCategories
+                .filter(function (c) { return c.toLowerCase().indexOf(lower) !== -1; });
+        }
+
+        function renderCatAutocomplete(matches) {
+            catSuggestions = matches;
+            if (!matches.length) {
+                closeCatAutocomplete();
+                return;
+            }
+            var html = "";
+            matches.forEach(function (cat, i) {
+                html += '<div class="autocomplete-item autocomplete-category" data-index="' + i + '">' +
+                    '<span class="autocomplete-icon">&#128193;</span>' +
+                    '<span class="autocomplete-name">' + escapeHtml(cat) + '</span>' +
+                    '</div>';
+            });
+            catBox.innerHTML = html;
+            catBox.setAttribute("aria-hidden", "false");
+            catActiveIndex = -1;
+        }
+
+        function setCatActive(index) {
+            var items = catBox.querySelectorAll(".autocomplete-item");
+            if (index >= items.length) index = items.length - 1;
+            if (index < -1) index = -1;
+            catActiveIndex = index;
+            for (var i = 0; i < items.length; i++) {
+                items[i].classList.toggle("active", i === index);
+            }
+        }
+
+        // Events
+        catInput.addEventListener("focus", function () {
+            var q = catInput.value.trim();
+            var matches = matchCategories(q);
+            renderCatAutocomplete(matches);
+        });
+
+        catInput.addEventListener("input", function () {
+            clearTimeout(debounceTimer);
+            var q = catInput.value.trim();
+            debounceTimer = setTimeout(function () {
+                var matches = matchCategories(q);
+                renderCatAutocomplete(matches);
+            }, 150);
+        });
+
+        catInput.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") {
+                closeCatAutocomplete();
+                return;
+            }
+            if (!catSuggestions.length) return;
+            if (e.key === "ArrowDown") {
+                e.preventDefault();
+                setCatActive(catActiveIndex + 1);
+            } else if (e.key === "ArrowUp") {
+                e.preventDefault();
+                setCatActive(catActiveIndex - 1);
+            } else if (e.key === "Enter" && catActiveIndex >= 0) {
+                e.preventDefault();
+                selectCatSuggestion(catSuggestions[catActiveIndex]);
+            } else if (e.key === "Enter" && catActiveIndex === -1) {
+                e.preventDefault();
+                setCategoryFilter(catInput.value.trim());
+                closeCatAutocomplete();
+                runSearch();
+            }
+        });
+
+        // Use mousedown + preventDefault to select items before blur fires
+        catBox.addEventListener("mousedown", function (e) {
+            e.preventDefault();
+            var el = e.target.closest(".autocomplete-item");
+            if (!el) return;
+            var idx = parseInt(el.getAttribute("data-index"), 10);
+            if (catSuggestions[idx]) {
+                selectCatSuggestion(catSuggestions[idx]);
+            }
+        });
+
+        catInput.addEventListener("blur", function () {
+            setTimeout(function () {
+                closeCatAutocomplete();
+            }, 150);
+        });
+
+        if (clearCategoryBtn) {
+            clearCategoryBtn.addEventListener("click", function () {
+                catInput.value = "";
+                setCategoryFilter("");
+                runSearch();
+            });
+        }
+    }
+
+    // ----------------------------------------------------------------------
+    // SOR item search (existing autocomplete)
+    // ----------------------------------------------------------------------
+    function initDynamicSearch() {
+        var queryInput = document.getElementById("sor-query");
+        if (!queryInput) return;
+
+        var autocompleteBox = document.getElementById("autocomplete-box");
+        var searchForm = document.getElementById("search-form");
+        var fieldSelect = document.getElementById("field-select");
+
+        var debounceMs = 250;
+        var debounceTimer = null;
+        var activeIndex = -1;
+        var suggestions = [];
+
+        searchState.q = queryInput.value.trim();
+
         function closeAutocomplete() {
             autocompleteBox.innerHTML = "";
             autocompleteBox.setAttribute("aria-hidden", "true");
@@ -243,93 +374,55 @@
 
         function setActive(index) {
             var items = autocompleteBox.querySelectorAll(".autocomplete-item");
-            if (index >= items.length) {
-                index = items.length - 1;
-            }
-            if (index < -1) {
-                index = -1;
-            }
+            if (index >= items.length) index = items.length - 1;
+            if (index < -1) index = -1;
             activeIndex = index;
             for (var i = 0; i < items.length; i++) {
                 items[i].classList.toggle("active", i === index);
             }
         }
 
-        function syncSelects() {
-            if (categorySelect) {
-                state.category = categorySelect.value;
-            }
-            if (fieldSelect) {
-                state.field = fieldSelect.value;
-            }
-        }
-
         function selectSuggestion(item) {
-            if (!item) {
-                return;
-            }
+            if (!item) return;
             queryInput.value = item.name;
             closeAutocomplete();
-            state.q = item.name;
-            syncSelects();
-            runSearch(1);
+            searchState.q = item.name;
+            searchState.page = 1;
+            fetchAndRender();
         }
 
         function fetchSuggestions() {
             var q = queryInput.value.trim();
-            if (!q) {
-                closeAutocomplete();
-                return;
-            }
+            if (!q) { closeAutocomplete(); return; }
             var params = new URLSearchParams({ q: q });
-            if (state.field) {
-                params.set("field", state.field);
-            }
+            if (searchState.field) params.set("field", searchState.field);
             fetchJson("/api/suggest?" + params.toString())
-                .then(function (data) {
-                    openAutocomplete(data.items);
-                })
+                .then(function (data) { openAutocomplete(data.items); })
                 .catch(function () {});
         }
 
-        // ------------------------------------------------------------------
-        // Event wiring
-        // ------------------------------------------------------------------
+        // Events
         queryInput.addEventListener("input", function () {
             clearTimeout(debounceTimer);
-            state.q = queryInput.value.trim();
-            syncSelects();
+            searchState.q = queryInput.value.trim();
             debounceTimer = setTimeout(function () {
                 fetchSuggestions();
-                runSearch(1);
+                searchState.page = 1;
+                fetchAndRender();
             }, debounceMs);
         });
 
         queryInput.addEventListener("keydown", function (e) {
-            if (e.key === "Escape") {
-                closeAutocomplete();
-                return;
-            }
-            if (!suggestions.length) {
-                return;
-            }
-            if (e.key === "ArrowDown") {
-                e.preventDefault();
-                setActive(activeIndex + 1);
-            } else if (e.key === "ArrowUp") {
-                e.preventDefault();
-                setActive(activeIndex - 1);
-            } else if (e.key === "Enter" && activeIndex >= 0) {
-                e.preventDefault();
-                selectSuggestion(suggestions[activeIndex]);
-            }
+            if (e.key === "Escape") { closeAutocomplete(); return; }
+            if (!suggestions.length) return;
+            if (e.key === "ArrowDown") { e.preventDefault(); setActive(activeIndex + 1); }
+            else if (e.key === "ArrowUp") { e.preventDefault(); setActive(activeIndex - 1); }
+            else if (e.key === "Enter" && activeIndex >= 0) { e.preventDefault(); selectSuggestion(suggestions[activeIndex]); }
         });
 
         autocompleteBox.addEventListener("click", function (e) {
             var el = e.target.closest(".autocomplete-item");
-            if (!el) {
-                return;
-            }
+            if (!el) return;
             selectSuggestion(suggestions[parseInt(el.getAttribute("data-index"), 10)]);
         });
 
@@ -337,58 +430,23 @@
             searchForm.addEventListener("submit", function (e) {
                 e.preventDefault();
                 closeAutocomplete();
-                state.q = queryInput.value.trim();
-                syncSelects();
-                runSearch(1);
-            });
-        }
-
-        if (categorySelect) {
-            categorySelect.addEventListener("change", function () {
-                syncSelects();
-                runSearch(1);
+                searchState.q = queryInput.value.trim();
+                searchState.page = 1;
+                fetchAndRender();
             });
         }
 
         if (fieldSelect) {
             fieldSelect.addEventListener("change", function () {
-                syncSelects();
-                if (queryInput.value.trim()) {
-                    fetchSuggestions();
-                }
-                runSearch(1);
-            });
-        }
-
-        if (paginationEl) {
-            paginationEl.addEventListener("click", function (e) {
-                var link = e.target.closest("a[data-page]");
-                if (!link) {
-                    return;
-                }
-                e.preventDefault();
-                runSearch(parseInt(link.getAttribute("data-page"), 10));
-            });
-        }
-
-        if (body) {
-            body.addEventListener("submit", function (e) {
-                var form = e.target;
-                if (!form.classList || !form.classList.contains("inline-form")) {
-                    return;
-                }
-                var row = form.closest("tr");
-                var code = row ? row.cells[0].textContent.trim() : "this";
-                if (!window.confirm("Delete SOR item " + code + "?")) {
-                    e.preventDefault();
-                }
+                searchState.field = fieldSelect.value;
+                if (queryInput.value.trim()) fetchSuggestions();
+                searchState.page = 1;
+                fetchAndRender();
             });
         }
 
         document.addEventListener("click", function (e) {
-            if (!e.target.closest(".sor-autocomplete")) {
-                closeAutocomplete();
-            }
+            if (!e.target.closest(".sor-autocomplete")) closeAutocomplete();
         });
     }
 })();

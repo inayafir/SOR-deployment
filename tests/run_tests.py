@@ -122,7 +122,7 @@ def test_auth_rbac_csrf():
     # CSRF enforced
     no_csrf = app.test_client()
     login(no_csrf, "admin", "admin123")
-    r = no_csrf.post("/sor/new", data={"sor_code": "99999", "name": "X", "category": "Dental", "price": "10"})
+    r = no_csrf.post("/sor/new", data={"sor_code": "99999", "name": "X", "category": "Dentistry", "price": "10"})
     check("POST without CSRF -> 400", r.status_code == 400, str(r.status_code))
 
 
@@ -131,7 +131,7 @@ def test_crud():
     login(admin, "admin", "admin123")
 
     r = csrf_post(admin, "/sor/new", {
-        "sor_code": "99997", "name": "Test Procedure Alpha", "category": "Dental", "price": "1500",
+        "sor_code": "99997", "name": "Test Procedure Alpha", "category": "Dentistry", "price": "1500",
     })
     check("create item -> redirect", r.status_code == 302)
 
@@ -141,13 +141,13 @@ def test_crud():
 
     # duplicate code rejected
     r = csrf_post(admin, "/sor/new", {
-        "sor_code": "99997", "name": "Dup", "category": "Dental", "price": "1",
+        "sor_code": "99997", "name": "Dup", "category": "Dentistry", "price": "1",
     })
     check("duplicate code -> 400", r.status_code == 400, str(r.status_code))
 
     # edit
     r = csrf_post(admin, f"/sor/{item_id}/edit", {
-        "sor_code": "99997", "name": "Test Procedure Beta", "category": "Urology", "price": "2500.50",
+        "sor_code": "99997", "name": "Test Procedure Beta", "category": "UROLOGY", "price": "2500.50",
     })
     check("edit item -> redirect", r.status_code == 302)
     check("edit persisted name", db.get_sor_item(item_id)["name"] == "Test Procedure Beta")
@@ -177,8 +177,8 @@ def test_search_and_field():
     num = user.get("/api/search?q=1&field=code").get_json()
     check("numeric code search", num["total"] >= 1)
 
-    cat = user.get("/api/search?category=Urology").get_json()
-    check("category filter", cat["total"] == 146, str(cat["total"]))
+    cat = user.get("/api/search?category=UROLOGY").get_json()
+    check("category filter", cat["total"] == 201, str(cat["total"]))
 
     sug = user.get("/api/suggest?q=cat").get_json()["items"]
     check("autocomplete suggestions", len(sug) > 0)
@@ -189,7 +189,7 @@ def test_persistence_across_restarts():
     admin = app.test_client()
     login(admin, "admin", "admin123")
     csrf_post(admin, "/sor/new", {
-        "sor_code": "88888", "name": "Persistent Item", "category": "Dental", "price": "100",
+        "sor_code": "88888", "name": "Persistent Item", "category": "Dentistry", "price": "100",
     })
     assert db.get_sor_item_by_code("88888") is not None
 
@@ -276,7 +276,7 @@ def test_security_hardening():
     admin = app.test_client()
     login(admin, "admin", "admin123")
     csrf_post(admin, "/sor/new", {
-        "sor_code": "77771", "name": "Audited Item", "category": "Dental", "price": "42",
+        "sor_code": "77771", "name": "Audited Item", "category": "Dentistry", "price": "42",
     })
     log_path = os.path.join(paths.get_logs_dir(), "app.log")
     content = open(log_path, encoding="utf-8").read() if os.path.exists(log_path) else ""
@@ -315,7 +315,7 @@ def test_sor_code_optional_and_alphanumeric():
     login(admin, "admin", "admin123")
 
     r = csrf_post(admin, "/sor/new", {
-        "sor_code": "", "name": "No Code Item", "category": "Dental", "price": "100",
+        "sor_code": "", "name": "No Code Item", "category": "Dentistry", "price": "100",
     })
     check("blank sor code accepted", r.status_code == 302, str(r.status_code))
     with db.get_db() as conn:
@@ -327,12 +327,12 @@ def test_sor_code_optional_and_alphanumeric():
         conn.execute("DELETE FROM sor_items WHERE name = 'No Code Item'")
 
     r = csrf_post(admin, "/sor/new", {
-        "sor_code": "90.1", "name": "Bad Code Item", "category": "Dental", "price": "100",
+        "sor_code": "90.1", "name": "Bad Code Item", "category": "Dentistry", "price": "100",
     })
     check("non-alphanumeric code rejected", r.status_code == 400, str(r.status_code))
 
     r = csrf_post(admin, "/sor/new", {
-        "sor_code": "Ab12", "name": "Alpha Numeric Code", "category": "Dental", "price": "100",
+        "sor_code": "Ab12", "name": "Alpha Numeric Code", "category": "Dentistry", "price": "100",
     })
     check("alphanumeric code accepted", r.status_code == 302, str(r.status_code))
     check("alphanumeric code stored", db.get_sor_item_by_code("Ab12") is not None)

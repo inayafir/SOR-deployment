@@ -682,31 +682,123 @@ a:hover {
 }
 
 /* SOR search form */
-.search-form-row {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.85rem;
+.search-bar-row {
+    display: flex;
+    gap: 0.5rem;
     align-items: stretch;
 }
 
-.search-form-row .search-input,
-.search-form-row .search-select {
+.search-bar-autocomplete {
+    flex: 1;
+    position: relative;
+}
+
+.search-bar-input {
     width: 100%;
-    padding: 0.7rem 0.85rem;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--border);
+    border-radius: 6px;
     font-size: 1rem;
+    background: var(--white);
+    transition: border-color 0.2s;
 }
 
-.search-form-row .form-group {
-    margin-bottom: 0;
+.search-bar-input:focus {
+    outline: none;
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 3px rgba(41, 128, 185, 0.15);
 }
 
-.search-select {
+.search-bar-btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+/* Category search bar (separate Google-style) */
+.category-search-row {
+    margin-top: 0.6rem;
+}
+
+.category-search-autocomplete {
+    position: relative;
+    max-width: 400px;
+}
+
+.category-search-input {
+    width: 100%;
+    padding: 0.6rem 0.85rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    background: var(--white);
+    transition: border-color 0.2s;
+}
+
+.category-search-input:focus {
+    outline: none;
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 3px rgba(41, 128, 185, 0.15);
+}
+
+.category-autocomplete-box {
+    max-height: 260px;
+}
+
+/* Active category chip */
+.active-category-bar {
+    margin-top: 0.6rem;
+}
+
+.category-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: #eaf2f8;
+    border: 1px solid var(--primary-light);
+    border-radius: 16px;
+    padding: 0.25rem 0.6rem 0.25rem 0.75rem;
+    font-size: 0.85rem;
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.category-chip-remove {
+    background: none;
+    border: none;
+    color: var(--primary);
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    opacity: 0.6;
+}
+
+.category-chip-remove:hover {
+    opacity: 1;
+}
+
+/* Searchable category input (datalist - used in add/edit form only) */
+input[list] {
     width: 100%;
     padding: 0.55rem 0.75rem;
     border: 1px solid var(--border);
     border-radius: 4px;
     font-size: 0.9rem;
     background: var(--white);
+    cursor: text;
+}
+
+input[list]:focus {
+    outline: none;
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 2px rgba(41, 128, 185, 0.2);
+}
+
+/* Form card */
+.upload-card {
+    max-width: 600px;
 }
 
 .search-results {
@@ -741,11 +833,22 @@ a:hover {
     margin-top: 0.25rem;
     background: var(--white);
     border: 1px solid var(--border);
-    border-radius: 4px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-    max-height: 320px;
+    border-radius: 6px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    max-height: 400px;
     overflow-y: auto;
     z-index: 200;
+}
+
+.autocomplete-section {
+    padding: 0.45rem 0.75rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--gray);
+    background: var(--gray-light);
+    border-bottom: 1px solid var(--border);
 }
 
 .autocomplete-item {
@@ -764,6 +867,27 @@ a:hover {
 .autocomplete-item.active,
 .autocomplete-item:hover {
     background: #eaf2f8;
+}
+
+.autocomplete-item.autocomplete-category {
+    font-weight: 500;
+    color: var(--primary);
+}
+
+.autocomplete-icon {
+    font-size: 0.9rem;
+    width: 1.2rem;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.autocomplete-hint {
+    font-size: 0.7rem;
+    color: var(--gray);
+    background: var(--gray-light);
+    padding: 0.1rem 0.4rem;
+    border-radius: 3px;
+    white-space: nowrap;
 }
 
 .autocomplete-name {
@@ -843,8 +967,16 @@ a:hover {
         grid-template-columns: 1fr;
     }
 
-    .search-form-row {
-        grid-template-columns: 1fr;
+    .search-bar-row {
+        flex-direction: column;
+    }
+
+    .search-bar-btn {
+        width: 100%;
+    }
+
+    .category-search-autocomplete {
+        max-width: 100%;
     }
 
     .stats-grid {

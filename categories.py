@@ -1,49 +1,99 @@
 """SOR category classification.
 
-The official SOR dataset (chss_sor_2023.csv) has no category column. Categories
-are derived at seed time from the treatment / procedure name using the ordered
-keyword rules below. The first matching rule wins; anything unmatched falls
-back to ``DEFAULT_CATEGORY``.
+The SOR dataset has categories pre-assigned in the database. This module
+provides:
+
+* ``CATEGORY_ORDER`` — display order for the category dropdown / filters.
+* ``classify_category()`` — keyword-based fallback for fresh CSV seeding or
+  Excel imports that lack a category column.
+* ``sort_categories()`` — sort a list of category names by display order.
 """
 
 DEFAULT_CATEGORY = "Others"
 
-# The CSV orders entries in specialty blocks with a continuous running number.
-# The laboratory and imaging blocks are fully unambiguous, so entries in these
-# numeric ranges are mapped directly regardless of the item name.
-_LABORATORY_RANGE = (1496, 1969)
-_RADIOLOGY_RANGE = (1970, 2154)
-
+# Display order for the 66 categories.  Groups are arranged logically:
+# Clinical specialties → Paediatrics → Radiology & Imaging → Pathology →
+# Body fluids → Vaccinations → Others.
 CATEGORY_ORDER = [
-    "Vaccination",
-    "Dental",
-    "Radiology & Imaging",
-    "Ophthalmology",
-    "ENT",
-    "Oncology & Radiotherapy",
-    "Cardiology & Cardiac Surgery",
-    "Orthopaedics",
-    "Neurology & Neurosurgery",
-    "Urology",
-    "Gynaecology & Obstetrics",
+    # -- Clinical specialties (alphabetical) --
+    "Anaesthesiology",
+    "Cardiology",
+    "CVTS",
+    "CVTS Paediatric",
+    "Dentistry",
     "Dermatology",
-    "Plastic & Reconstructive Surgery",
-    "Anaesthesia",
-    "Pain Management",
-    "Neonatology & Paediatrics",
-    "Gastroenterology",
-    "Respiratory",
-    "Physiotherapy & Rehabilitation",
-    "Psychiatry",
+    "ENT-Ear",
+    "ENT-Ear: Hearing Aids",
+    "ENT-General",
+    "ENT-Nose",
+    "ENT-Throat",
+    "Gastro-Enterology",
+    "General Medicine",
+    "General Procedure",
     "General Surgery",
-    "General & Miscellaneous",
-    "Laboratory",
+    "Gynaecology",
+    "Histopathology",
+    "Interventional Radiology",
+    "NEPHROLOGY",
+    "Neonatal Surgery",
+    "Neonatology",
+    "Neurology",
+    "Neurosurgery",
+    "Obstetrics",
+    "Oncology",
+    "Oncology-Robotic Surgery",
+    "Ophthalmology",
+    "Orthopaedics",
+    "PAEDIATRIC SURGERY",
+    "PAEDIATRIC SURGERY - GIT",
+    "PAEDIATRIC SURGERY - HEAD & NECK",
+    "PAEDIATRIC SURGERY - HERNIAS",
+    "PAEDIATRIC SURGERY - THORAX",
+    "PAEDIATRIC SURGERY - UROLOGY",
+    "PAEDIATRIC SURGERY- HEPATOBILIARY & PANCREATIC",
+    "PAEDIATRICS",
+    "Pain Management",
+    "PHYSIOTHERAPY",
+    "PLASTIC SURGERY",
+    "PSYCHIATRY",
+    "UROLOGY",
+    # -- Radiology & Imaging --
+    "BMD",
+    "C. T. - SPECIAL",
+    "C. T. SCAN",
+    "DOPPLER",
+    "MRI",
+    "MRI-Special",
+    "NUCLEAR MEDICINE",
+    "NUCLEAR MEDICINE- Thyrotoxicosis Therapy",
+    "PET",
+    "Radiology",
+    "Radiology - Routine X-Ray",
+    "Radiology-Special Investigation",
+    "Ultrasound",
+    "Ultrasound-Special",
+    # -- Pathology & Laboratory --
+    "Bio-Chemistry",
+    "Blood banking",
+    "Clinical Pathology",
+    "CSF",
+    "Microbiology",
+    "Special Tests",
+    # -- Body fluids --
+    "Semen",
+    "Stool",
+    "Urine",
+    # -- Vaccinations --
+    "VACCINATIONS",
+    "VACCINATIONS (inadmissible)",
 ]
 
+# Keyword rules for auto-classifying items when the category is missing
+# (e.g. fresh CSV seed or Excel import without a category column).
 # Rules are evaluated in order; the first matching category wins.
 _RULES = [
     (
-        "Vaccination",
+        "VACCINATIONS",
         [
             "vaccine", "vaccination", "immunization", "immunisation",
             "bcg", "opv", "ipv", "dpt", "mmr", "polio", "varicella",
@@ -53,7 +103,7 @@ _RULES = [
         ],
     ),
     (
-        "Dental",
+        "Dentistry",
         [
             "tooth", "teeth", "dental", "denture", "root can", "scaling",
             "gingivectomy", "alveolectomy", "apicotomy", "obturator",
@@ -64,16 +114,105 @@ _RULES = [
         ],
     ),
     (
-        "Radiology & Imaging",
+        "C. T. SCAN",
         [
-            "x-ray", "radiograph", "c.t.", "mri", "ultrasound",
-            "ultra sound", "sonography", "sonomammography",
-            "mammography", "scan", "fluoroscop", "venogram",
-            "myelogram", "urogram", "sialogram", "sinogram",
-            "fistulogram", "cholangiograph", "pyelogram", "pyelograph",
-            "doppler", "bmd", "bone densit", "ebus", "nuclear", "ivp",
-            "ivu", "rgu", "angioembolisation", "imaging", "pet",
-            "spect", "dsa", "tomography",
+            "c.t.", "ct scan", "ct abdomen", "ct brain", "ct chest",
+            "ct guided", "computed tomography",
+        ],
+    ),
+    (
+        "C. T. - SPECIAL",
+        [
+            "ct enteroclysis", "ct cisternography", "ct cardiac",
+            "ct angiogram", "ct duel", "ct pelvis", "ct sinogram",
+        ],
+    ),
+    (
+        "MRI",
+        [
+            "mri", "magnetic resonance",
+        ],
+    ),
+    (
+        "MRI-Special",
+        [
+            "mra", "mri angiogram", "mri mr spectroscopy",
+            "mri functional",
+        ],
+    ),
+    (
+        "Ultrasound-Special",
+        [
+            "ante-natal", "anomaly scan", "doppler study",
+            "endoscopic bronchial ultrasound", "ebus",
+            "transesophageal ultrasound", "endorinal ultrasound",
+        ],
+    ),
+    (
+        "Ultrasound",
+        [
+            "ultrasound", "ultra sound", "sonography",
+            "sonomammography", "usg",
+        ],
+    ),
+    (
+        "DOPPLER",
+        [
+            "doppler", "colour doppler",
+        ],
+    ),
+    (
+        "BMD",
+        [
+            "bmd", "bone densit", "dexa scan",
+        ],
+    ),
+    (
+        "PET",
+        [
+            "pet scan", "p e t", "pet ct", "pet brain", "pet cardiac",
+        ],
+    ),
+    (
+        "NUCLEAR MEDICINE- Thyrotoxicosis Therapy",
+        [
+            "i-131", "thyrotoxicosis therapy", "radioactive iodine",
+        ],
+    ),
+    (
+        "NUCLEAR MEDICINE",
+        [
+            "nuclear medicine", "bone scan", "thyroid scan",
+            "renal scan", "gallium scan", "ventilation perfusion",
+            "v q scan", "mibi", "spect",
+        ],
+    ),
+    (
+        "Radiology - Routine X-Ray",
+        [
+            "x-ray", "x'ray", "radiograph", "xray",
+        ],
+    ),
+    (
+        "Radiology-Special Investigation",
+        [
+            "barium", "ivp", "ivu", "rgu", "mcu", "rgc",
+            "fistulogram", "sinogram", "venogram", "myelogram",
+            "sialogram", "cholangiograph", "pyelogram", "pyelograph",
+            "urogram", "fluoroscop",
+        ],
+    ),
+    (
+        "Interventional Radiology",
+        [
+            "angioembolisation", "ivc filter", "interventional radiology",
+            "tace", "tare", "tips", "embolisation",
+        ],
+    ),
+    (
+        "Radiology",
+        [
+            "radiology", "portable", "c arm",
         ],
     ),
     (
@@ -85,7 +224,7 @@ _RULES = [
             "strabism", "ophthalm", "sclera", "cyclocryo",
             "trabeculectomy", "iridectomy", "enucleation",
             "evisceration", "conjunctival", "dacryo", "fundus", "iol",
-            "macula",             "optic nerve", "retcam", "erg", "vep",
+            "macula", "optic nerve", "retcam", "erg", "vep",
             "laser photo", "retinopexy", "vitreo", "gonioscopy",
             "pachymetry", "tonometry", "vision therapy", "yag",
             "amniotic membrane", "canthoplasty", "epilation",
@@ -95,34 +234,50 @@ _RULES = [
         ],
     ),
     (
-        "ENT",
+        "ENT-Ear",
         [
-            "nose", "nasal", "sinus", "larynx", "laryngeal",
-            "laryngo", "pharynx", "pharyngeal", "pharyngo", "tonsil",
-            "adenoid", "mastoid", "stapes", "cochlear", "vocal",
-            "tinnitus", "rhino", "tympan", "parotid", "submandibular",
-            "salivary", "sial", "turbinate", "choanal", "stroboscopy",
-            "audiometry", "auditory", "ossicular", "uvulo",
-            "uvulectomy", "styloid", "myringotomy", "grommet", "aural",
-            "hearing aid", "endolymphatic", "vestibular", "tracheo",
-            "tracheal", "tracheostom", "cordectomy", "laryngopharyng",
-            "atticotomy", "oropharyngeal", "nasopharynx", "palate",
-            "uvulopalato", "antrostomy", "antral", "turbinoplasty",
-            "suspension laryngoscopic", "peritonsillar",
-            "retropharyngeal", "choana", "epley", "meatoplasty",
-            "myringoplasty", "ossiculoplasty", "tone decay",
-            "antroscopy", "epistaxis", "caldwell", "s.m.r",
-            "diathermy", "cord lateralisation", "te puncture",
-            "thyroplasty", "cochleography", "labyrinth", "staped",
-            "maxillectomy", "laryngectom", "glossectom",
-            "nystagmograph", "neck dissection", "omohyoid",
-            "septoplasty", "ear lobe", "ear reconstruction",
-            "removal - ear", "clearance ear", "middle ear",
-            "inner ear", "external ear", "otoplast",
+            "audiometry", "auditory", "ossicular", "myringotomy",
+            "grommet", "aural", "hearing aid", "endolymphatic",
+            "vestibular", "atticotomy", "stapes", "cochlear",
+            "tinnitus", "mastoid", "ossiculoplasty", "tone decay",
+            "antroscopy", "meatoplasty", "myringoplasty",
+            "middle ear", "inner ear", "external ear", "otoplast",
+            "ear lobe", "ear reconstruction", "removal - ear",
+            "clearance ear", "stapedectomy",
         ],
     ),
     (
-        "Oncology & Radiotherapy",
+        "ENT-Nose",
+        [
+            "nose", "nasal", "sinus", "rhino", "turbinate", "choanal",
+            "antrostomy", "antral", "turbinoplasty", "septoplasty",
+            "epistaxis", "caldwell", "s.m.r", "maxillectomy",
+            "nasopharynx", "antroscopy", "antral wash",
+        ],
+    ),
+    (
+        "ENT-Throat",
+        [
+            "larynx", "laryngeal", "laryngo", "pharynx", "pharyngeal",
+            "pharyngo", "tonsil", "adenoid", "vocal", "uvulo",
+            "uvulectomy", "styloid", "tracheo", "tracheal",
+            "tracheostom", "cordectomy", "laryngopharyng",
+            "oropharyngeal", "palate", "uvulopalato",
+            "suspension laryngoscopic", "peritonsillar",
+            "retropharyngeal", "choana", "thyroplasty",
+            "stroboscopy", "cord lateralisation",
+        ],
+    ),
+    (
+        "ENT-General",
+        [
+            "parotid", "submandibular", "salivary", "sial",
+            "neck dissection", "omohyoid", "debridement",
+            "adenotonsillectomy",
+        ],
+    ),
+    (
+        "Oncology",
         [
             "cancer", "carcinoma", "oncol", "chemotherapy", "chemo",
             "radiotherapy", "radiation", "brachy", "cobalt", "imrt",
@@ -131,28 +286,40 @@ _RULES = [
             "bone marrow transplant", "microwave ablation",
             "irradiation", "hipec", "melanoma", "leuk", "lymphoma",
             "sarcoma", "glioma", "selectron", "electron beam",
-            "planning", "therapy (package", "radionuclide", "chemoport",
-            "chemo port", "radio surgery", "rfa) for", "ca.",
-            "tele therapy",
+            "planning", "radionuclide", "chemoport", "chemo port",
+            "radio surgery", "ca.", "tele therapy",
         ],
     ),
     (
-        "Cardiology & Cardiac Surgery",
+        "Oncology-Robotic Surgery",
+        [
+            "robotic surgery",
+        ],
+    ),
+    (
+        "Cardiology",
         [
             "cardiac", "cardi", "heart", "coronary", "aortic", "aorta",
             "angioplasty", "pacemaker", "defibrill", "valve", "valvulo",
             "atrial", "ventricular", "arrhythm", "echo", "treadmill",
             "holter", "stress test", "stress study", "ffr", "ptca",
-            "cabg", "aicd", "tavi", "cardioversion", "pericardial",
+            "aicd", "tavi", "cardioversion", "pericardial",
             "pericardiocentesis", "aneurysm", "endarterectomy",
-            "thoracotomy", "thoracoscopy", "vats", "mediastin",
-            "pneumonectomy", "bilobectomy", "endovascular",
             "balloon pump", "ecg", "intraaortic", "pulse generator",
             "stent graft", "angiogram", "angiography", "myocard",
             "rotablation", "electrophysiology", "ep study", "rf ablation",
             "bypass", "eps", "bp monitoring", "loop recorder",
-            "varicose", "thoracic", "decortication", "profundo",
-            "ambulatory bp", "thymect", "asd", "pda",
+            "ambulatory bp", "varicose", "asd", "pda",
+        ],
+    ),
+    (
+        "CVTS",
+        [
+            "thoracotomy", "thoracoscopy", "vats", "mediastin",
+            "pneumonectomy", "lobectomy", "bilobectomy", "endovascular",
+            "thoracic", "decortication", "profundo", "thymect",
+            "aneurysm - aortic", "cabg", "valve replacement",
+            "mitral", "aortic valve", "tricuspid",
         ],
     ),
     (
@@ -162,50 +329,56 @@ _RULES = [
             "ligament", "tendon", "muscle", "hip", "knee", "ankle",
             "shoulder", "elbow", "wrist", "spinal fusion", "scoliosis",
             "lumbar interbody", "spinal surgery", "vertebr",
-            "costo transversectomy", "decompression instrumentation",
             "amputation", "joint", "splint", "plaster", "pop", "cast",
             "traction", "disc", "k wire", "k'wire", "k'wiring",
             "clavicle", "femur", "tibia", "humerus", "radius", "ulna",
             "patella", "calcaneal", "scapula", "pelvic", "sacrum",
             "carpal", "tarsal", "metatarsal", "tendo achilles",
             "rotator cuff", "meniscal", "meniscectom", "cruciate",
-            "synovectomy", "chondro", "fracture", "skeletal traction",
+            "synovectomy", "chondro", "skeletal traction",
             "skin traction", "subluxation", "dislocation", "myotomy",
             "osteotom", "tenotomi", "fasciotomy", "nail avulsion",
             "strapping", "trigger finger", "acromioclavicular", "condyle",
             "tension band", "de quervain", "galeazzi", "pinning",
             "acetabulum", "blair", "club foot", "ctev", "stendler",
             "subtalar", "triple fusion", "laminoplasty", "pedicular",
-            "kyphoplasty", "tkr", "open reduction", "amputation",
+            "kyphoplasty", "tkr", "open reduction",
             "carpectom", "fibulectom", "hammer toe", "hallux",
             "talectom", "laminectom", "multi level decompression",
             "instrumental fixation",
         ],
     ),
     (
-        "Neurology & Neurosurgery",
+        "Neurosurgery",
         [
             "brain", "cranial", "cranio", "crani", "skull", "cerebral",
             "cerebellum", "intracranial", "ventricul", "mening",
-            "subdural", "extradural", "intradural", "neuro", "nerve",
-            "carpal tunnel", "spinal", "spine", "trigeminal",
-            "stereotactic", "hydrocephalus", "cisternal", "plexus",
-            "neuroma", "cauda equina", "pituitary", "spinal cord",
-            "malformation", "sympathect", "sympathetect", "lumbar puncture", "epilepsy",
-            "myelomeningocele", "craniostomy", "craniotomy",
+            "subdural", "extradural", "intradural", "stereotactic",
+            "hydrocephalus", "cisternal", "craniostomy", "craniotomy",
             "v.p.shunt", "vp shunt", "ventriculoperitonial shunt",
-            "ventriculo peritoneal shunt", "intracerebral", "intramedulary", "tentorial", "ganglion cyst",
-            "deep brain", "electroencephal", "eng", "eeg", "emg", "ncv",
-            "evoked potential", "bilateral reimplant", "neurectomy",
-            "nerve graft", "nerve repair", "rhizotomy", "neuralgia",
-            "dystonia", "spasticity", "epileptic", "status epilepticus",
-            "menigioma", "astrocytom", "ependymom", "acoustic",
-            "microvascular decompression", "lumbar pressure", "icp",
-            "e.e.g",
+            "ventriculo peritoneal shunt", "intracerebral",
+            "tentorial", "deep brain", "ganglion cyst",
+            "microvascular decompression",
         ],
     ),
     (
-        "Urology",
+        "Neurology",
+        [
+            "neuro", "nerve", "carpal tunnel", "spinal", "spine",
+            "trigeminal", "plexus", "neuroma", "cauda equina",
+            "pituitary", "spinal cord", "malformation", "sympathect",
+            "lumbar puncture", "epilepsy", "myelomeningocele",
+            "intramedulary", "electroencephal", "eng", "eeg", "emg",
+            "ncv", "evoked potential", "neurectomy", "nerve graft",
+            "nerve repair", "rhizotomy", "neuralgia", "dystonia",
+            "spasticity", "epileptic", "status epilepticus",
+            "menigioma", "astrocytom", "ependymom", "acoustic",
+            "lumbar pressure", "icp", "e.e.g", "autonomic function",
+            "bera", "brain stem",
+        ],
+    ),
+    (
+        "UROLOGY",
         [
             "urethra", "ureter", "uretero", "urinary", "urine", "bladder",
             "cysto", "nephro", "nephrectomy", "kidney", "renal",
@@ -223,29 +396,33 @@ _RULES = [
             "hypospadias", "urethroplasty", "urethrotomy", "uro dynamic",
             "cavernos", "dorsal slit", "cryofreezing", "femoral access",
             "subclavian access", "meatotomy", "genitoplasty", "magpi",
-            "priapism", "d j",
+            "priapism", "d j", "adrenalectomy",
         ],
     ),
     (
-        "Gynaecology & Obstetrics",
+        "Gynaecology",
         [
             "gynae", "gyne", "hysterect", "uterus", "uterine", "ovarian",
             "ovary", "tubal", "fallopian", "colpo", "vagin", "vulvect",
-            "vulval", "cervix", "cervical encirclage", "caesarean",
-            "cesarean", "caesarian", "pregnancy", "pregnant", "obstetric",
-            "delivery", "amniocentesis", "chorionic villous",
-            "cordocentesis", "foetal", "fetal", "endometri",
-            "menstrual", "fibroid", "myomect", "oophor", "salping",
+            "vulval", "cervix", "cervical encirclage",
+            "myomect", "oophor", "salping",
             "tubectomy", "sterilisation", "sterilization",
             "intra uterine", "iucd", "hysteroscopy", "hysterosalpingo",
-            "colposcopy", "embryo", "ivf", "iui", "episiotomy",
-            "perineal", "placenta", "vesicular mole", "ectopic",
-            "molar pregnancy", "prenatal", "antenatal", "anovulatory",
-            "polycystic ovarian", "pcod", "labour", "uterovaginal",
-            "vault", "ovarian drilling", "oocyte", "surrogacy",
-            "lithopede", "puerperal", "lochia", "culdocentesis",
-            "hymenectom", "oopherectom", "curettage",
-            "dilatation & curettage", "d&c",
+            "colposcopy", "embryo", "ivf", "iui",
+            "perineal", "fibroid", "polycystic ovarian", "pcod",
+            "vault", "ovarian drilling", "oocyte",
+            "lithopede", "hymenectom", "oopherectom",
+        ],
+    ),
+    (
+        "Obstetrics",
+        [
+            "caesarean", "cesarean", "caesarian", "pregnancy", "pregnant",
+            "obstetric", "delivery", "amniocentesis", "chorionic villous",
+            "cordocentesis", "foetal", "fetal", "episiotomy",
+            "placenta", "vesicular mole", "ectopic",
+            "molar pregnancy", "prenatal", "antenatal",
+            "labour", "puerperal", "breech",
         ],
     ),
     (
@@ -259,7 +436,7 @@ _RULES = [
             "scalp", "alopecia", "onycho", "nail",
             "haemangioma", "keloid", "scar", "naevus", "nevus", "lentigo",
             "dermatophyt", "sebaceous cyst", "pilar cyst", "lipoma",
-            "mole", "nevus", "acrochordon", "fibroma", "mycosis",
+            "mole", "acrochordon", "fibroma", "mycosis",
             "leprosy", "lepra", "urticaria", "ichthyosis",
             "hyperpigmentation", "hypopigmentation", "scleroderm",
             "lupus", "sarcoid", "rosacea", "cellulitis", "abscess",
@@ -267,7 +444,7 @@ _RULES = [
         ],
     ),
     (
-        "Plastic & Reconstructive Surgery",
+        "PLASTIC SURGERY",
         [
             "plastic", "reconstruc", "flap", "graft", "burn", "cleft",
             "rhinoplasty", "abdominoplasty", "liposuction", "mammoplast",
@@ -276,13 +453,23 @@ _RULES = [
             "tissue expansion", "resurfacing", "collagen application",
             "contracture", "ssg", "alveolar bone graft", "tm joint",
             "mandible", "maxilla", "maxillofacial", "lip", "palatoplast",
-            "phalloplasty", "vaginal reconstruction", "ear reconstruction",
+            "phalloplasty", "vaginal reconstruction",
             "nose reconstruction", "eyebrow", "free flap", "pedicled",
             "microtia", "gynecomastia", "pectus", "scar revision",
-            "degloving", "avulsion", "amputation", "blepharoplasty",
+            "degloving", "avulsion", "blepharoplasty",
             "reimplant", "revascularis", "frontal advancement",
             "arch bar", "assymetry", "alar correction", "campodactyly",
             "mandibulectom",
+        ],
+    ),
+    (
+        "Anaesthesiology",
+        [
+            "anaesthesia", "anesthesia", "analgesia", "sedation",
+            "epidural", "intubation", "cannulation", "stellate",
+            "peripheral nerve block", "arterial line", "anaesthetic",
+            "anesthetic", "monitored anaesthesia", "general anaesthesia",
+            "caudal block",
         ],
     ),
     (
@@ -299,33 +486,42 @@ _RULES = [
         ],
     ),
     (
-        "Neonatology & Paediatrics",
+        "PAEDIATRICS",
         [
-            "neonat", "neonatal", "paediatric", "pediatric", "child",
-            "infant", "newborn", "incubator", "surfactant",
-            "exchange transfusion", "meconium", "congenital",
-            "intussusception", "hirschsprung", "pyloric stenosis",
-            "pyloromyotomy", "anorectal malformation", "psarp",
-            "imperforate", "omphalocele", "gastroschisis",
-            "duodenal atresia", "oesophageal atresia", "tracheo-oesophageal",
-            "tracheoesophageal", "tef", "sacrococcygeal teratoma",
-            "branchial", "cystic hygroma", "tongue tie", "ladd's",
-            "herniotomies", "hydrocoele", "kasal", "kasai",
-            "portoenterostomy", "thalassemia", "thalassaemia",
-            "sickle",             "g6pd", "phenylketonuria", "galactosemia",
-            "down syndrome", "rickets", "adenoidectomy", "tonsillectomy",
-            "umbilical cannulation",
+            "paediatric", "pediatric", "child", "infant", "newborn",
+            "neonat", "neonatal", "incubator", "surfactant",
+            "exchange transfusion", "meconium",
         ],
     ),
     (
-        "Gastroenterology",
+        "Neonatal Surgery",
+        [
+            "congenital", "intussusception", "hirschsprung",
+            "pyloric stenosis", "pyloromyotomy", "anorectal malformation",
+            "psarp", "imperforate", "omphalocele", "gastroschisis",
+            "duodenal atresia", "oesophageal atresia",
+            "tracheo-oesophageal", "tracheoesophageal", "tef",
+            "sacrococcygeal teratoma", "branchial", "cystic hygroma",
+            "tongue tie", "ladd's", "herniotomies",
+            "portoenterostomy", "kasal", "kasai",
+        ],
+    ),
+    (
+        "NEPHROLOGY",
+        [
+            "haemodialysis", "dialysis", "capd", "crrt",
+            "a v fistula", "av fistula", "nephro", "bicarbonate haemodialysis",
+        ],
+    ),
+    (
+        "Gastro-Enterology",
         [
             "gastro", "oesophago", "esophago", "oesophag", "esophag",
             "endoscopy", "endoscope", "sigmoid", "colono", "procto",
             "liver", "hepatic", "pancreat", "choledoch", "cholecyst",
-            "biliar", "hepato",             "gastrostomy", "peg tube", "sengstaken",
+            "biliar", "hepato", "gastrostomy", "peg tube", "sengstaken",
             "stoma", "paracentesis", "cirrhosis", "portal hypertension",
-            "tace", "tare", "tips", "polypectomy", "fundoplication",
+            "polypectomy", "fundoplication",
             "duodenal", "duodenostom", "gastric", "splen", "colectomy",
             "ph monitoring", "argon beam", "bowel", "intestine",
             "intestinal", "mesenteric", "peritonitis", "peritoneal",
@@ -346,40 +542,26 @@ _RULES = [
         ],
     ),
     (
-        "Respiratory",
+        "General Medicine",
         [
+            "bandage", "dressing", "enema", "douche", "glucometer",
+            "glucose monitoring", "dvt", "stoma care", "colostomy care",
+            "machine", "wheelchair", "walker", "corset", "mattress",
+            "belt", "chair", "diet", "bed", "monitoring system",
+            "glucose monitor", "insulin pump", "syringe", "ampule",
+            "vial", "disposable", "gloves", "mask", "gown", "catheter",
+            "stocking", "crepe", "gauze", "cotton", "spirit",
+            "ointment", "lotion", "cream", "gel", "powder", "tablet",
+            "capsule", "injection", "infusion", "iv fluids", "saline",
+            "ringer", "dextrose", "oxygen", "dietary", "nutrition",
+            "feeding", "food", "formula", "infra red", "mortuary",
+            "intraosseous", "cvad", "arterial line",
             "bronch", "bipap", "c-pap", "cpap", "spirometry",
             "peak flow", "dlco", "d.l.c.o", "feno", "chest tube", "pleural",
-            "thoracentesis", "oxygen", "nebulis", "nebuliz", "inhal",
+            "thoracentesis", "nebulis", "nebuliz", "inhal",
             "ventilator", "pulse oximetry", "oximeter", "lung function",
             "pulmonary function", "airway", "respiratory",
             "alveolar lavage", "broncho", "pleurodesis",
-        ],
-    ),
-    (
-        "Physiotherapy & Rehabilitation",
-        [
-            "physiotherapy", "physio", "rehabilitation", "rehab",
-            "occupational therapy", "speech therapy", "exercise therapy",
-            "hydrotherapy", "electrotherapy", "mobilization",
-            "mobilisation", "functional training", "gait",
-            "muscle strengthening", "range of motion", "speech",
-        ],
-    ),
-    (
-        "Psychiatry",
-        [
-            "psych", "mental health", "mental retardation", "mental illness",
-            "behaviour", "behavior", "counselling",
-            "counseling", "autism", "dyslexia", "e.c.t",
-            "narcotherapy", "cognitive", "group therapy", "family therapy",
-            "psychological", "rehabilitation counselling", "i.q",
-            "iq assessment", "anxiety", "depression", "bipolar",
-            "schizophrenia", "psychosis", "addiction", "substance abuse",
-            "sleep disorder", "insomnia", "attention deficit", "adhd",
-            "learning disability", "behavioural", "behavioral",
-            "psychotherapist", "psychotherapy", "psychiatrist",
-            "assessment (limited", "assessment (not more",
         ],
     ),
     (
@@ -390,9 +572,9 @@ _RULES = [
             "ileostomy", "stoma", "mastectomy", "thyroidectom",
             "parathyroidectom", "lymph node", "lymphadenectomy",
             "lumpectomy", "appendicect", "laparotomy", "laparoscopy",
-            "laparoscopic", "lavage", "abscess", "drainage", "incision",
-            "perforation", "adhesion", "cyst", "polyp", "haemorrhoid",
-            "hemorrhoid", "piles", "proctolog", "anal", "anus", "rectal",
+            "laparoscopic", "lavage", "drainage", "incision",
+            "perforation", "adhesion", "cyst", "polyp",
+            "proctolog", "anal", "rectal",
             "rectum", "sphincter", "wound", "suture", "debridement",
             "omental", "omentum", "mesentery", "sebaceous", "lipoma",
             "hydatid", "echinococc", "foreign body", "fistulectomy",
@@ -409,49 +591,43 @@ _RULES = [
         ],
     ),
     (
-        "General & Miscellaneous",
+        "Histopathology",
         [
-            "bandage", "dressing", "enema", "douche", "glucometer",
-            "glucose monitoring", "dvt", "stoma care", "colostomy care",
-            "machine", "wheelchair", "walker", "corset", "mattress",
-            "belt", "chair", "diet", "bed", "monitoring system",
-            "glucose monitor", "insulin pump", "syringe", "ampule",
-            "vial", "disposable", "gloves", "mask", "gown", "catheter",
-            "splint", "stocking", "crepe", "gauze", "cotton", "spirit",
-            "ointment", "lotion", "cream", "gel", "powder", "tablet",
-            "capsule", "injection", "infusion", "iv fluids", "saline",
-            "ringer", "dextrose", "oxygen", "dietary", "nutrition",
-            "feeding", "food", "formula", "infra red", "mortuary",
-            "intraosseous", "cvad",
+            "hpe", "histopath", "pathology", "frozen section",
+            "bone marrow smear", "bone marrow aspiration",
+            "cell block", "cytology", "fnac",
         ],
     ),
     (
-        "Anaesthesia",
+        "Clinical Pathology",
         [
-            "anaesthesia", "anesthesia", "analgesia", "sedation",
-            "epidural", "intubation", "cannulation", "stellate",
-            "peripheral nerve block", "arterial line", "anaesthetic",
-            "anesthetic", "monitored anaesthesia", "general anaesthesia",
+            "blood group", "abo", "rh typing", "eosinophil",
+            "absolute eosinophil", "bleeding time", "clotting time",
+            "esr", "cbc", "tlc", "dlc", "haemoglobin", "hemoglobin",
+            "total count", "differential count", "packed cell", "pcv",
+            "mcv", "mch", "rdw", "red cell", "white cell", "leukocyte",
+            "neutrophil", "lymphocyte", "eosinophil", "basophil",
+            "monocyte", "band cell", "plasma cell", "blast cell",
+            "peripheral smear", "reticulocyte",
         ],
     ),
     (
-        "Laboratory",
+        "Bio-Chemistry",
         [
-            "test", "test for", "blood", "serum", "plasma", "urine",
-            "urinary", "stool", "sputum", "culture", "smear", "count",
+            "test", "test for", "blood", "serum", "plasma",
+            "culture", "smear", "count",
             "level", "hormone", "antibody", "antigen", "profile", "panel",
             "electrophores", "assay", "estimation", "screening", "marker",
-            "hpe", "fnac", "cytology", "histopath", "pathology",
-            "immuno", "immunoglob", "pcr", "elisa", "esr", "haemoglobin",
-            "hemoglobin", "hla", "karyotyp", "vitamin", "glucose", "sugar",
+            "immuno", "immunoglob", "pcr", "elisa",
+            "hla", "karyotyp", "vitamin", "glucose", "sugar",
             "protein", "albumin", "bilirubin", "enzyme", "amylase",
             "lipase", "creatinine", "urea", "uric acid", "electrolyte",
             "sodium", "potassium", "calcium", "phosphate", "magnesium",
             "iron", "ferritin", "thyroid", "thyroxine", "tsh", "cortisol",
             "aldosterone", "renin", "insulin", "c-peptide", "troponin",
-            "crp", "d-dimer", "fibrinogen", "platelet", "reticulocyte",
-            "prothrombin", "coagulation", "bleeding time", "clotting",
-            "cross match", "blood group", "compatibility", "hepatitis",
+            "crp", "d-dimer", "fibrinogen", "platelet",
+            "prothrombin", "coagulation",
+            "cross match", "compatibility", "hepatitis",
             "hiv", "vdrl", "widal", "malaria", "dengue", "typhoid",
             "afb", "tubercul", "microscopy", "sensitivity", "abg",
             "osmolality", "osmotic fragility", "sickling", "serology",
@@ -459,7 +635,7 @@ _RULES = [
             "genetic", "gene mutation", "chromosom", "dna", "rna",
             "metabolite", "catecholamine", "vma", "5 hiaa",
             "ketosteroid", "drug level", "therapeutic drug", "trough",
-            "peak level", "hormone", "glucose tolerance", "fbs", "ppbs",
+            "peak level", "glucose tolerance", "fbs", "ppbs",
             "hba1c", "ghb", "ldh", "sgpt", "sgot", "ggt", "afp", "cea",
             "psa", "hcg", "prolactin", "testosterone", "estrogen",
             "estradiol", "progesterone", "fsh", "lh", "dhea", "igf",
@@ -468,10 +644,7 @@ _RULES = [
             "metabolic panel", "lipid profile", "thyroid profile",
             "hormone profile", "androgen", "glycosylated", "glycated",
             "urine analysis", "routine analysis", "body fluid",
-            "asciitc fluid", "cerebrospinal", "csf", "peripheral smear",
-            "bone marrow aspiration", "bone marrow smear", "stem cell",
-            "flow cytometry", "pcr", "rt-pcr", "microarray", "sequencing",
-            "abg blood gas", "arterial blood gas", "blood gas analysis",
+            "asciitc fluid", "cerebrospinal",
             "rbs", "random blood sugar", "post prandial",
             "fasting blood", "homa", "leptin", "adiponectin", "apoe",
             "apo", "lipoprotein", "chylomicron", "triglyceride",
@@ -480,12 +653,63 @@ _RULES = [
             "zinc", "copper", "selenium", "chromium", "manganese",
             "trace element", "heavy metal", "toxicolog", "poison",
             "ethanol", "alcohol", "paracetamol", "salicylate",
-            "drug screen", "drug screening", "tlc", "dlc", "cbc",
-            "total count", "differential count", "packed cell", "pcv",
-            "mcv", "mch", "rdw", "red cell", "white cell", "leukocyte",
-            "neutrophil", "lymphocyte", "eosinophil", "basophil",
-            "monocyte", "band cell", "plasma cell", "blast cell",
-            "hemato", "haemato", "hematolog", "haematolog",
+            "drug screen", "drug screening",
+            "complement", "fta", "abs",
+        ],
+    ),
+    (
+        "Microbiology",
+        [
+            "culture", "sensitivity", "aerobic", "anaerobic",
+            "fungal", "bacterial", "viral", "serology",
+            "anti hbe", "hbe ag", "hepatitis",
+        ],
+    ),
+    (
+        "Blood banking",
+        [
+            "blood transfusion", "blood components", "blood bank",
+            "bleeding charges", "collection of blood",
+        ],
+    ),
+    (
+        "CSF",
+        [
+            "csf", "c.s.f", "cerebrospinal fluid",
+        ],
+    ),
+    (
+        "Special Tests",
+        [
+            "special test", "complement", "fta", "abs",
+            "assa", "immunofluorescence",
+        ],
+    ),
+    (
+        "PHYSIOTHERAPY",
+        [
+            "physiotherapy", "physio", "rehabilitation", "rehab",
+            "occupational therapy", "speech therapy", "exercise therapy",
+            "hydrotherapy", "electrotherapy", "mobilization",
+            "mobilisation", "functional training", "gait",
+            "muscle strengthening", "range of motion", "speech",
+            "home physiotherapy",
+        ],
+    ),
+    (
+        "PSYCHIATRY",
+        [
+            "psych", "mental health", "mental retardation", "mental illness",
+            "behaviour", "behavior", "counselling",
+            "counseling", "autism", "dyslexia", "e.c.t",
+            "narcotherapy", "cognitive", "group therapy", "family therapy",
+            "psychological", "rehabilitation counselling", "i.q",
+            "iq assessment", "anxiety", "depression", "bipolar",
+            "schizophrenia", "psychosis", "addiction", "substance abuse",
+            "sleep disorder", "insomnia", "attention deficit", "adhd",
+            "learning disability", "behavioural", "behavioral",
+            "psychotherapist", "psychotherapy", "psychiatrist",
+            "assessment (limited", "assessment (not more",
         ],
     ),
 ]
@@ -494,30 +718,18 @@ _RULES = [
 def classify_category(name, sor_code=None):
     """Return the best category for a SOR item.
 
-    ``sor_code`` is optional; when provided and numeric it is used to apply
-    the dataset block overrides for the laboratory and imaging sections.
+    ``sor_code`` is kept for API compatibility but is no longer used for
+    block-range overrides (the dataset's sequential numbering has changed).
     """
-    if sor_code is not None:
-        try:
-            code = int(str(sor_code).strip())
-        except (TypeError, ValueError):
-            code = None
-        if code is not None:
-            if _LABORATORY_RANGE[0] <= code <= _LABORATORY_RANGE[1]:
-                return "Laboratory"
-            if _RADIOLOGY_RANGE[0] <= code <= _RADIOLOGY_RANGE[1]:
-                return "Radiology & Imaging"
-
-    # Names often embed notes after a "|" separator (guidelines, inclusions,
-    # eligibility etc.). Only the leading segment is the service name itself.
     text = (name or "").split("|", 1)[0].lower()
     if not text:
         return DEFAULT_CATEGORY
-    # "E.C.T." (electroconvulsive therapy) contains "c.t." and would otherwise
-    # be matched by the imaging rule; it is a psychiatric procedure.
     if "e.c.t" in text:
-        return "Psychiatry"
+        return "PSYCHIATRY"
     for category, keywords in _RULES:
+        if isinstance(keywords, str):
+            # Handle malformed rule (single string instead of list)
+            keywords = [keywords]
         if any(keyword in text for keyword in keywords):
             return category
     return DEFAULT_CATEGORY

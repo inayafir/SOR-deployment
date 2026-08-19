@@ -18,12 +18,15 @@
             </div>
             <div class="form-group">
                 <label for="category">Category <span class="required">*</span></label>
-                <select id="category" name="category" required>
-                    <option value="">Select a category&hellip;</option>
-                    {% for c in categories %}
-                    <option value="{{ c }}" {% if form.get('category') == c %}selected{% endif %}>{{ c }}</option>
-                    {% endfor %}
-                </select>
+                <div class="sor-autocomplete category-search-autocomplete">
+                    <input type="text" id="category" name="category"
+                           class="category-search-input"
+                           value="{{ form.get('category', '') }}"
+                           autocomplete="off" required
+                           placeholder="Type to search categories&hellip;">
+                    <div class="autocomplete-box category-autocomplete-box" id="category-autocomplete-box" aria-hidden="true"></div>
+                </div>
+                <input type="hidden" id="category-select" value="{{ form.get('category', '') }}">
             </div>
         </div>
 
@@ -51,4 +54,112 @@
         </div>
     </form>
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script id="categories-data" type="application/json">{{ categories | tojson }}</script>
+<script>
+(function () {
+    var catInput = document.getElementById("category");
+    var catBox = document.getElementById("category-autocomplete-box");
+    if (!catInput || !catBox) return;
+
+    var allCategories = [];
+    var catDataEl = document.getElementById("categories-data");
+    if (catDataEl) {
+        try { allCategories = JSON.parse(catDataEl.textContent); } catch (e) {}
+    }
+
+    var debounceTimer = null;
+    var catActiveIndex = -1;
+    var catSuggestions = [];
+
+    function closeCatAutocomplete() {
+        catBox.innerHTML = "";
+        catBox.setAttribute("aria-hidden", "true");
+        catActiveIndex = -1;
+        catSuggestions = [];
+    }
+
+    function matchCategories(q) {
+        if (!allCategories.length) return [];
+        if (!q) return allCategories;
+        var lower = q.toLowerCase();
+        return allCategories.filter(function (c) {
+            return c.toLowerCase().indexOf(lower) !== -1;
+        });
+    }
+
+    function escapeHtml(value) {
+        return String(value).replace(/[&<>"']/g, function (ch) {
+            return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch];
+        });
+    }
+
+    function renderCatAutocomplete(matches) {
+        catSuggestions = matches;
+        if (!matches.length) { closeCatAutocomplete(); return; }
+        var html = "";
+        matches.forEach(function (cat, i) {
+            html += '<div class="autocomplete-item autocomplete-category" data-index="' + i + '">' +
+                '<span class="autocomplete-icon">&#128193;</span>' +
+                '<span class="autocomplete-name">' + escapeHtml(cat) + '</span>' +
+                '</div>';
+        });
+        catBox.innerHTML = html;
+        catBox.setAttribute("aria-hidden", "false");
+        catActiveIndex = -1;
+    }
+
+    function setCatActive(index) {
+        var items = catBox.querySelectorAll(".autocomplete-item");
+        if (index >= items.length) index = items.length - 1;
+        if (index < -1) index = -1;
+        catActiveIndex = index;
+        for (var i = 0; i < items.length; i++) {
+            items[i].classList.toggle("active", i === index);
+        }
+    }
+
+    function selectCatSuggestion(cat) {
+        catInput.value = cat;
+        closeCatAutocomplete();
+    }
+
+    catInput.addEventListener("focus", function () {
+        renderCatAutocomplete(matchCategories(catInput.value.trim()));
+    });
+
+    catInput.addEventListener("input", function () {
+        clearTimeout(debounceTimer);
+        var q = catInput.value.trim();
+        debounceTimer = setTimeout(function () {
+            renderCatAutocomplete(matchCategories(q));
+        }, 150);
+    });
+
+    catInput.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") { closeCatAutocomplete(); return; }
+        if (!catSuggestions.length) return;
+        if (e.key === "ArrowDown") { e.preventDefault(); setCatActive(catActiveIndex + 1); }
+        else if (e.key === "ArrowUp") { e.preventDefault(); setCatActive(catActiveIndex - 1); }
+        else if (e.key === "Enter" && catActiveIndex >= 0) {
+            e.preventDefault();
+            selectCatSuggestion(catSuggestions[catActiveIndex]);
+        }
+    });
+
+    catBox.addEventListener("mousedown", function (e) {
+        e.preventDefault();
+        var el = e.target.closest(".autocomplete-item");
+        if (!el) return;
+        var idx = parseInt(el.getAttribute("data-index"), 10);
+        if (catSuggestions[idx]) selectCatSuggestion(catSuggestions[idx]);
+    });
+
+    catInput.addEventListener("blur", function () {
+        setTimeout(closeCatAutocomplete, 150);
+    });
+})();
+</script>
 {% endblock %}

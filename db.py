@@ -466,7 +466,11 @@ def list_categories():
         rows = conn.execute(
             "SELECT DISTINCT category FROM sor_items"
         ).fetchall()
-        return sort_categories([r["category"] for r in rows])
+        cats = [r["category"] for r in rows]
+    from categories import DEFAULT_CATEGORY
+    if DEFAULT_CATEGORY not in cats:
+        cats.append(DEFAULT_CATEGORY)
+    return sort_categories(cats)
 
 
 def suggest_sor_items(q, field=None, limit=10):
