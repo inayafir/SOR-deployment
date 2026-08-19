@@ -1,142 +1,219 @@
 # CHSS Schedule of Rates (SOR) — Search & Management
 
-A lightweight, two-role web application to search the official CHSS Schedule
-of Rates and manage its entries. Built to run as a standalone **offline
-intranet application** (single server PC, any number of browser clients).
+A simple, secure web application for searching and managing the CHSS Schedule
+of Rates. Designed for hospital departments to use on their office network
+(intranet) — **no internet required**.
 
-## Features
+---
 
-- **Search & Filter**: partial, case-insensitive search by service name or
-  SOR code (selectable), plus a category filter, with pagination (20 items
-  per page) and live Google-style autocomplete.
-- **Roles**:
-  - **User** — login and search/filter the SOR (read-only).
-  - **Admin** — everything a User can do, plus add / edit / delete SOR items
-    and bulk database tools (Excel import/export, one-step rollback).
-- **Database Tools** (admin): upload an Excel file (columns *sor number,
-  title, category, price*) to replace the entire database in one go, download
-  the current database as Excel, and roll back to the database that was live
-  before the last upload (one snapshot kept).
-- **Optional SOR code**: new/edited items may omit the SOR code; when present
-  it must be alphanumeric.
-- **Shared single database**: all users read and write the one SQLite file
-  on the server; changes appear for every user immediately.
-- **Security**: salted password hashes (Werkzeug), session-based auth, RBAC,
-  CSRF protection on all state-changing requests, friendly 400/403/404/500
-  pages.
-- **Categories**: derived automatically from the CSV at seed time via
-  `categories.py` (the source CSV has no category column).
-- **Production ready**: Waitress WSGI server, WAL-mode SQLite with busy
-  timeout, rotating logs, configurable port, PyInstaller packaging — no
-  Python required on the deployment machine.
+## What Does This App Do?
 
-## Tech Stack
+- **Search** through thousands of SOR items by name or code, with instant
+  results and category filtering.
+- **Manage** SOR entries (add, edit, delete) if you are an admin.
+- **Import** a new dataset from Excel and **export** the current data back to
+  Excel.
+- **Roll back** to a previous version if something goes wrong during import.
+- Works entirely on your office network — nothing is sent to the internet.
 
-| Layer    | Technology                     |
-|----------|--------------------------------|
-| Frontend | HTML, CSS, Vanilla JS          |
-| Backend  | Python Flask + Waitress (WSGI) |
-| Database | SQLite (WAL mode)              |
-| Packaging| PyInstaller (one-file .exe)    |
-| Data     | `chss_sor_2023.csv`            |
+---
 
-## Project Structure
+## Quick Start (Deploy in 5 Minutes)
+
+> **You only need one PC on your office network to act as the server.**
+> Everyone else accesses it through their web browser — nothing is installed
+> on their computers.
+
+### What You Need
+
+| Item | Details |
+|------|---------|
+| **Server PC** | Any Windows 10/11 PC (or Windows Server) with at least 512 MB RAM and 100 MB free disk space |
+| **Client PCs** | Any PC on the same office network with Chrome, Edge, or Firefox |
+| **Internet** | Not required after installation |
+
+### Step-by-Step
+
+1. **Copy the `Application` folder** to the server PC.
+   For example, copy it to `C:\SOR\Application`.
+   Make sure you copy the **entire folder**, not just the `.exe` file.
+
+2. **Double-click `Application.exe`** on the server PC.
+   A black window (console) will open — this is the server running.
+   **Do not close this window.**
+
+3. **Test it on the server itself.**
+   Open any web browser on the server PC and go to:
+   ```
+   http://localhost:8080
+   ```
+   You should see a login page.
+
+4. **Find the server's IP address.**
+   On the server PC, open a Command Prompt and type:
+   ```
+   ipconfig
+   ```
+   Look for the **IPv4 Address** (something like `192.168.1.50`).
+
+5. **Access from any other PC on the network.**
+   On any other PC, open a browser and go to:
+   ```
+   http://192.168.1.50:8080
+   ```
+   (Replace `192.168.1.50` with your server's actual IP address.)
+
+6. **Log in with the default credentials:**
+
+   | Role | Username | Password |
+   |------|----------|----------|
+   | Admin | `admin` | `admin123` |
+   | User | `user` | `user123` |
+
+   **Change these passwords before real use!** See the Deployment Guide
+   for instructions.
+
+That's it — the app is running!
+
+---
+
+## How to Use the App
+
+### Searching (All Users)
+
+1. Log in with your username and password.
+2. You'll see the **Search** page with a search bar at the top.
+3. Type a service name or SOR code — results appear instantly as you type.
+4. Use the **category filter** below the search bar to narrow results to a
+   specific department (e.g. Cardiology, Radiology, etc.).
+5. Results show the SOR code, service name, category, and rate (price).
+6. Use the page numbers at the bottom to navigate through results.
+
+### Managing SOR Items (Admin Only)
+
+1. Log in as **admin**.
+2. Click **Manage SOR** in the left sidebar.
+3. From here you can:
+   - **Add a new item** — click the green "+ Add SOR Item" button at the top.
+   - **Edit an item** — click the "Edit" button next to any row.
+   - **Delete an item** — click the red "Delete" button next to any row.
+
+### Uploading a New Database from Excel (Admin Only)
+
+If you receive an updated Excel file with new SOR rates:
+
+1. Go to the **Manage SOR** page.
+2. Scroll down to the **Database Tools** section.
+3. Click **Choose File** and select your `.xlsx` or `.xls` file.
+   The file must have columns: **sor number, title, category, price**.
+4. Click **Upload & Replace Database**.
+5. The app validates every row first. If anything is wrong (missing name,
+   invalid code, etc.), it will show an error and **nothing will be changed**.
+6. If everything is valid, the database is replaced. You can undo this with
+   the **Rollback** button.
+
+### Downloading the Database as Excel (Admin Only)
+
+1. Go to the **Manage SOR** page.
+2. Scroll down to **Database Tools**.
+3. Click **Download Database as Excel**.
+4. An `.xlsx` file will download with all current SOR data.
+
+---
+
+## Important Things to Know
+
+### Your Data is Safe
+
+- The app **automatically backs up** the database every time it starts.
+  Backups are stored in the `backup` folder (up to 14 are kept).
+- If you accidentally delete something, you can restore from a backup:
+  1. Stop the app (close the console window or use Task Manager).
+  2. Copy the desired backup file from `backup` over `database\sor.db`.
+  3. Start the app again.
+
+### Everything Stays in One Place
+
+- All data lives in the `database` folder next to `Application.exe`.
+- **Never** move the `.exe` file to a different folder without also moving
+  the `database`, `config`, and `logs` folders.
+- **Never** run two copies of the app from different folders at the same time.
+
+### Updating the App
+
+When a new version is available:
+
+1. Stop the app on the server.
+2. Back up the `database` folder (just copy it somewhere safe).
+3. Replace `Application.exe` with the new version.
+4. Start the app again. Your data is **not** affected.
+
+---
+
+## Folder Structure
+
+After the first run, the `Application` folder will look like this:
 
 ```
-URSC-accts-sor/
-├── app.py               # Flask application (routes, auth, CSRF, RBAC)
-├── db.py                # Database helpers, CSV seeding, search (WAL)
-├── excel.py             # Excel import/export for bulk database updates
-├── categories.py        # Keyword-based category classifier
-├── paths.py             # Runtime base-dir resolution (source vs frozen)
-├── config.py            # config/config.ini + environment overrides
-├── chss_sor_2023.csv    # Official Schedule of Rates (seeded once)
-├── sor_app.spec         # PyInstaller specification
-├── build.py / build.bat # One-command build script
-├── DEPLOY.md            # Non-programmer deployment guide
-├── requirements.txt
-├── README.md
-├── templates/           # base, login, sor_search, sor_manage, sor_form,
-│                        # error, _pagination
-├── static/
-│   ├── css/style.css
-│   └── js/common.js
-└── runtime (auto-created next to the app):
-    ├── database/        # SQLite database: sor.db
-    ├── config/          # config.ini (host, port, threads, secret key)
-    ├── logs/            # app.log (rotating)
-    └── uploads/, exports/, backup/
-        # backup/ holds automatic startup snapshots (newest 14 kept)
-        # database/sor_rollback.db holds the pre-import snapshot for rollback
+Application/
+├── Application.exe          ← the app (double-click to start)
+├── database/
+│   ├── sor.db               ← the main database (your data)
+│   └── sor_rollback.db      ← backup for undo after Excel import
+├── backup/                  ← automatic startup backups (up to 14)
+├── config/
+│   └── config.ini           ← settings (port, host, etc.)
+├── logs/
+│   └── app.log              ← error and activity log
+├── uploads/                 ← temporary upload area
+├── exports/                 ← temporary export area
+├── README.md                ← this file
+└── DEPLOY.md                ← detailed deployment guide
 ```
 
-## Development (run from source)
+---
 
-```bash
-pip install -r requirements.txt
-python app.py
+## Troubleshooting
+
+| Problem | What to Do |
+|---------|------------|
+| **Other PCs can't open the page** | Check the server's IP address (`ipconfig`). Make sure the firewall allows connections on port 8080 (see DEPLOY.md section 8). |
+| **"Port already in use" error** | Another app is using port 8080. Change the port in `config\config.ini` or stop the other app. |
+| **App window closes immediately** | Open a Command Prompt, navigate to the Application folder, type `Application.exe`, and read the error message. Check `logs\app.log` for details. |
+| **Search shows no results** | The database may be empty. Check `logs\app.log`. On a fresh install, 2,154 items should be loaded automatically. |
+| **Data seems lost** | Make sure you're starting the app from the same folder every time. Check the `backup` folder for recent snapshots. |
+| **Page loads slowly** | Increase the number of threads in `config\config.ini` (set `threads = 16` or higher) and restart the app. |
+| **Need more help** | Ask IT support to check `logs\app.log` and contact the developer. |
+
+---
+
+## Default Login Credentials
+
+| Role | Username | Password | What You Can Do |
+|------|----------|----------|-----------------|
+| Admin | `admin` | `admin123` | Search, add, edit, delete, import/export database |
+| User | `user` | `user123` | Search only |
+
+**Change these before deploying to real users.**
+
+---
+
+## For IT / Developers
+
+See `DEPLOY.md` in the `Application` folder for:
+- Firewall configuration
+- Setting up automatic startup (Windows Task Scheduler)
+- Changing passwords
+- Configuration options (port, host, threads)
+- Full troubleshooting guide
+
+The source code is available at:
+```
+https://github.com/inayafir/SOR-deployment
 ```
 
-The database is created and seeded automatically on first run (2,154 SOR
-items plus default accounts `admin/admin123` and `user/user123`).
+---
 
-## Configuration
+## License
 
-Settings are read from `config/config.ini` (created on first run) and can be
-overridden with environment variables:
-
-| Setting           | Config file key      | Env var       | Default    |
-|-------------------|----------------------|---------------|------------|
-| Bind address      | `server.host`        | `SOR_HOST`    | `0.0.0.0`  |
-| TCP port          | `server.port`        | `SOR_PORT`    | `8080`     |
-| Worker threads    | `server.threads`     | `SOR_THREADS` | `8`        |
-| Session secret    | `security.secret_key`| `SECRET_KEY`  | auto-generated |
-
-## Building the standalone application
-
-```bash
-python build.py        # or double-click build.bat
-```
-
-The build produces `release/Application/` with `Application.exe`, runtime
-folders and documentation, and runs a smoke test that the exe starts, logs in,
-searches and seeds its database. See `DEPLOY.md` for full deployment
-instructions.
-
-## Default Credentials
-
-| Role  | Username | Password   |
-|-------|----------|------------|
-| Admin | `admin`  | `admin123` |
-| User  | `user`   | `user123`  |
-
-**Change these before real deployment** (see `DEPLOY.md` §13).
-
-## Usage
-
-- **Search** (`/search`, any role): type a term, choose Name / SOR Code /
-  Both, optionally filter by category; results and autocomplete update live.
-- **Manage** (`/manage`, admin only): same search UI plus **Edit** /
-  **Delete** actions per row, an **Add SOR Item** button, and a
-  **Database Tools** card:
-  - **Upload & Replace Database** — pick an `.xlsx`/`.xls` file with columns
-    *sor number, title, category, price* and replace the whole dataset. Every
-    row is validated first; nothing is replaced if any row is invalid
-    (missing title, non-alphanumeric or duplicate SOR number, negative
-    price). The database that was live before the upload is kept for rollback.
-  - **Rollback to Previous Database** — restores the database to the state
-    before the last Excel upload (one snapshot; overwritten by the next
-    upload).
-  - **Download Database as Excel** — exports the current database to an
-    `.xlsx` file.
-- SOR codes may be left blank; when present they must be alphanumeric and
-  unique. The service name is a required free-text field; price is a numeric
-  amount (thousands separators allowed).
-
-## Notes
-
-- Fully offline; no external APIs or cloud services.
-- Seeding happens only on a fresh database; restarting or deleting entries
-  never re-imports data.
-- On every start the database is snapshotted into `backup/` (newest 14 kept)
-  so data can be restored even after accidental damage.
+Internal use — Department of Space, CHSS.
