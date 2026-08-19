@@ -32,9 +32,16 @@ of Rates. Designed for hospital departments to use on their office network
 | **Client PCs** | Any PC on the same office network with Chrome, Edge, or Firefox |
 | **Internet** | Not required after installation |
 
+To download the project, click the green button on the right hand corner to download as a zip file.
+
+Preferable method of download: 
+In the command prompt (can be found on the internet pc by typing cmd in the windows search bar), type 'git clone https://github.com/inayafir/SOR-deployment'. 
+
+If this raises an error, it is because the folder already exists on the pc. find it, and copy the folder path. then, in the command prompt, type 'cd "folder-location" ' (replace the original location of the folder here). then, press enter. after this, type 'git pull', and the folder should get updated. this folder can now be copied onto the chss pc via filezilla)
+
 ### Step-by-Step
 
-1. **Copy the `Application` folder** to the server PC.
+1. **Copy the `Application` folder** to the server PC. This is located inside the 'release' folder. 
    For example, copy it to `C:\SOR\Application`.
    Make sure you copy the **entire folder**, not just the `.exe` file.
 
@@ -81,7 +88,7 @@ That's it — the app is running!
 
 ### Searching (All Users)
 
-1. Log in with your username and password.
+1. Log in with your username and password. (admin - admin123 or user - user123)
 2. You'll see the **Search** page with a search bar at the top.
 3. Type a service name or SOR code — results appear instantly as you type.
 4. Use the **category filter** below the search bar to narrow results to a
